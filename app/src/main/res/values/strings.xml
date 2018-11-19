@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LegoMindfuck</string>
+    <string name="motor_info">Controllo Motori</string>
+    <string name="motor_a">Base</string>
+    <string name="motor_c">Braccio</string>
+    <string name="motor_d">Mano</string>
+</resources>
