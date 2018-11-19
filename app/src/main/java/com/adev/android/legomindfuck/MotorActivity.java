@@ -52,7 +52,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBaseLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorBase.move(2, 1, 1);
+                mMotorBase.move(2, 1, "+");
             }
         });
 
@@ -60,7 +60,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBaseRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorBase.move(2, 1, 0);
+                mMotorBase.move(2, 1, "-");
             }
         });
 
@@ -72,7 +72,6 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 newDegrees = 360 * progress / 100;
-                Log.i("MSg", String.valueOf(newDegrees));
             }
 
             @Override
@@ -82,13 +81,15 @@ public class MotorActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                oldDegrees = newDegrees;
+                //Log.i("Gradi", String.valueOf(newDegrees));
 
                 if (oldDegrees - newDegrees < 0) {
-                    mMotorBase.move(newDegrees - oldDegrees, mSpeed, 1);
+                    mMotorBase.move(newDegrees - oldDegrees, mSpeed, "+");
                 } else if (oldDegrees - newDegrees > 0) {
-                    mMotorBase.move(oldDegrees - newDegrees, mSpeed, 0);
+                    mMotorBase.move(oldDegrees - newDegrees, mSpeed, "-");
                 }
+
+                oldDegrees = newDegrees;
             }
         });
 
@@ -96,7 +97,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBraccioLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                mMotorBraccio.move(2, 1, "+");
             }
         });
 
@@ -104,15 +105,18 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBraccioRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                mMotorBraccio.move(2, 1, "-");
             }
         });
 
         mSeekBarBraccio = (SeekBar) findViewById(R.id.seekBar2);
         mSeekBarBraccio.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int oldDegrees = 0;
+            int newDegrees = 0;
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                //
+                newDegrees = 360 * progress / 100;
             }
 
             @Override
@@ -122,7 +126,15 @@ public class MotorActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //Log.i("Gradi", String.valueOf(newDegrees));
 
+                if (oldDegrees - newDegrees < 0) {
+                    mMotorBraccio.move(newDegrees - oldDegrees, mSpeed, "+");
+                } else if (oldDegrees - newDegrees > 0) {
+                    mMotorBraccio.move(oldDegrees - newDegrees, mSpeed, "-");
+                }
+
+                oldDegrees = newDegrees;
             }
         });
 
@@ -130,7 +142,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonManoLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                mMotorMano.move(2, 1, "+");
             }
         });
 
@@ -138,15 +150,18 @@ public class MotorActivity extends AppCompatActivity {
         mButtonManoRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                mMotorMano.move(2, 1, "-");
             }
         });
 
         mSeekBarMano = (SeekBar) findViewById(R.id.seekBar3);
         mSeekBarMano.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int oldDegrees = 0;
+            int newDegrees = 0;
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                //
+                newDegrees = 360 * progress / 100;
             }
 
             @Override
@@ -156,7 +171,15 @@ public class MotorActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //Log.i("Gradi", String.valueOf(newDegrees));
 
+                if (oldDegrees - newDegrees < 0) {
+                    mMotorMano.move(newDegrees - oldDegrees, mSpeed, "+");
+                } else if (oldDegrees - newDegrees > 0) {
+                    mMotorMano.move(oldDegrees - newDegrees, mSpeed, "-");
+                }
+
+                oldDegrees = newDegrees;
             }
         });
 

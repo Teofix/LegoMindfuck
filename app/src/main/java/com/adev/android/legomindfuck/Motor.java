@@ -1,25 +1,29 @@
 package com.adev.android.legomindfuck;
 
+import android.util.Log;
+
 public class Motor {
 
     private int mCategory;
     private int mDegrees;
 
-    private static String sPrefix = "";
+    private static String sPrefix = "#ae";
+    private static int sEncoding = 110;
 
     public Motor(int type, int degrees) {
         mCategory = type;
         mDegrees = degrees;
     }
 
-    public String move(int degrees, int speed, int direction) {
-        if (direction > 0) {
+    public String move(int degrees, int speed, String direction) {
+        if (direction.equals("+")) {
             mDegrees = (mDegrees + degrees) % 360;
         } else {
             mDegrees = (mDegrees - degrees + 360) % 360;
         }
 
-        return sPrefix + degrees + speed + "" + "#";
+        Log.i("Message", sPrefix + mCategory + direction + (sEncoding + degrees) + (sEncoding + speed) + "#");
+        return sPrefix + mCategory + direction + (sEncoding + degrees) + (sEncoding + speed) + "#";
     }
 
 
