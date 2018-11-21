@@ -9,15 +9,6 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.UnknownHostException;
-
 public class MotorActivity extends AppCompatActivity {
 
     private Motor mMotorBase;
