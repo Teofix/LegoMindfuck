@@ -9,6 +9,15 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
+
 public class MotorActivity extends AppCompatActivity {
 
     private Motor mMotorBase;
@@ -31,10 +40,15 @@ public class MotorActivity extends AppCompatActivity {
 
     private int mSpeed = 1;
 
+    private SocketManager ev3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_motor);
+
+        ev3 = new SocketManager();
+        ev3.openSocket();
 
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 0);
@@ -52,7 +66,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBaseLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorBase.move(2, 1, "+");
+                ev3.sendMessage(mMotorBase.move(2, 1, "+"));
             }
         });
 
@@ -60,7 +74,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBaseRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorBase.move(2, 1, "-");
+                ev3.sendMessage(mMotorBase.move(2, 1, "-"));
             }
         });
 
