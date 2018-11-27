@@ -18,7 +18,7 @@ public class OpenerThread extends Thread {
     public synchronized void run() {
         SocketAddress sockaddr = null;
         try {
-            sockaddr = new InetSocketAddress(InetAddress.getByName("192.168.0.3"), 8888);
+            sockaddr = new InetSocketAddress(InetAddress.getByName("192.168.2.119"), 8888);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
