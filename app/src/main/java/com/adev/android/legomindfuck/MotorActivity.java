@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
@@ -32,6 +33,8 @@ public class MotorActivity extends AppCompatActivity {
     private ArcSeekBar mSeekBarMano;
 
     private Switch mSpeedSwitch;
+
+    private Button mGoButton;
 
     private int mSpeed = 10;
 
@@ -83,7 +86,7 @@ public class MotorActivity extends AppCompatActivity {
             public void invoke(int i) {
                 if (percentageToDegree(i) > mMotorBase.getDegrees()) {
                     ev3.sendMessage(mMotorBase.move(percentageToDegree(i) - mMotorBase.getDegrees(), mSpeed, "+"));
-                } else if (i * 360 / 100 < mMotorBase.getDegrees()) {
+                } else if (percentageToDegree(i) < mMotorBase.getDegrees()) {
                     ev3.sendMessage(mMotorBase.move(mMotorBase.getDegrees() - percentageToDegree(i), mSpeed, "-"));
                 }
             }
@@ -95,7 +98,7 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ev3.sendMessage(mMotorBraccio.move(2, mSpeed, "-"));
-                mSeekBarBraccio.setProgress(degreeToPercentage(mMotorBraccio.getDegrees()));
+                mSeekBarBraccio.setProgress(degreeToPercentage(360 - mMotorBraccio.getDegrees()));
             }
         });
 
@@ -104,7 +107,7 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ev3.sendMessage(mMotorBraccio.move(2, mSpeed, "+"));
-                mSeekBarBraccio.setProgress(degreeToPercentage(mMotorBraccio.getDegrees()));
+                mSeekBarBraccio.setProgress(degreeToPercentage(360 - mMotorBraccio.getDegrees()));
             }
         });
 
@@ -112,10 +115,10 @@ public class MotorActivity extends AppCompatActivity {
         mSeekBarBraccio.setOnStopTrackingTouch(new ProgressListener() {
             @Override
             public void invoke(int i) {
-                if (i * 360 / 100 > mMotorBraccio.getDegrees()) {
-                    ev3.sendMessage(mMotorBraccio.move(percentageToDegree(i) - mMotorBraccio.getDegrees(), mSpeed, "+"));
-                } else if (i * 360 / 100 < mMotorBraccio.getDegrees()) {
-                    ev3.sendMessage(mMotorBraccio.move(mMotorBraccio.getDegrees() - percentageToDegree(i), mSpeed, "-"));
+                if (percentageToDegree(100 - i) > mMotorBraccio.getDegrees()) {
+                    ev3.sendMessage(mMotorBraccio.move(percentageToDegree(100 - i) - mMotorBraccio.getDegrees(), mSpeed, "+"));
+                } else if (percentageToDegree(100 - i) < mMotorBraccio.getDegrees()) {
+                    ev3.sendMessage(mMotorBraccio.move(mMotorBraccio.getDegrees() - percentageToDegree(100 - i), mSpeed, "-"));
                 }
             }
         });
@@ -125,7 +128,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonManoLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.move(2, mSpeed, "-"));
+                ev3.sendMessage(mMotorMano.move(2, mSpeed, "+"));
                 mSeekBarMano.setProgress(degreeToPercentage(mMotorMano.getDegrees()));
             }
         });
@@ -134,7 +137,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonManoRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.move(2, mSpeed, "+"));
+                ev3.sendMessage(mMotorMano.move(2, mSpeed, "-"));
                 mSeekBarMano.setProgress(degreeToPercentage(mMotorMano.getDegrees()));
             }
         });
@@ -143,9 +146,9 @@ public class MotorActivity extends AppCompatActivity {
         mSeekBarMano.setOnStopTrackingTouch(new ProgressListener() {
             @Override
             public void invoke(int i) {
-                if (i * 360 / 100 > mMotorMano.getDegrees()) {
+                if (percentageToDegree(i) > mMotorMano.getDegrees()) {
                     ev3.sendMessage(mMotorMano.move(percentageToDegree(i) - mMotorMano.getDegrees(), mSpeed, "+"));
-                } else if (i * 360 / 100 < mMotorMano.getDegrees()) {
+                } else if (percentageToDegree(i) < mMotorMano.getDegrees()) {
                     ev3.sendMessage(mMotorMano.move(mMotorMano.getDegrees() - percentageToDegree(i), mSpeed, "-"));
                 }
             }
@@ -161,6 +164,17 @@ public class MotorActivity extends AppCompatActivity {
                 } else {
                     mSpeed = 10;
                 }
+            }
+        });
+
+        mGoButton = (Button) findViewById(R.id.go_button);
+        mGoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ev3.sendMessage(mMotorMano.move(30, 10, "-"));
+                ev3.sendMessage(mMotorBraccio.move(5, 5, "+"));
+                ev3.sendMessage(mMotorMano.move(30, 10, "+"));
+                ev3.sendMessage(mMotorBraccio.move(5, 5, "-"));
             }
         });
     }
