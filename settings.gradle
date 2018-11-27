@@ -1,1 +1,2 @@
 include ':app'
+include 'com.github.marcinmoskala:ArcSeekBar:0.31'
