@@ -29,7 +29,7 @@ public class MotorActivity extends AppCompatActivity {
 
     private Switch mSpeedSwitch;
 
-    private int mSpeed = 1;
+    private int mSpeed = 10;
 
     private SocketManager ev3;
 
@@ -57,7 +57,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBaseLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorBase.move(2, 1, "+"));
+                ev3.sendMessage(mMotorBase.move(2, 50, "+"));
             }
         });
 
@@ -65,7 +65,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBaseRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorBase.move(2, 1, "-"));
+                ev3.sendMessage(mMotorBase.move(2, 50, "-"));
             }
         });
 
@@ -89,9 +89,9 @@ public class MotorActivity extends AppCompatActivity {
                 //Log.i("Gradi", String.valueOf(newDegrees));
 
                 if (oldDegrees - newDegrees < 0) {
-                    mMotorBase.move(newDegrees - oldDegrees, mSpeed, "+");
+                    ev3.sendMessage(mMotorBase.move(newDegrees - oldDegrees, mSpeed, "+"));
                 } else if (oldDegrees - newDegrees > 0) {
-                    mMotorBase.move(oldDegrees - newDegrees, mSpeed, "-");
+                    ev3.sendMessage(mMotorBase.move(oldDegrees - newDegrees, mSpeed, "-"));
                 }
 
                 oldDegrees = newDegrees;
@@ -102,7 +102,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBraccioLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorBraccio.move(2, 1, "+");
+                ev3.sendMessage(mMotorBraccio.move(2, 50, "+"));
             }
         });
 
@@ -110,7 +110,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonBraccioRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorBraccio.move(2, 1, "-");
+                ev3.sendMessage(mMotorBraccio.move(2, 50, "-"));
             }
         });
 
@@ -134,9 +134,9 @@ public class MotorActivity extends AppCompatActivity {
                 //Log.i("Gradi", String.valueOf(newDegrees));
 
                 if (oldDegrees - newDegrees < 0) {
-                    mMotorBraccio.move(newDegrees - oldDegrees, mSpeed, "+");
+                    ev3.sendMessage(mMotorBraccio.move(newDegrees - oldDegrees, mSpeed, "+"));
                 } else if (oldDegrees - newDegrees > 0) {
-                    mMotorBraccio.move(oldDegrees - newDegrees, mSpeed, "-");
+                    ev3.sendMessage(mMotorBraccio.move(oldDegrees - newDegrees, mSpeed, "-"));
                 }
 
                 oldDegrees = newDegrees;
@@ -147,7 +147,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonManoLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorMano.move(2, 1, "+");
+                ev3.sendMessage(mMotorMano.move(2, 50, "+"));
             }
         });
 
@@ -155,7 +155,7 @@ public class MotorActivity extends AppCompatActivity {
         mButtonManoRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMotorMano.move(2, 1, "-");
+                ev3.sendMessage(mMotorMano.move(2, 50, "-"));
             }
         });
 
@@ -179,9 +179,9 @@ public class MotorActivity extends AppCompatActivity {
                 //Log.i("Gradi", String.valueOf(newDegrees));
 
                 if (oldDegrees - newDegrees < 0) {
-                    mMotorMano.move(newDegrees - oldDegrees, mSpeed, "+");
+                    ev3.sendMessage(mMotorMano.move(newDegrees - oldDegrees, mSpeed, "+"));
                 } else if (oldDegrees - newDegrees > 0) {
-                    mMotorMano.move(oldDegrees - newDegrees, mSpeed, "-");
+                    ev3.sendMessage(mMotorMano.move(oldDegrees - newDegrees, mSpeed, "-"));
                 }
 
                 oldDegrees = newDegrees;
@@ -192,10 +192,10 @@ public class MotorActivity extends AppCompatActivity {
         mSpeedSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mSpeed == 1) {
-                    mSpeed = 10;
+                if (mSpeed == 10) {
+                    mSpeed = 25;
                 } else {
-                    mSpeed = 1;
+                    mSpeed = 10;
                 }
             }
         });
