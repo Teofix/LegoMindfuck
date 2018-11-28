@@ -20,7 +20,7 @@ public class SenderThread extends Thread {
 
     @Override
     public synchronized void run() {
-        Log.i("Sender: ", "Thread is sending: " + message);
+        Log.i("Sender: ", "Thread is trying to send: " + message);
         while (!isReady) {
             try {
                 wait();
@@ -33,10 +33,11 @@ public class SenderThread extends Thread {
             outToServer = new PrintWriter(new OutputStreamWriter(ev3Socket.getOutputStream()));
             outToServer.print(message);
             outToServer.flush();
-            Log.i("Sender: ", "Thread has sent the message: " + message);
+            Log.i("Sender: ", "Thread has sent: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }
         notifyAll();
     }
+
 }
