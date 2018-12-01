@@ -16,13 +16,23 @@ public class Motor {
     }
 
     public String move(int degrees, int speed, String direction) {
+        if(mCategory == 7) speed *= 2;
         if (direction.equals("+")) {
             mDegrees = (mDegrees + degrees) % 360;
         } else {
             mDegrees = (mDegrees - degrees + 360) % 360;
         }
         //Log.i("Message", sPrefix + mCategory + direction + (sEncoding + degrees) + (sEncoding + speed) + "#");
-        return sPrefix + mCategory + direction + (sEncoding + degrees) + (sEncoding + speed) + "#";
+        return sPrefix + mCategory + direction + (sEncoding + degrees) +  (sEncoding + speed) + "#";
+    }
+
+    public String motorOn(int speed, String direction) {
+        if(mCategory == 7) speed *= 2;
+        return sPrefix + (mCategory + 1) + direction + "000" + (sEncoding + speed) + "#";
+    }
+
+    public String motorOff() {
+        return sPrefix + (mCategory + 2) + "+" + "000" + "000" + "#";
     }
 
 

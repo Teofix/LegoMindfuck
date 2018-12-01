@@ -1,9 +1,10 @@
 package com.adev.android.legomindfuck;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -22,24 +23,23 @@ public class MotorActivity extends AppCompatActivity {
 
     private ImageButton mButtonBaseLeft;
     private ImageButton mButtonBaseRight;
-    private ArcSeekBar mSeekBarBase;
 
     private ImageButton mButtonBraccioLeft;
     private ImageButton mButtonBraccioRight;
-    private ArcSeekBar mSeekBarBraccio;
 
     private ImageButton mButtonManoLeft;
     private ImageButton mButtonManoRight;
-    private ArcSeekBar mSeekBarMano;
 
     private Switch mSpeedSwitch;
 
-    private Button mGoButton;
+    private Button mPickUpButton;
+    private Button mPutDownButton;
 
-    private int mSpeed = 10;
+    private int mSpeed = 5;
 
-    private SocketManager ev3;
+    private final SocketManager ev3 = new SocketManager();
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,6 @@ public class MotorActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        ev3 = new SocketManager();
         ev3.openSocket();
 
         if (mMotorBase == null) {
@@ -55,126 +54,194 @@ public class MotorActivity extends AppCompatActivity {
         }
 
         if (mMotorBraccio == null) {
-            mMotorBraccio = new Motor(2, 180);
+            mMotorBraccio = new Motor(4, 180);
         }
 
         if (mMotorMano == null) {
-            mMotorMano = new Motor(3, 180);
+            mMotorMano = new Motor(7, 180);
         }
 
         mButtonBaseLeft = (ImageButton) findViewById(R.id.motor1_left);
-        mButtonBaseLeft.setOnClickListener(new View.OnClickListener() {
+        mButtonBaseLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorBase.move(2, mSpeed, "-"));
-                mSeekBarBase.setProgress(degreeToPercentage(mMotorBase.getDegrees()));
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ev3.sendMessage(mMotorBase.motorOn(mSpeed, "-"));
+                        // PRESSED
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        ev3.sendMessage(mMotorBase.motorOff());
+                        // RELEASED
+                        return false; // if you want to handle the touch event
+                }
+                return false;
             }
         });
 
         mButtonBaseRight = (ImageButton) findViewById(R.id.motor1_right);
-        mButtonBaseRight.setOnClickListener(new View.OnClickListener() {
+        mButtonBaseRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorBase.move(2, mSpeed, "+"));
-                mSeekBarBase.setProgress(degreeToPercentage(mMotorBase.getDegrees()));
-            }
-        });
-
-        mSeekBarBase = (ArcSeekBar) findViewById(R.id.seekBar1);
-        mSeekBarBase.setOnStopTrackingTouch(new ProgressListener() {
-            @Override
-            public void invoke(int i) {
-                if (percentageToDegree(i) > mMotorBase.getDegrees()) {
-                    ev3.sendMessage(mMotorBase.move(percentageToDegree(i) - mMotorBase.getDegrees(), mSpeed, "+"));
-                } else if (percentageToDegree(i) < mMotorBase.getDegrees()) {
-                    ev3.sendMessage(mMotorBase.move(mMotorBase.getDegrees() - percentageToDegree(i), mSpeed, "-"));
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ev3.sendMessage(mMotorBase.motorOn(mSpeed, "+"));
+                        // PRESSED
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        ev3.sendMessage(mMotorBase.motorOff());
+                        // RELEASED
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        mSeekBarBase.setProgress(50);
 
         mButtonBraccioLeft = (ImageButton) findViewById(R.id.motor2_left);
-        mButtonBraccioLeft.setOnClickListener(new View.OnClickListener() {
+        mButtonBraccioLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorBraccio.move(2, mSpeed, "-"));
-                mSeekBarBraccio.setProgress(degreeToPercentage(360 - mMotorBraccio.getDegrees()));
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "+"));
+                        // PRESSED
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        ev3.sendMessage(mMotorBraccio.motorOff());
+                        // RELEASED
+                        return false; // if you want to handle the touch event
+                }
+                return false;
             }
         });
 
         mButtonBraccioRight = (ImageButton) findViewById(R.id.motor2_right);
-        mButtonBraccioRight.setOnClickListener(new View.OnClickListener() {
+        mButtonBraccioRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorBraccio.move(2, mSpeed, "+"));
-                mSeekBarBraccio.setProgress(degreeToPercentage(360 - mMotorBraccio.getDegrees()));
-            }
-        });
-
-        mSeekBarBraccio = (ArcSeekBar) findViewById(R.id.seekBar2);
-        mSeekBarBraccio.setOnStopTrackingTouch(new ProgressListener() {
-            @Override
-            public void invoke(int i) {
-                if (percentageToDegree(100 - i) > mMotorBraccio.getDegrees()) {
-                    ev3.sendMessage(mMotorBraccio.move(percentageToDegree(100 - i) - mMotorBraccio.getDegrees(), mSpeed, "+"));
-                } else if (percentageToDegree(100 - i) < mMotorBraccio.getDegrees()) {
-                    ev3.sendMessage(mMotorBraccio.move(mMotorBraccio.getDegrees() - percentageToDegree(100 - i), mSpeed, "-"));
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "-"));
+                        // PRESSED
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        ev3.sendMessage(mMotorBraccio.motorOff());
+                        // RELEASED
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        mSeekBarBraccio.setProgress(50);
 
         mButtonManoLeft = (ImageButton) findViewById(R.id.motor3_left);
-        mButtonManoLeft.setOnClickListener(new View.OnClickListener() {
+        mButtonManoLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.move(2, mSpeed, "+"));
-                mSeekBarMano.setProgress(degreeToPercentage(mMotorMano.getDegrees()));
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ev3.sendMessage(mMotorMano.motorOn(mSpeed, "+"));
+                        // PRESSED
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        ev3.sendMessage(mMotorMano.motorOff());
+                        // RELEASED
+                        return false; // if you want to handle the touch event
+                }
+                return false;
             }
         });
 
         mButtonManoRight = (ImageButton) findViewById(R.id.motor3_right);
-        mButtonManoRight.setOnClickListener(new View.OnClickListener() {
+        mButtonManoRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.move(2, mSpeed, "-"));
-                mSeekBarMano.setProgress(degreeToPercentage(mMotorMano.getDegrees()));
-            }
-        });
-
-        mSeekBarMano = (ArcSeekBar) findViewById(R.id.seekBar3);
-        mSeekBarMano.setOnStopTrackingTouch(new ProgressListener() {
-            @Override
-            public void invoke(int i) {
-                if (percentageToDegree(i) > mMotorMano.getDegrees()) {
-                    ev3.sendMessage(mMotorMano.move(percentageToDegree(i) - mMotorMano.getDegrees(), mSpeed, "+"));
-                } else if (percentageToDegree(i) < mMotorMano.getDegrees()) {
-                    ev3.sendMessage(mMotorMano.move(mMotorMano.getDegrees() - percentageToDegree(i), mSpeed, "-"));
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        ev3.sendMessage(mMotorMano.motorOn(mSpeed, "-"));
+                        // PRESSED
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        ev3.sendMessage(mMotorMano.motorOff());
+                        // RELEASED
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        mSeekBarMano.setProgress(50);
 
         mSpeedSwitch = (Switch) findViewById(R.id.speed_switch);
         mSpeedSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mSpeed == 10) {
-                    mSpeed = 25;
+                if (mSpeed == 5) {
+                    mSpeed = 15;
                 } else {
-                    mSpeed = 10;
+                    mSpeed = 5;
                 }
             }
         });
 
-        mGoButton = (Button) findViewById(R.id.go_button);
-        mGoButton.setOnClickListener(new View.OnClickListener() {
+        mPickUpButton = (Button) findViewById(R.id.pick_up_button);
+        mPickUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.move(30, 10, "-"));
-                ev3.sendMessage(mMotorBraccio.move(5, 5, "+"));
-                ev3.sendMessage(mMotorMano.move(30, 10, "+"));
-                ev3.sendMessage(mMotorBraccio.move(5, 5, "-"));
+            public synchronized void onClick(View v) {
+                Thread t = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            ev3.sendMessage(mMotorBraccio.move(3, 10, "+"));
+                            sleep(100);
+                            ev3.sendMessage(mMotorMano.move(20, 20, "+"));
+                            sleep(500);
+                            ev3.sendMessage(mMotorBraccio.move(4, 10, "-"));
+                            sleep(400);
+                            ev3.sendMessage(mMotorMano.move(10, 20, "-"));
+                            sleep(400);
+                            ev3.sendMessage(mMotorBraccio.move(5, 10, "-"));
+                            sleep(500);
+                            ev3.sendMessage(mMotorMano.move(25, 20, "-"));
+                            sleep(600);
+                            ev3.sendMessage(mMotorBraccio.move(20, 15, "+"));
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                t.start();
+            }
+        });
+
+        mPutDownButton = (Button) findViewById(R.id.put_down_button);
+        mPutDownButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public synchronized void onClick(View v) {
+                Thread t = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            ev3.sendMessage(mMotorBraccio.move(4, 5, "-"));
+                            sleep(250);
+                            ev3.sendMessage(mMotorMano.move(8, 20, "+"));
+                            sleep(250);
+                            ev3.sendMessage(mMotorBraccio.move(2, 5, "+"));
+                            sleep(250);
+                            ev3.sendMessage(mMotorMano.move(8, 20, "+"));
+                            sleep(250);
+                            ev3.sendMessage(mMotorBraccio.move(2, 5, "+"));
+                            sleep(250);
+                            ev3.sendMessage(mMotorMano.move(10, 20, "+"));
+                            sleep(250);
+                            ev3.sendMessage(mMotorBraccio.move(15, 10, "+"));
+                            sleep(300);
+                            ev3.sendMessage(mMotorMano.move(15, 20, "-"));
+                            sleep(300);
+                            ev3.sendMessage(mMotorBraccio.move(9, 10, "-"));
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                t.start();
             }
         });
     }

@@ -19,25 +19,19 @@ public class SenderThread extends Thread {
     }
 
     @Override
-    public synchronized void run() {
-        Log.i("Sender: ", "Thread is trying to send: " + message);
-        while (!isReady) {
+    public void run() {
+        synchronized (ev3Socket) {
+            Log.i("Sender: ", "Thread is trying to send: " + message);
+            PrintWriter outToServer = null;
             try {
-                wait();
-            } catch (InterruptedException e) {
+                outToServer = new PrintWriter(new OutputStreamWriter(ev3Socket.getOutputStream()));
+                outToServer.print(message);
+                outToServer.flush();
+                Log.i("Sender: ", "Thread has sent: " + message);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        PrintWriter outToServer = null;
-        try {
-            outToServer = new PrintWriter(new OutputStreamWriter(ev3Socket.getOutputStream()));
-            outToServer.print(message);
-            outToServer.flush();
-            Log.i("Sender: ", "Thread has sent: " + message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        notifyAll();
     }
 
 }
