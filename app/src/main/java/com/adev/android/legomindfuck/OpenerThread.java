@@ -9,16 +9,22 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
+import static com.adev.android.legomindfuck.SocketManager.accessSender;
 import static com.adev.android.legomindfuck.SocketManager.ev3Socket;
+import static com.adev.android.legomindfuck.SocketManager.ip;
 import static com.adev.android.legomindfuck.SocketManager.isReady;
 
 public class OpenerThread extends Thread {
 
     @Override
-    public synchronized void run() {
+    public void run() {
+        bind();
+    }
+
+    private void bind() {
         SocketAddress sockaddr = null;
         try {
-            sockaddr = new InetSocketAddress(InetAddress.getByName("192.168.1.27"), 8888);
+            sockaddr = new InetSocketAddress(InetAddress.getByName(ip), 8888);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -30,7 +36,9 @@ public class OpenerThread extends Thread {
         }
         Log.i("OpenSocket: ", "Thread has bind socket: " + sockaddr + " : " + ev3Socket.isConnected());
         isReady = true;
-        notifyAll();
+        synchronized (accessSender) {
+            accessSender.notifyAll();
+        }
     }
 }
 

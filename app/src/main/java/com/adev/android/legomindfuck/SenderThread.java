@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 
 import static com.adev.android.legomindfuck.SocketManager.ev3Socket;
 import static com.adev.android.legomindfuck.SocketManager.isReady;
+import static com.adev.android.legomindfuck.SocketManager.accessSender;
 
 public class SenderThread extends Thread {
 
@@ -20,17 +21,27 @@ public class SenderThread extends Thread {
 
     @Override
     public void run() {
-        synchronized (ev3Socket) {
-            Log.i("Sender: ", "Thread is trying to send: " + message);
+        send();
+    }
+
+    private void send() {
+        synchronized (accessSender) {
+            while (!isReady) {
+                try {
+                    accessSender.wait();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             PrintWriter outToServer = null;
             try {
                 outToServer = new PrintWriter(new OutputStreamWriter(ev3Socket.getOutputStream()));
-                outToServer.print(message);
-                outToServer.flush();
-                Log.i("Sender: ", "Thread has sent: " + message);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            outToServer.print(message);
+            outToServer.flush();
+            Log.i("Sender", "messaggio inviato: " + message);
         }
     }
 

@@ -12,9 +12,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
-import com.marcinmoskala.arcseekbar.ArcSeekBar;
-import com.marcinmoskala.arcseekbar.ProgressListener;
-
 public class MotorActivity extends AppCompatActivity {
 
     private Motor mMotorBase;
@@ -37,7 +34,7 @@ public class MotorActivity extends AppCompatActivity {
 
     private int mSpeed = 5;
 
-    private final SocketManager ev3 = new SocketManager();
+    private SocketManager ev3;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -47,7 +44,9 @@ public class MotorActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        if (ev3 == null) ev3 = new SocketManager();
         ev3.openSocket();
+
 
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 180);
@@ -244,6 +243,13 @@ public class MotorActivity extends AppCompatActivity {
                 t.start();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //ev3.sendMessage("#zero#");
+        ev3.closeSocket();
     }
 
     private int degreeToPercentage(int degree) {
