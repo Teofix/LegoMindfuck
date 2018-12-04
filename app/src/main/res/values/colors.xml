@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#004aca</color>
     <color name="sliderBack">#d7d7d7</color>
+
+    <color name="mBlu">#005bf7</color>
+    <color name="mLightBlu">#00d9ff</color>
+    <color name="mVeryBlu">#0015ff</color>
 </resources>
