@@ -12,7 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/sliderBack"
+        android:background="@color/mBlu"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center_vertical"
         android:text="@string/motor_info"
@@ -157,7 +157,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/round_cornered_button"
         android:text="Pick up"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView5" />
 
@@ -167,6 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/round_cornered_button"
         android:text="Put Down"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
@@ -174,10 +177,10 @@
     <TextView
         android:id="@+id/textView5"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="340dp" />
+        tools:layout_editor_absoluteY="345dp" />
 
 </android.support.constraint.ConstraintLayout>
