@@ -47,6 +47,7 @@ public class ImagePageAdapter extends PagerAdapter {
         final View itemView = inflater.inflate(R.layout.pager_item, container, false);
 
         image = (ImageView) itemView.findViewById(R.id.pager_img);
+        image.bringToFront();
         title = (TextView) itemView.findViewById(R.id.pager_title);
         description = (TextView) itemView.findViewById(R.id.pager_desc);
 
