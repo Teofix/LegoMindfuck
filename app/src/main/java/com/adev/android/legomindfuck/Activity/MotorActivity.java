@@ -256,6 +256,8 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                ev3.sendMessage("#arcb#");
+
                 ev3.sendMessage(mMotorMano.motorOn(6, "+"));
 
                 Thread t = new Thread() {
