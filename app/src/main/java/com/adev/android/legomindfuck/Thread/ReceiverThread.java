@@ -1,6 +1,8 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Thread;
 
 import android.util.Log;
+
+import com.adev.android.legomindfuck.DeserializerThread;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,9 +10,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-import static com.adev.android.legomindfuck.SocketManager.accessSender;
-import static com.adev.android.legomindfuck.SocketManager.ev3Socket;
-import static com.adev.android.legomindfuck.SocketManager.isReady;
+import static com.adev.android.legomindfuck.Thread.SocketManager.accessSender;
+import static com.adev.android.legomindfuck.Thread.SocketManager.ev3Socket;
+import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
 public class ReceiverThread extends Thread {
 

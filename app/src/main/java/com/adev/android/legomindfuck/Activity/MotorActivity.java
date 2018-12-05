@@ -1,9 +1,10 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuck;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,8 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
-import com.adev.android.legomindfuck.Motor;
-import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
 public class MotorActivity extends AppCompatActivity {
@@ -35,8 +34,11 @@ public class MotorActivity extends AppCompatActivity {
 
     private Button mPickUpButton;
     private Button mPutDownButton;
+    private Button mCheckColorButton;
 
     private int mSpeed = 5;
+
+    public static final ColorSensor sColorSensor = new ColorSensor();
 
     private SocketManager ev3;
 
@@ -51,7 +53,6 @@ public class MotorActivity extends AppCompatActivity {
         if (ev3 == null) ev3 = new SocketManager();
         ev3.openSocket();
 
-
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 180);
         }
@@ -64,7 +65,7 @@ public class MotorActivity extends AppCompatActivity {
             mMotorMano = new Motor(7, 180);
         }
 
-        mButtonBaseLeft = (ImageButton) findViewById(R.id.motor1_left);
+        mButtonBaseLeft = findViewById(R.id.motor1_left);
         mButtonBaseLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -82,7 +83,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mButtonBaseRight = (ImageButton) findViewById(R.id.motor1_right);
+        mButtonBaseRight = findViewById(R.id.motor1_right);
         mButtonBaseRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -100,7 +101,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mButtonBraccioLeft = (ImageButton) findViewById(R.id.motor2_left);
+        mButtonBraccioLeft = findViewById(R.id.motor2_left);
         mButtonBraccioLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -118,7 +119,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mButtonBraccioRight = (ImageButton) findViewById(R.id.motor2_right);
+        mButtonBraccioRight = findViewById(R.id.motor2_right);
         mButtonBraccioRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -136,7 +137,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mButtonManoLeft = (ImageButton) findViewById(R.id.motor3_left);
+        mButtonManoLeft = findViewById(R.id.motor3_left);
         mButtonManoLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -154,7 +155,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mButtonManoRight = (ImageButton) findViewById(R.id.motor3_right);
+        mButtonManoRight = findViewById(R.id.motor3_right);
         mButtonManoRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -172,7 +173,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mSpeedSwitch = (Switch) findViewById(R.id.speed_switch);
+        mSpeedSwitch = findViewById(R.id.speed_switch);
         mSpeedSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -184,7 +185,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mPickUpButton = (Button) findViewById(R.id.pick_up_button);
+        mPickUpButton = findViewById(R.id.pick_up_button);
         mPickUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public synchronized void onClick(View v) {
@@ -214,7 +215,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         });
 
-        mPutDownButton = (Button) findViewById(R.id.put_down_button);
+        mPutDownButton = findViewById(R.id.put_down_button);
         mPutDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public synchronized void onClick(View v) {
@@ -247,12 +248,35 @@ public class MotorActivity extends AppCompatActivity {
                 t.start();
             }
         });
+
+        mCheckColorButton = findViewById(R.id.check_color_button);
+        mCheckColorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ev3.sendMessage(mMotorMano.motorOn(10, "+"));
+
+                Thread t = new Thread() {
+                    private Boolean finished = false;
+
+                    @Override
+                    public void run() {
+                        while(!finished) {
+                            if(sColorSensor.getColor() > 0) {
+                                ev3.sendMessage(mMotorMano.motorOff());
+                                finished = true;
+                            }
+                        }
+                        Log.i("thread", "found" + sColorSensor.getColor());
+                    }
+                };
+                t.start();
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //ev3.sendMessage("#zero#");
         ev3.closeSocket();
     }
 
