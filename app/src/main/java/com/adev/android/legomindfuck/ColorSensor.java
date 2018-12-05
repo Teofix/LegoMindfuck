@@ -15,7 +15,7 @@ public class ColorSensor {
         if (mLight > 0) {
             switch(mReceivedColor) {
                 case 1:     // Nero
-                    if (mLight < 15) {
+                    if (mLight < 10) {
                         mColor = mReceivedColor;
                         mFound = true;
                     } else {
@@ -58,6 +58,26 @@ public class ColorSensor {
 
             sColorSensor.notify();
         }
+    }
+
+    public synchronized String colorToString(int c) {
+        switch (c) {
+            case 1:
+                return "Black";
+            case 2:
+                return "Blue";
+            case 3:
+                return "Green";
+            case 4:
+                return "Yellow";
+            case 5:
+                return "Red";
+            case 6:
+                return "White";
+            case 7:
+                return "Brown";
+        }
+        return "No Color";
     }
 
     public synchronized int getColor() {

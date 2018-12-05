@@ -278,10 +278,10 @@ public class MotorActivity extends AppCompatActivity {
 
                             prevColor = sColorSensor.getColor();
 
-                            ev3.sendMessage(mMotorMano.move(2, 10, "+"));
+                            ev3.sendMessage(mMotorMano.move(3, 4, "+"));
 
                             try {
-                                sleep(700);
+                                sleep(1000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -289,9 +289,17 @@ public class MotorActivity extends AppCompatActivity {
                             cycles++;
                         }
 
-                        Log.i("thread", "found " + prevColor);
+                        String msg = "#at" + sColorSensor.colorToString(prevColor) + "#";
 
-                        ev3.sendMessage(mMotorMano.move(10 + cycles * 2, 20, "-"));
+                        ev3.sendMessage(msg);
+
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        ev3.sendMessage(mMotorMano.move(10 + cycles * 3, 20, "-"));
 
                     }
                 };
