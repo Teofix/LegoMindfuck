@@ -12,6 +12,8 @@ public class SocketManager {
     public void openSocket() {
         OpenerThread open = new OpenerThread();
         open.start();
+        ReceiverThread rec = new ReceiverThread();
+        rec.start();
     }
 
     public void closeSocket() {
@@ -20,7 +22,6 @@ public class SocketManager {
     }
 
     public void sendMessage(String message) {
-        //Log.i("SocketManager: ", "a thread is taking: " + message);
         SenderThread s = new SenderThread(message);
         s.start();
     }

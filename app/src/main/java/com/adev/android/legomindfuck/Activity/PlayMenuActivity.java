@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.adev.android.legomindfuck.ColorSensor;
 import com.adev.android.legomindfuck.R;
 
 public class PlayMenuActivity extends AppCompatActivity {
+
+    public static final ColorSensor sColorSensor = new ColorSensor();
 
     ViewPager viewPager;
     PagerAdapter adapter;

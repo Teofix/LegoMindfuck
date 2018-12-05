@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="120dp"
         android:fontFamily="@font/fjalla_one"
         android:text="@string/motor_a"
         android:textAlignment="center"
@@ -84,7 +84,7 @@
         android:id="@+id/textView3"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/fjalla_one"
         android:text="@string/motor_c"
         android:textAlignment="center"
@@ -104,7 +104,7 @@
         android:rotation="-90"
         android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/check_color_button"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
 
@@ -119,14 +119,14 @@
         android:rotation="-90"
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/check_color_button"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/fjalla_one"
         android:text="Mano"
         android:textAlignment="center"
@@ -155,7 +155,7 @@
         android:id="@+id/speed_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="72dp"
         android:checked="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +176,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView5" />
+        app:layout_constraintEnd_toStartOf="@+id/check_color_button" />
 
     <Button
         android:id="@+id/put_down_button"
@@ -190,15 +190,22 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
+        app:layout_constraintStart_toEndOf="@+id/check_color_button" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:visibility="invisible"
+    <Button
+        android:id="@+id/check_color_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/round_cornered_button"
+        android:fontFamily="@font/fjalla_one"
+        android:text="Check"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="345dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

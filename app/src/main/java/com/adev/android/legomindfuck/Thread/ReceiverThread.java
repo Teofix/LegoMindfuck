@@ -1,14 +1,8 @@
 package com.adev.android.legomindfuck.Thread;
 
-import android.util.Log;
-
-import com.adev.android.legomindfuck.DeserializerThread;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 
 import static com.adev.android.legomindfuck.Thread.SocketManager.accessSender;
 import static com.adev.android.legomindfuck.Thread.SocketManager.ev3Socket;
@@ -37,7 +31,6 @@ public class ReceiverThread extends Thread {
         }
         while (true) {
             try {
-                //Log.i("Receiver: ", "Thread is ready to receive");
                 int read;
                 char[] buffer = new char[2048];
                 String message;
@@ -45,11 +38,9 @@ public class ReceiverThread extends Thread {
 
                 while ((read = in.read(buffer)) != -1) {
                     message = new String(buffer, 0, read);
-                    //Log.i("Receiver", "Thread has read:" + message);
                     DeserializerThread deserializerThread = new DeserializerThread(message);
                     deserializerThread.start();
                 }
-                //Log.i("Receiver", "Thread has read:" + message);
             } catch (IOException e) {
                 e.printStackTrace();
             }

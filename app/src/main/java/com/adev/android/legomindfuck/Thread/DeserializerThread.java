@@ -1,8 +1,8 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Thread;
 
 import android.util.Log;
 
-import static com.adev.android.legomindfuck.Activity.MotorActivity.sColorSensor;
+import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
 
 public class DeserializerThread extends Thread {
 
@@ -21,7 +21,6 @@ public class DeserializerThread extends Thread {
         String[] split = message.split("&");
 
         if (split[0].equals("#r") && split[4].equals("#")) {
-            //Log.i("Desetialize:", "read->" + split[0] + '%' + split[1] + '%' + split[2] + '%' + split[3] + '%' + split[4]);
             switch (split[1]) {
                 case "m":
                     String newPos = split[3];
@@ -62,8 +61,9 @@ public class DeserializerThread extends Thread {
             String light = split[1];
             int lightValue = Integer.parseInt(light);
 
+            sColorSensor.setLight(lightValue);
+
             String color = split[2];
-            //Log.i("color", color);
 
             switch (color) {
                 case "Black":

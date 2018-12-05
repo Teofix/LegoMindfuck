@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
@@ -13,7 +13,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
+import com.adev.android.legomindfuck.Motor;
+import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.Thread.SocketManager;
+
+import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -37,8 +41,6 @@ public class MotorActivity extends AppCompatActivity {
     private Button mCheckColorButton;
 
     private int mSpeed = 5;
-
-    public static final ColorSensor sColorSensor = new ColorSensor();
 
     private SocketManager ev3;
 
@@ -253,7 +255,7 @@ public class MotorActivity extends AppCompatActivity {
         mCheckColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.motorOn(10, "+"));
+                ev3.sendMessage(mMotorMano.motorOn(15, "+"));
 
                 Thread t = new Thread() {
                     private Boolean finished = false;
@@ -261,12 +263,20 @@ public class MotorActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         while(!finished) {
-                            if(sColorSensor.getColor() > 0) {
+                            if(sColorSensor.found()) {
                                 ev3.sendMessage(mMotorMano.motorOff());
                                 finished = true;
+
+                                try {
+                                    sleep(200);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                ev3.sendMessage(mMotorMano.move(20, 40, "-"));
                             }
                         }
-                        Log.i("thread", "found" + sColorSensor.getColor());
+                        Log.i("thread", "found " + sColorSensor.getColor());
                     }
                 };
                 t.start();

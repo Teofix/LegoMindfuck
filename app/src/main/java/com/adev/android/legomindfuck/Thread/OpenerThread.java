@@ -41,29 +41,3 @@ public class OpenerThread extends Thread {
         }
     }
 }
-
-/*
-    #: No color.
-    COLOR_NOCOLOR = 0
-
-    #: Black color.
-    COLOR_BLACK = 1
-
-    #: Blue color.
-    COLOR_BLUE = 2
-
-    #: Green color.
-    COLOR_GREEN = 3
-
-    #: Yellow color.
-    COLOR_YELLOW = 4
-
-    #: Red color.
-    COLOR_RED = 5
-
-    #: White color.
-    COLOR_WHITE = 6
-
-    #: Brown color.
-    COLOR_BROWN = 7
- */
