@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MultiplayerSelection extends AppCompatActivity {
+import com.adev.android.legomindfuck.R;
+
+public class MultiplayerSelectionActivity extends AppCompatActivity {
 
     private Button p1;
     private Button p2;
@@ -27,7 +29,7 @@ public class MultiplayerSelection extends AppCompatActivity {
         p1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MultiMotorActivity1.class);
+                Intent i = new Intent(getApplicationContext(), MultiMotorActivityP1.class);
                 startActivity(i);
             }
         });
@@ -35,7 +37,7 @@ public class MultiplayerSelection extends AppCompatActivity {
         p2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MultiMotorActivityp2.class);
+                Intent i = new Intent(getApplicationContext(), MultiMotorActivityP2.class);
                 startActivity(i);
             }
         });

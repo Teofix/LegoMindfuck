@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Thread;
 
 import android.util.Log;
 
@@ -9,10 +9,10 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
-import static com.adev.android.legomindfuck.SocketManager.accessSender;
-import static com.adev.android.legomindfuck.SocketManager.ev3Socket;
-import static com.adev.android.legomindfuck.SocketManager.ip;
-import static com.adev.android.legomindfuck.SocketManager.isReady;
+import static com.adev.android.legomindfuck.Thread.SocketManager.accessSender;
+import static com.adev.android.legomindfuck.Thread.SocketManager.ev3Socket;
+import static com.adev.android.legomindfuck.Thread.SocketManager.ip;
+import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
 public class OpenerThread extends Thread {
 

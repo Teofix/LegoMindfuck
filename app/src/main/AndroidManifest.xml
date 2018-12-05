@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MotorActivity" />
-        <activity android:name=".MainMenu">
+        <activity android:name=".Activity.MotorActivity" />
+        <activity android:name=".Activity.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayMenu" />
-        <activity android:name=".MultiplayerSelection" />
-        <activity android:name=".MultiMotorActivity1" />
-        <activity android:name=".MultiMotorActivityp2" />
-        <activity android:name=".ConnectionTest"></activity>
+        <activity android:name=".Activity.PlayMenuActivity" />
+        <activity android:name=".Activity.MultiplayerSelectionActivity" />
+        <activity android:name=".Activity.MultiMotorActivityP1" />
+        <activity android:name=".Activity.MultiMotorActivityP2" />
+        <activity android:name=".Activity.ConnectionTestActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

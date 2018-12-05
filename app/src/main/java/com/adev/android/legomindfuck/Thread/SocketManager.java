@@ -1,6 +1,9 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Thread;
 
-import android.util.Log;
+import com.adev.android.legomindfuck.Thread.CloserThread;
+import com.adev.android.legomindfuck.Thread.OpenerThread;
+import com.adev.android.legomindfuck.Thread.SenderThread;
+
 import java.net.Socket;
 
 public class SocketManager {

@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class PlayMenu extends AppCompatActivity {
+import com.adev.android.legomindfuck.R;
+
+public class PlayMenuActivity extends AppCompatActivity {
 
     ViewPager viewPager;
     PagerAdapter adapter;
@@ -40,7 +42,7 @@ public class PlayMenu extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.pager);
 
-        adapter = new ImagePageAdapter(PlayMenu.this, images, titles, descriptions);
+        adapter = new ImagePageAdapter(PlayMenuActivity.this, images, titles, descriptions);
 
         viewPager.setAdapter(adapter);
 
@@ -61,7 +63,7 @@ public class PlayMenu extends AppCompatActivity {
                         break;
 
                     case 2:
-                        Intent i3 = new Intent(getApplicationContext(), MultiplayerSelection.class);
+                        Intent i3 = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
                         startActivity(i3);
                         break;
                 }

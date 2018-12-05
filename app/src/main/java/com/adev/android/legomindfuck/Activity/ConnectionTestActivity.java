@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ConnectionTest extends AppCompatActivity {
+import com.adev.android.legomindfuck.R;
+
+public class ConnectionTestActivity extends AppCompatActivity {
 
     private EditText id;
     private TextView guide;

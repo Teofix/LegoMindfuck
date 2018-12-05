@@ -1,9 +1,9 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Thread;
 
 import java.io.IOException;
 
-import static com.adev.android.legomindfuck.SocketManager.ev3Socket;
-import static com.adev.android.legomindfuck.SocketManager.isReady;
+import static com.adev.android.legomindfuck.Thread.SocketManager.ev3Socket;
+import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
 public class CloserThread extends Thread {
 

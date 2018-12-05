@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
@@ -12,7 +12,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
-public class MultiMotorActivityp2 extends AppCompatActivity {
+import com.adev.android.legomindfuck.Motor;
+import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuck.Thread.SocketManager;
+
+public class MultiMotorActivityP2 extends AppCompatActivity {
 
     private Motor mMotorBraccio;
     private Motor mMotorMano;

@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainMenu extends AppCompatActivity {
+import com.adev.android.legomindfuck.R;
+
+public class MainMenuActivity extends AppCompatActivity {
 
     private Button play;
     private Button instr;
@@ -25,7 +27,7 @@ public class MainMenu extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), PlayMenu.class);
+                Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
                 startActivity(i);
             }
         });
@@ -33,7 +35,7 @@ public class MainMenu extends AppCompatActivity {
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ConnectionTest.class);
+                Intent i = new Intent(getApplicationContext(), ConnectionTestActivity.class);
                 startActivity(i);
             }
         });

@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuck.Activity;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.adev.android.legomindfuck.R;
 
 public class ImagePageAdapter extends PagerAdapter {
 
