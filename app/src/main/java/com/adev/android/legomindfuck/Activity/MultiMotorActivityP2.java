@@ -14,7 +14,7 @@ import android.widget.Switch;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.Thread.SocketManager;
+import com.adev.android.legomindfuck.SocketManager;
 
 public class MultiMotorActivityP2 extends AppCompatActivity {
 

@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.Thread.SocketManager;
+import com.adev.android.legomindfuck.SocketManager;
 
 public class MultiMotorActivityP1 extends AppCompatActivity {
 
