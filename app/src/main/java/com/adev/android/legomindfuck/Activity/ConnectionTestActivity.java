@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.io.IOException;
 
 import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuck.ShowDialogMessage;
+import com.adev.android.legomindfuck.Thread.SocketManager;
 
 public class ConnectionTestActivity extends AppCompatActivity {
 

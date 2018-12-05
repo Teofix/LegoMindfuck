@@ -11,7 +11,7 @@ public class SocketManager {
 
     static Socket ev3Socket;
     static boolean isReady = false;
-    static String ip;
+    static String ip = "192.168.1.27";
     static final Object accessSender = new Object();
 
     public void openSocket() {
