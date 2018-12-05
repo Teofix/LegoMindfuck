@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
+import com.adev.android.legomindfuck.ShowDialogMessage;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -27,8 +29,15 @@ public class MainMenuActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
-                startActivity(i);
+                if(ConnectionTestActivity.isConnected)    {
+                    Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
+                    startActivity(i);
+                }
+                else    {
+                    ShowConnectionErrorMessage err = new ShowConnectionErrorMessage();
+                    err.setContent("Errore di connessione!", "Robot non connesso all'app");
+                    err.show(getSupportFragmentManager(), "");
+                }
             }
         });
 

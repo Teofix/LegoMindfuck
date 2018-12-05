@@ -14,6 +14,7 @@ import com.adev.android.legomindfuck.Thread.SocketManager;
 
 public class ConnectionTestActivity extends AppCompatActivity {
 
+    public static boolean isConnected = false;
     private EditText ip;
     private EditText ip2;
     private TextView guide;
@@ -56,7 +57,9 @@ public class ConnectionTestActivity extends AppCompatActivity {
                     if (ev3 == null) ev3 = new SocketManager();
                     ev3.setIp(ip.getText().toString());
                     ev3.openSocket();
-
+                    String connectionOkMessage = "#ataaaaaaaaaaaaaaaa#";
+                    ev3.sendMessage(connectionOkMessage);
+                    isConnected = true;
                 }
             }
         });
