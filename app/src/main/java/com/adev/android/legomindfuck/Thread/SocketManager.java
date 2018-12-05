@@ -16,8 +16,6 @@ public class SocketManager {
     public void openSocket() {
         OpenerThread open = new OpenerThread();
         open.start();
-        //ReceiverThread rec = new ReceiverThread();
-        //rec.start();
     }
 
     public void closeSocket() {
