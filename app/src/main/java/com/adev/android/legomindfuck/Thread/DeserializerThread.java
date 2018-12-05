@@ -2,7 +2,7 @@ package com.adev.android.legomindfuck;
 
 import android.util.Log;
 
-import static com.adev.android.legomindfuck.MotorActivity.sColorSensor;
+import static com.adev.android.legomindfuck.Activity.MotorActivity.sColorSensor;
 
 public class DeserializerThread extends Thread {
 
@@ -28,15 +28,12 @@ public class DeserializerThread extends Thread {
                     switch (split[2]) {
                         case "1":
                             //aggiornare motore base con newPos
-                            Log.i("Deserializer:", "newPosition motor 1: " + newPos);
                             break;
                         case "2":
                             //aggiornare motore braccio con newPos
-                            Log.i("Deserializer:", "newPosition motor 2: " + newPos);
                             break;
                         case "3":
                             //aggiornare motore sollevatore con newPos
-                            Log.i("Deserializer:", "newPosition motor 3: " + newPos);
                             break;
                         default:
                             break;
@@ -47,15 +44,12 @@ public class DeserializerThread extends Thread {
                     switch (split[2]) {
                         case "1":
                             //sensore tocco -> false non toccato / true toccato
-                            Log.i("Deserializer:", "touch: " + info);
                             break;
                         case "2":
                             //sensore colore -> codifica vedi sotto
-                            Log.i("Deserializer:", "color: " + info);
                             break;
                         case "3":
                             //sensore ultrasuoni -> distanza in cm
-                            Log.i("Deserializer:", "ultrasonic: " + info);
                             break;
                         default:
                             break;
