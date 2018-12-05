@@ -1,8 +1,4 @@
-package com.adev.android.legomindfuck.Thread;
-
-import com.adev.android.legomindfuck.Thread.CloserThread;
-import com.adev.android.legomindfuck.Thread.OpenerThread;
-import com.adev.android.legomindfuck.Thread.SenderThread;
+package com.adev.android.legomindfuck;
 
 import java.net.Socket;
 
