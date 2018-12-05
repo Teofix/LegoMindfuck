@@ -255,39 +255,44 @@ public class MotorActivity extends AppCompatActivity {
         mCheckColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.motorOn(7, "+"));
+
+                ev3.sendMessage(mMotorMano.motorOn(6, "+"));
 
                 Thread t = new Thread() {
-                    private Boolean finished = false;
+                    private int prevColor = 9;
+                    private int cycles = 0;
 
                     @Override
                     public void run() {
-                        while(!finished) {
-                            if(sColorSensor.found()) {
-                                ev3.sendMessage(mMotorMano.motorOff());
-
-                                try {
-                                    sleep(500);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-
-                                ev3.sendMessage(mMotorMano.move(2, 10, "+"));
-
-                                try {
-                                    sleep(1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-
-                                if(sColorSensor.found()) {
-                                    finished = true;
-
-                                    ev3.sendMessage(mMotorMano.move(25, 50, "-"));
-                                }
+                        try {
+                            synchronized (sColorSensor) {
+                                sColorSensor.wait();
                             }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        Log.i("thread", "found " + sColorSensor.getColor());
+
+                        ev3.sendMessage(mMotorMano.motorOff());
+
+                        while (prevColor != sColorSensor.getColor() || prevColor == 0) {
+
+                            prevColor = sColorSensor.getColor();
+
+                            ev3.sendMessage(mMotorMano.move(2, 10, "+"));
+
+                            try {
+                                sleep(700);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            cycles++;
+                        }
+
+                        Log.i("thread", "found " + prevColor);
+
+                        ev3.sendMessage(mMotorMano.move(10 + cycles * 2, 20, "-"));
+
                     }
                 };
                 t.start();

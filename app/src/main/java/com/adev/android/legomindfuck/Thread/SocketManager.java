@@ -1,11 +1,6 @@
 package com.adev.android.legomindfuck.Thread;
 
-import android.util.Log;
-
-import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.SocketTimeoutException;
 
 public class SocketManager {
 

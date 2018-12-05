@@ -1,64 +1,71 @@
 package com.adev.android.legomindfuck;
 
+import android.util.Log;
+
+import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
+
 public class ColorSensor {
 
-    private int mColor;
+    private int mColor = 0;
     private int mReceivedColor = 0;
-    private int mLight;
+    private int mLight = 0;
     private Boolean mFound = false;
 
     private void calculateColor() {
-        switch(mReceivedColor) {
-            case 1:     // Nero
-                if (mLight > 0 && mLight < 15) {
-                    mColor = mReceivedColor;
-                    mFound = true;
-                }
-                else {
+        if (mLight > 0) {
+            switch(mReceivedColor) {
+                case 1:     // Nero
+                    if (mLight < 15) {
+                        mColor = mReceivedColor;
+                        mFound = true;
+                    } else {
+                        mColor = 0;
+                        mFound = false;
+                    }
+                    break;
+                case 2:     // Blu
+                    if (mLight < 15) {
+                        mColor = mReceivedColor;
+                        mFound = true;
+                    } else {
+                        mColor = 0;
+                        mFound = false;
+                    }
+                    break;
+                case 4:     // Giallo
+                    if (mLight > 25) {
+                        mColor = mReceivedColor;
+                        mFound = true;
+                    } else {
+                        mColor = 0;
+                        mFound = false;
+                    }
+                    break;
+                case 5:     // Rosso
+                    if (mLight > 10 && mLight < 35) {
+                        mColor = mReceivedColor;
+                        mFound = true;
+                    } else {
+                        mColor = 0;
+                        mFound = false;
+                    }
+                    break;
+                default:
                     mColor = 0;
                     mFound = false;
-                }
-                break;
-            case 2:     // Blu
-                if (mLight > 0 && mLight < 15) {
-                    mColor = mReceivedColor;
-                    mFound = true;
-                }
-                else {
-                    mColor = 0;
-                    mFound = false;
-                }
-                break;
-            case 4:     // Giallo
-                if (mLight > 25) {
-                    mColor = mReceivedColor;
-                    mFound = true;
-                }
-                else {
-                    mColor = 0;
-                    mFound = false;
-                }
-                break;
-            case 5:     // Rosso
-                if (mLight > 10 && mLight < 35) {
-                    mColor = mReceivedColor;
-                    mFound = true;
-                }
-                else {
-                    mColor = 0;
-                    mFound = false;
-                }
-                break;
-            default:
-                mColor = 0;
-                mFound = false;
-                break;
+                    break;
+            }
 
+            sColorSensor.notify();
         }
     }
 
     public synchronized int getColor() {
         return mColor;
+    }
+
+    public synchronized int getLight() {
+        return mLight;
     }
 
     public synchronized void setColor(int color) {
