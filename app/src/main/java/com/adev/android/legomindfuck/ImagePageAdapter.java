@@ -1,6 +1,7 @@
 package com.adev.android.legomindfuck;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -65,6 +66,6 @@ public class ImagePageAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
 
-        ((ViewPager) container).removeView((RelativeLayout) object);
+        ((ViewPager) container).removeView((ConstraintLayout) object);
     }
 }
