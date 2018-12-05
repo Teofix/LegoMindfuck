@@ -255,7 +255,7 @@ public class MotorActivity extends AppCompatActivity {
         mCheckColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.motorOn(15, "+"));
+                ev3.sendMessage(mMotorMano.motorOn(7, "+"));
 
                 Thread t = new Thread() {
                     private Boolean finished = false;
@@ -265,15 +265,26 @@ public class MotorActivity extends AppCompatActivity {
                         while(!finished) {
                             if(sColorSensor.found()) {
                                 ev3.sendMessage(mMotorMano.motorOff());
-                                finished = true;
 
                                 try {
-                                    sleep(200);
+                                    sleep(500);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
 
-                                ev3.sendMessage(mMotorMano.move(20, 40, "-"));
+                                ev3.sendMessage(mMotorMano.move(2, 10, "+"));
+
+                                try {
+                                    sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                if(sColorSensor.found()) {
+                                    finished = true;
+
+                                    ev3.sendMessage(mMotorMano.move(25, 50, "-"));
+                                }
                             }
                         }
                         Log.i("thread", "found " + sColorSensor.getColor());

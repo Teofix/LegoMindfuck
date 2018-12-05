@@ -65,6 +65,8 @@ public class DeserializerThread extends Thread {
 
             String color = split[2];
 
+            Log.i("Color", color + " Light: " + lightValue);
+
             switch (color) {
                 case "Black":
                     sColorSensor.setColor(1);

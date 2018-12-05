@@ -1,8 +1,5 @@
 package com.adev.android.legomindfuck;
 
-
-import android.util.Log;
-
 public class ColorSensor {
 
     private int mColor;
@@ -13,7 +10,7 @@ public class ColorSensor {
     private void calculateColor() {
         switch(mReceivedColor) {
             case 1:     // Nero
-                if (mLight > 4 && mLight < 10) {
+                if (mLight > 0 && mLight < 15) {
                     mColor = mReceivedColor;
                     mFound = true;
                 }
@@ -23,7 +20,7 @@ public class ColorSensor {
                 }
                 break;
             case 2:     // Blu
-                if (mLight > 5) {
+                if (mLight > 0 && mLight < 15) {
                     mColor = mReceivedColor;
                     mFound = true;
                 }
@@ -33,7 +30,7 @@ public class ColorSensor {
                 }
                 break;
             case 4:     // Giallo
-                if (mLight > 35) {
+                if (mLight > 25) {
                     mColor = mReceivedColor;
                     mFound = true;
                 }
@@ -43,7 +40,7 @@ public class ColorSensor {
                 }
                 break;
             case 5:     // Rosso
-                if (mLight > 15) {
+                if (mLight > 10 && mLight < 35) {
                     mColor = mReceivedColor;
                     mFound = true;
                 }
