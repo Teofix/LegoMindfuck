@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
@@ -39,6 +40,8 @@ public class MotorActivity extends AppCompatActivity {
     private Button mPickUpButton;
     private Button mPutDownButton;
     private Button mCheckColorButton;
+
+    private TextView mColorCheck;
 
     private int mSpeed = 5;
 
@@ -248,6 +251,9 @@ public class MotorActivity extends AppCompatActivity {
                     }
                 };
                 t.start();
+
+                mColorCheck.setVisibility(View.INVISIBLE);
+                mCheckColorButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -291,9 +297,12 @@ public class MotorActivity extends AppCompatActivity {
                             cycles++;
                         }
 
-                        String msg = "#at" + sColorSensor.colorToString(prevColor) + "#";
-
-                        ev3.sendMessage(msg);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                changeColorCheck(prevColor);
+                            }
+                        });
 
                         try {
                             sleep(1000);
@@ -308,19 +317,38 @@ public class MotorActivity extends AppCompatActivity {
                 t.start();
             }
         });
+
+        mColorCheck = (TextView) findViewById(R.id.color_check);
+    }
+
+    private void changeColorCheck(int c) {
+        switch (c) {
+            case 1:
+                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorBlack));
+                mColorCheck.setText("Nero");
+                break;
+            case 2:
+                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorBlue));
+                mColorCheck.setText("Blu");
+                break;
+            case 4:
+                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorYellow));
+                mColorCheck.setText("Giallo");
+                break;
+            case 5:
+                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorRed));
+                mColorCheck.setText("Rosso");
+                break;
+            default:
+                break;
+        }
+        mColorCheck.setVisibility(View.VISIBLE);
+        mCheckColorButton.setVisibility(View.INVISIBLE);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ev3.closeSocket();
-    }
-
-    private int degreeToPercentage(int degree) {
-        return degree * 100 / 360;
-    }
-
-    private int percentageToDegree(int percentage) {
-        return percentage * 360 / 100;
     }
 }
