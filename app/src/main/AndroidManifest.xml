@@ -9,25 +9,42 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true">
         <activity android:name=".Activity.MotorActivity" />
-        <activity android:name=".Activity.MainMenuActivity">
+        <activity
+            android:name=".Activity.MainMenuActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.PlayMenuActivity" />
-        <activity android:name=".Activity.MultiplayerSelectionActivity" />
+
+        <activity
+            android:name=".Activity.PlayMenuActivity"
+            android:theme="@style/AppThemeNavBar"
+            android:parentActivityName=".Activity.MainMenuActivity">
+        </activity>
+
+        <activity
+            android:name=".Activity.MultiplayerSelectionActivity"
+            android:theme="@style/AppThemeNavBar" />
         <activity android:name=".Activity.MultiMotorActivityP1" />
         <activity android:name=".Activity.MultiMotorActivityP2" />
-        <activity android:name=".Activity.ConnectionTestActivity"></activity>
+        <activity
+            android:name=".Activity.ConnectionTestActivity"
+<<<<<<< HEAD
+            android:theme="@style/AppThemeNavBar"
+            android:parentActivityName=".Activity.MainMenuActivity" />
+=======
+            android:theme="@style/AppThemeNavBar" />
+>>>>>>> parent of 52ee400... up
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>
