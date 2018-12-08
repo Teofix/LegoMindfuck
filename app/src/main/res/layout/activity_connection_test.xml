@@ -11,7 +11,7 @@
         android:id="@+id/textView10"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/mBlu"
+        android:background="@color/mGreen"
         android:fontFamily="@font/fjalla_one"
         android:gravity="center_vertical"
         android:text="Connection"

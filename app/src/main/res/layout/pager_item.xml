@@ -22,7 +22,7 @@
         android:id="@+id/pager_title"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/mVeryBlu"
+        android:background="@color/mVeryGreen"
         android:fontFamily="@font/fjalla_one"
         android:gravity="center_vertical"
         android:text="Play mode 1"

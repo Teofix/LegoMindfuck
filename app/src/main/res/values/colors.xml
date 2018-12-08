@@ -5,11 +5,10 @@
     <color name="colorAccent">#004aca</color>
     <color name="sliderBack">#d7d7d7</color>
 
-    <color name="mBlu">#206cbb</color>
-    <color name="mLightBlu">#679cd4</color>
-    <color name="mVeryBlu">#0a54a0</color>
+    <color name="mGreen">#13782E</color>
+    <color name="mLightGreen">#48B084</color>
+    <color name="mVeryGreen">#02681d</color>
     <color name="mGrey">#545759</color>
-
 
     <color name="mColorBlue">#004081</color>
     <color name="mColorYellow">#c9bb00</color>
