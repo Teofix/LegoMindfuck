@@ -2,10 +2,8 @@ package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -53,8 +51,8 @@ public class MotorActivity extends AppCompatActivity {
     private SocketManager ev3;
 
     Timer timer = new Timer();
-    private Double seconds = 0.0;
-    private TextView secondsText;
+    private Double time = 0.0;
+    private TextView timeText;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -64,9 +62,14 @@ public class MotorActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        secondsText = findViewById(R.id.seconds_textBox);
+        timeText = findViewById(R.id.seconds_textBox);
 
         timer.scheduleAtFixedRate(new TimerTask() {
+
+            private String min = "min: ";
+            private String sec = "  sec: ";
+            private Double mins = 0.0;
+            private Double secs = 0.0;
 
             @Override
             public void run() {
@@ -75,9 +78,12 @@ public class MotorActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        DecimalFormat view = new DecimalFormat("#.#");
-                        secondsText.setText(view.format(seconds));
-                        seconds += 0.1;
+                        mins = time / 60;
+                        String[] formatM = mins.toString().split("\\.");
+                        secs = time % 60;
+                        String[] formatS = secs.toString().split("\\.");
+                        timeText.setText(min + formatM[0] + sec + formatS[0] + "," + formatS[1].charAt(0));
+                        time += 0.1;
                     }
 
                 });
