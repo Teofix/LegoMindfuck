@@ -34,8 +34,12 @@
         <activity android:name=".Activity.MultiMotorActivityP2" />
         <activity
             android:name=".Activity.ConnectionTestActivity"
+<<<<<<< HEAD
             android:theme="@style/AppThemeNavBar"
             android:parentActivityName=".Activity.MainMenuActivity" />
+=======
+            android:theme="@style/AppThemeNavBar" />
+>>>>>>> parent of 52ee400... up
 
         <meta-data
             android:name="preloaded_fonts"

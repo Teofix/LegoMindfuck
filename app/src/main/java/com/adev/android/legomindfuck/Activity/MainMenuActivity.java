@@ -40,7 +40,7 @@ public class MainMenuActivity extends AppCompatActivity {
         connection = findViewById(R.id.connection);
         tHelp = findViewById(R.id.t_main_txt);
 
-        sharedPref.edit().putInt("access", 5).apply();
+        sharedPref.edit().putInt("access", 0).apply();
 
         if(firstAccess == 0) {
 
@@ -113,6 +113,8 @@ public class MainMenuActivity extends AppCompatActivity {
         else {
 
 
+            tHelp.setVisibility(View.INVISIBLE);
+            wImg.setVisibility(View.INVISIBLE);
             play = findViewById(R.id.play_mode);
             instr = findViewById(R.id.mount_instructions);
             connection = findViewById(R.id.connection);
