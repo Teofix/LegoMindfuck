@@ -19,6 +19,7 @@ import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
+import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -262,9 +263,51 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                ev3.sendMessage("#arub#");
+
+                Thread u = new Thread() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            synchronized (sUltrasonicSensor) {
+                                sUltrasonicSensor.wait();
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (sUltrasonicSensor.getDistance() < 19) ev3.sendMessage(mMotorBraccio.motorOn(5, "-"));
+                        else if (sUltrasonicSensor.getDistance() > 19) ev3.sendMessage(mMotorBraccio.motorOn(5, "+"));
+
+                        try {
+                            synchronized (sUltrasonicSensor.mutex) {
+                                sUltrasonicSensor.mutex.wait();
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        ev3.sendMessage(mMotorBraccio.motorOff());
+
+                        try {
+                            sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                u.start();
+
+                try {
+                    u.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 ev3.sendMessage("#arcb#");
 
-                ev3.sendMessage(mMotorMano.motorOn(6, "+"));
+                ev3.sendMessage(mMotorMano.motorOn(5, "+"));
 
                 Thread t = new Thread() {
                     private int prevColor = 9;
@@ -272,6 +315,7 @@ public class MotorActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
+
                         try {
                             synchronized (sColorSensor) {
                                 sColorSensor.wait();

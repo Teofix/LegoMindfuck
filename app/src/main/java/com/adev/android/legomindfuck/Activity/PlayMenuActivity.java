@@ -10,10 +10,12 @@ import android.widget.Button;
 
 import com.adev.android.legomindfuck.ColorSensor;
 import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuck.UltrasonicSensor;
 
 public class PlayMenuActivity extends AppCompatActivity {
 
     public static final ColorSensor sColorSensor = new ColorSensor();
+    public static final UltrasonicSensor sUltrasonicSensor = new UltrasonicSensor();
 
     ViewPager viewPager;
     PagerAdapter adapter;
