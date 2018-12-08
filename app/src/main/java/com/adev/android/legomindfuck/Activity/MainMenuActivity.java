@@ -114,7 +114,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
             tHelp.setVisibility(View.INVISIBLE);
-            wImg.setVisibility(View.INVISIBLE);
             play = findViewById(R.id.play_mode);
             instr = findViewById(R.id.mount_instructions);
             connection = findViewById(R.id.connection);
