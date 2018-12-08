@@ -8,9 +8,11 @@
 
     <ImageView
         android:id="@+id/pager_img"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pager_title"
@@ -19,7 +21,7 @@
     <TextView
         android:id="@+id/pager_title"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:background="@color/mVeryBlu"
         android:fontFamily="@font/fjalla_one"
         android:gravity="center_vertical"
@@ -35,16 +37,19 @@
 
     <TextView
         android:id="@+id/pager_desc"
-        android:layout_width="403dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/fjalla_one"
         android:text="Descrizione"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/pager_img"
-        tools:layout_editor_absoluteX="4dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pager_img" />
 
 
 </android.support.constraint.ConstraintLayout>

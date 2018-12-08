@@ -2,6 +2,13 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/mBlu</item>
+    <item name="colorPrimaryDark">@color/mLightBlu</item>
+    <item name="colorAccent">@color/mVeryBlu</item>
+</style>
+
+    <style name="AppThemeNavBar" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/mBlu</item>
         <item name="colorPrimaryDark">@color/mLightBlu</item>

@@ -8,4 +8,6 @@
     <color name="mBlu">#206cbb</color>
     <color name="mLightBlu">#679cd4</color>
     <color name="mVeryBlu">#0a54a0</color>
+    <color name="mGrey">#545759</color>
+
 </resources>

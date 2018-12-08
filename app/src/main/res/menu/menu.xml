@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menItem_play"
+        android:icon="@drawable/single_player"
+        android:title="Play" ></item>
+    <item
+        android:id="@+id/menItem_connection"
+        android:icon="@drawable/connection_settings"
+        android:title="Connection" />
+    <item
+        android:id="@+id/menItem_instr"
+        android:icon="@drawable/lego_logo"
+        android:title="Mount instructions" />
+    <item
+        android:id="@+id/menItem_settings"
+        android:icon="@drawable/instructions"
+        android:title="Settings" />
+</menu>
