@@ -2,6 +2,7 @@ package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,10 @@ import android.widget.TextView;
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.Thread.SocketManager;
+
+import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
 
@@ -47,6 +52,10 @@ public class MotorActivity extends AppCompatActivity {
 
     private SocketManager ev3;
 
+    Timer timer = new Timer();
+    private Double seconds = 0.0;
+    private TextView secondsText;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,26 @@ public class MotorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_motor);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        secondsText = findViewById(R.id.seconds_textBox);
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+
+            @Override
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        DecimalFormat view = new DecimalFormat("#.#");
+                        secondsText.setText(view.format(seconds));
+                        seconds += 0.1;
+                    }
+
+                });
+            }
+        }, 100, 100);
 
         if (ev3 == null) ev3 = new SocketManager();
         ev3.openSocket();
@@ -351,4 +380,6 @@ public class MotorActivity extends AppCompatActivity {
         super.onDestroy();
         ev3.closeSocket();
     }
+
+
 }
