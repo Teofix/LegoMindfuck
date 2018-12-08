@@ -17,6 +17,8 @@ import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
 import com.adev.android.legomindfuck.ShowDialogMessage;
 
+import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
+
 public class MainMenuActivity extends AppCompatActivity {
 
     private Button play;
@@ -121,7 +123,7 @@ public class MainMenuActivity extends AppCompatActivity {
             play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (ConnectionTestActivity.isConnected) {
+                    if (isReady) {
                         Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
                         startActivity(i);
                     } else {
@@ -139,15 +141,6 @@ public class MainMenuActivity extends AppCompatActivity {
                     startActivity(i);
                 }
             });
-/*
-        instr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MountInstructions.class);
-                startActivity(i);
-            }
-        });
-        */
         }
     }
 }

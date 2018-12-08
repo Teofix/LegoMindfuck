@@ -24,7 +24,6 @@ import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
 public class ConnectionTestActivity extends AppCompatActivity {
 
-    public static boolean isConnected = true;
     private EditText ip;
     private EditText ip2;
     private TextView guide;

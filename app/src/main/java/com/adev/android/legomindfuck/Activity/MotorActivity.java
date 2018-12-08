@@ -17,7 +17,6 @@ import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
-import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -92,7 +91,7 @@ public class MotorActivity extends AppCompatActivity {
         }, 100, 100);
 
         if (ev3 == null) ev3 = new SocketManager();
-        ev3.openSocket();
+        //ev3.openSocket();
 
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 180);
@@ -431,5 +430,13 @@ public class MotorActivity extends AppCompatActivity {
         ev3.closeSocket();
     }
 
-
 }
+
+/*
+    STATISTICHE DI GIOCO :
+
+        + TEMPO DI GIOCO SP
+        + TEMPO DI GIOCO MP
+        + DIFFICOLTA' IN MATTONCINI (diamo un punteggio in base all'altezza della torre da costruire)
+        +
+ */
