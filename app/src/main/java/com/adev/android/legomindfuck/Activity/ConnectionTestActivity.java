@@ -1,5 +1,6 @@
 package com.adev.android.legomindfuck.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowDialogMessage;
@@ -38,7 +40,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
         guide = (TextView) findViewById(R.id.conn_guide);
         test = (Button) findViewById(R.id.button_test);
 
-        guide.setText("-Indicazioni per procedura guidata per effettuare connessione tra dispositivo e robot, con successivo test della connessione tramite pulsante.");
+        guide.setText("Indicazioni per procedura guidata per effettuare connessione tra dispositivo e robot, con successivo test della connessione tramite pulsante.");
 
         test.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +62,16 @@ public class ConnectionTestActivity extends AppCompatActivity {
                     if (ev3 == null) ev3 = new SocketManager();
                     ev3.setIp(firstIp);
                     ev3.openSocket();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Context context = getApplicationContext();
+                    CharSequence text = "Connection with EV3: succefull!";
+                    int duration = Toast.LENGTH_LONG;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
             }
         });
