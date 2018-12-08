@@ -10,4 +10,9 @@
     <color name="mVeryBlu">#0a54a0</color>
     <color name="mGrey">#545759</color>
 
+
+    <color name="mColorBlue">#004081</color>
+    <color name="mColorYellow">#c9bb00</color>
+    <color name="mColorRed">#c90a0a</color>
+    <color name="mColorBlack">#101010</color>
 </resources>

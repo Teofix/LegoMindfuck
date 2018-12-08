@@ -61,7 +61,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
                     if (ev3 == null) ev3 = new SocketManager();
                     ev3.setIp(ip.getText().toString());
                     ev3.openSocket();
-                    String connectionOkMessage = "#ataaaaaaaaaaaaaaaa#";
+                    String connectionOkMessage = "#atconnected#";
                     ev3.sendMessage(connectionOkMessage);
                     isConnected = true;
                 }
