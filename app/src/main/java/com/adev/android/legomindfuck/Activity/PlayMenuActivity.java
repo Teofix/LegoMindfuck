@@ -45,7 +45,7 @@ public class PlayMenuActivity extends AppCompatActivity {
 
         //ActionBar actionBar = get();
 
-        if (firstAccess==1) {
+        if (firstAccess == 1) {
 
             sharedPref.edit().putInt("access", 2).apply();
 
