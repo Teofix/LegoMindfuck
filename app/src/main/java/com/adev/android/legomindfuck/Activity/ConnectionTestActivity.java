@@ -20,6 +20,8 @@ import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowDialogMessage;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
+import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
+
 public class ConnectionTestActivity extends AppCompatActivity {
 
     public static boolean isConnected = true;
@@ -62,16 +64,21 @@ public class ConnectionTestActivity extends AppCompatActivity {
                     if (ev3 == null) ev3 = new SocketManager();
                     ev3.setIp(firstIp);
                     ev3.openSocket();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    double reach = 0.0;
+                    int maxLimit = 1000000;
+                    while (!isReady && (reach < maxLimit)){
+                        reach += 0.01;
                     }
-                    Context context = getApplicationContext();
-                    CharSequence text = "Connection with EV3: succefull!";
-                    int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    if (!isReady) {
+                        Toast.makeText(getApplicationContext(), "Connection FAILED!", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Connection with EV3: succefull!";
+                        int duration = Toast.LENGTH_LONG;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
                 }
             }
         });
