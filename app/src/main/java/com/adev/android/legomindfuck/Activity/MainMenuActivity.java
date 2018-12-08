@@ -11,7 +11,6 @@ import android.text.Layout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adev.android.legomindfuck.R;
@@ -25,9 +24,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button connection;
 
     private TextView tHelp;
-    private  TextView tWelcome;
     private ConstraintLayout mLayout;
-    private ImageView wImg;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -42,8 +39,6 @@ public class MainMenuActivity extends AppCompatActivity {
         instr = findViewById(R.id.mount_instructions);
         connection = findViewById(R.id.connection);
         tHelp = findViewById(R.id.t_main_txt);
-        tWelcome = findViewById(R.id.welcome_text);
-        wImg = findViewById(R.id.imageView);
 
         sharedPref.edit().putInt("access", 0).apply();
 
@@ -52,11 +47,9 @@ public class MainMenuActivity extends AppCompatActivity {
             sharedPref.edit().putInt("access", 1).apply();
 
             final ConstraintLayout mLayout = (ConstraintLayout) findViewById(R.id.mainMenuLayout);
-            mLayout.setBackgroundColor(R.color.mColorBlack);
-            play.setVisibility(View.INVISIBLE);
-            instr.setVisibility(View.INVISIBLE);
-            connection.setVisibility(View.INVISIBLE);
-            tHelp.setVisibility(View.INVISIBLE);
+            mLayout.setBackgroundColor(R.color.mGrey);
+            instr.setAlpha((float) 0.4);
+            connection.setAlpha((float) 0.4);
             final int[] taps = {0};
 
 
@@ -66,33 +59,20 @@ public class MainMenuActivity extends AppCompatActivity {
 
                     switch(taps[0])    {
                         case 0  :
-                            tWelcome.setVisibility(View.INVISIBLE);
-                            wImg.setVisibility(View.INVISIBLE);
-                            tHelp.setVisibility(View.VISIBLE);
-                            play.setVisibility(View.VISIBLE);
-                            connection.setVisibility(View.VISIBLE);
-                            instr.setVisibility(View.VISIBLE);
-                            mLayout.setBackgroundColor(R.color.mGrey);
-                            instr.setAlpha((float) 0.3);
-                            connection.setAlpha((float) 0.4);
-                            taps[0]++;
-                            break;
-
-                        case 1  :
                             play.setAlpha((float) 0.4);
                             instr.setAlpha(1);
                             tHelp.setText("Accesso alle istruzioni di montaggio (tap per continuare)");
                             taps[0]++;
                             break;
 
-                        case 2  :
+                        case 1  :
                             instr.setAlpha((float) 0.4);
                             connection.setAlpha(1);
                             tHelp.setText("Accesso all'area per la connessione (tap per continuare)");
                             taps[0]++;
                             break;
 
-                        case 3:
+                        case 2:
                             connection.setAlpha((float) 0.4);
                             tHelp.setText("Premi play per accedere all'area gioco!");
                             play.setAlpha(1);

@@ -88,6 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mount_instructions" />
+<<<<<<< HEAD
 
     <ImageView
         android:id="@+id/imageView"
@@ -116,4 +117,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+=======
+>>>>>>> parent of 52ee400... up
 </android.support.constraint.ConstraintLayout>
