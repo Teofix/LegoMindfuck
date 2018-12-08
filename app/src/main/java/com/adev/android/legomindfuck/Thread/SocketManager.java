@@ -12,6 +12,8 @@ public class SocketManager {
     public void openSocket() {
         OpenerThread open = new OpenerThread();
         open.start();
+        String connectionOkMessage = "#atconnected#";
+        sendMessage(connectionOkMessage);
         ReceiverThread rec = new ReceiverThread();
         rec.start();
     }

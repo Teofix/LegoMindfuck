@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.io.IOException;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowDialogMessage;
@@ -45,25 +47,19 @@ public class ConnectionTestActivity extends AppCompatActivity {
                 String firstIp = ip.getText().toString();
                 String secondIp = ip2.getText().toString();
 
-                if(ip.length()<11 || ip2.length()<11) {
+                boolean validIP = IpRegex.isValid(firstIp) && IpRegex.isValid(secondIp) && firstIp.equals(secondIp);
+
+                if(!validIP) {
 
                     ShowDialogMessage err = new ShowDialogMessage();
-                    err.setContent("Errore di inserimento!", "Invalid IP");
+                    err.setContent("Errore di inserimento!", "Invalid IP or mismatching IP");
                     err.show(getSupportFragmentManager(), "");
                 }
 
-                else if (!firstIp.equals(secondIp)) {
-
-                    ShowDialogMessage err = new ShowDialogMessage();
-                    err.setContent("Errore di inserimento!", "IP non corrispondenti");
-                    err.show(getSupportFragmentManager(), "");
-                } else {
+                 else {
                     if (ev3 == null) ev3 = new SocketManager();
-                    ev3.setIp(ip.getText().toString());
+                    ev3.setIp(firstIp);
                     ev3.openSocket();
-                    String connectionOkMessage = "#atconnected#";
-                    ev3.sendMessage(connectionOkMessage);
-                    isConnected = true;
                 }
             }
         });
@@ -93,4 +89,22 @@ public class ConnectionTestActivity extends AppCompatActivity {
 
         return false;
     }
+
+
+    public static class IpRegex {
+
+        private static final String zeroTo255 = "([01]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])";
+
+        private static final String IP_REGEXP = zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255 + "\\." + zeroTo255;
+
+        private static final Pattern IP_PATTERN = Pattern.compile(IP_REGEXP);
+
+        public static boolean isValid(String address) {
+
+            return IP_PATTERN.matcher(address).matches();
+
+        }
+
+    }
+
 }
