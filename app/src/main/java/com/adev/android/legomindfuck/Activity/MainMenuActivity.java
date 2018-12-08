@@ -45,11 +45,11 @@ public class MainMenuActivity extends AppCompatActivity {
         tWelcome = findViewById(R.id.welcome_text);
         wImg = findViewById(R.id.imageView);
 
-        sharedPref.edit().putInt("access", 0).commit();
+        sharedPref.edit().putInt("access", 5).apply();
 
-        if(firstAccess==0) {
+        if(firstAccess == 0) {
 
-            sharedPref.edit().putInt("access", 1).commit();
+            sharedPref.edit().putInt("access", 1).apply();
 
             final ConstraintLayout mLayout = (ConstraintLayout) findViewById(R.id.mainMenuLayout);
             mLayout.setBackgroundColor(R.color.mColorBlack);
@@ -112,7 +112,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
         }
 
-        else if(firstAccess==2) {
+        else if(firstAccess == 2) {
 
             play.setAlpha((float) 0.4);
             instr.setAlpha((float) 0.4);

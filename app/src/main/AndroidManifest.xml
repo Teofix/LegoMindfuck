@@ -35,7 +35,7 @@
         <activity
             android:name=".Activity.ConnectionTestActivity"
             android:theme="@style/AppThemeNavBar"
-            android:parentActivityName=".Activity.MainMenuActivity"/>
+            android:parentActivityName=".Activity.MainMenuActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

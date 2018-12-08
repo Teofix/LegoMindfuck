@@ -47,7 +47,7 @@ public class PlayMenuActivity extends AppCompatActivity {
 
         if (firstAccess==1) {
 
-            sharedPref.edit().putInt("access", 2).commit();
+            sharedPref.edit().putInt("access", 2).apply();
 
             ConstraintLayout mLayout = (ConstraintLayout) findViewById(R.id.play_pager_layout);
             mLayout.setBackgroundColor(R.color.mGrey);
