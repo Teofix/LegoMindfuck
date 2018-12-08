@@ -3,6 +3,7 @@ package com.adev.android.legomindfuck.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,6 +33,8 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         SharedPreferences sharedPref = getSharedPreferences("access", MODE_PRIVATE);
         int firstAccess = sharedPref.getInt("access", 0);
@@ -42,7 +46,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
         sharedPref.edit().putInt("access", 0).apply();
 
-        if(firstAccess == 0) {
+        if(false) {
 
             sharedPref.edit().putInt("access", 1).apply();
 
@@ -88,11 +92,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
             });
 
-
-
-        }
-
-        else if(firstAccess == 2) {
+        } else if(false) {
 
             play.setAlpha((float) 0.4);
             instr.setAlpha((float) 0.4);
@@ -108,9 +108,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
             });
 
-        }
-
-        else {
+        } else {
 
 
             tHelp.setVisibility(View.INVISIBLE);

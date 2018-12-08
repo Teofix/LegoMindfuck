@@ -2,21 +2,17 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/mGreen</item>
-    <item name="colorPrimaryDark">@color/mLightGreen</item>
-    <item name="colorAccent">@color/mVeryGreen</item>
-</style>
-
-    <style name="AppThemeNavBar" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/mGreen</item>
         <item name="colorPrimaryDark">@color/mLightGreen</item>
         <item name="colorAccent">@color/mVeryGreen</item>
     </style>
 
-    <style name="GreenText" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">#000000</item>
+    <style name="AppThemeNavBar" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/mGreen</item>
+        <item name="colorPrimaryDark">@color/mLightGreen</item>
+        <item name="colorAccent">@color/mVeryGreen</item>
     </style>
 
 </resources>

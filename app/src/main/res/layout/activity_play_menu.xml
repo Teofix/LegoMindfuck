@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Activity.PlayMenuActivity">
 
-
-
     <TextView
         android:id="@+id/t_playMode_txt3"
         android:layout_width="wrap_content"
@@ -62,4 +60,5 @@
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/mode_selector"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
