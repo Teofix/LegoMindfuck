@@ -94,28 +94,26 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/welcome_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:srcCompat="@drawable/doormat" />
 
     <TextView
         android:id="@+id/welcome_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="50dp"
         android:text="PRIMO ACCESSO! Ciao coglione, benvenuto nella nosta magnifica app!! Siccome, come dicevo, sei un coglione, non sarai probabilmente in grado di capire come funzionano le cose, quindi te lo spiego io. Segui le istruzioni che seguono per imparare a navigare nell'app. Tap per continuare "
         android:textAlignment="center"
-        android:textColor="@color/mColorBlack"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </android.support.constraint.ConstraintLayout>
