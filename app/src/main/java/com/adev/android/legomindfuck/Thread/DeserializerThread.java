@@ -3,6 +3,7 @@ package com.adev.android.legomindfuck.Thread;
 import android.util.Log;
 
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
+import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 
 public class DeserializerThread extends Thread {
 
@@ -65,7 +66,7 @@ public class DeserializerThread extends Thread {
 
             String color = split[2];
 
-            //Log.i("Color", color + " Light: " + lightValue);
+            Log.i("Color", color + " Light: " + lightValue);
 
             switch (color) {
                 case "Black":
@@ -93,6 +94,9 @@ public class DeserializerThread extends Thread {
                     sColorSensor.setColor(0);
                     break;
             }
+        } else if (split[0].equals("g")) {
+            //Log.i("Ultrasonic", "" + split[1]);
+            sUltrasonicSensor.setDistance(Integer.parseInt(split[1]));
         }
     }
 

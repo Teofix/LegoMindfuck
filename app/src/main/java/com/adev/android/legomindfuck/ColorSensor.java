@@ -15,7 +15,7 @@ public class ColorSensor {
         if (mLight > 0) {
             switch(mReceivedColor) {
                 case 1:     // Nero
-                    if (mLight < 10) {
+                    if (mLight > 1 && mLight < 7) {
                         mColor = mReceivedColor;
                         mFound = true;
                     } else {

@@ -26,7 +26,7 @@
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/mBlu"
+        android:background="@color/mGreen"
         android:fontFamily="@font/fjalla_one"
         android:gravity="center_vertical"
         android:text="Main Menu"
@@ -115,6 +115,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-=======
->>>>>>> parent of 52ee400... up
+
 </android.support.constraint.ConstraintLayout>

@@ -20,10 +20,12 @@ import android.widget.Button;
 
 import com.adev.android.legomindfuck.ColorSensor;
 import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuck.UltrasonicSensor;
 
 public class PlayMenuActivity extends AppCompatActivity {
 
     public static final ColorSensor sColorSensor = new ColorSensor();
+    public static final UltrasonicSensor sUltrasonicSensor = new UltrasonicSensor();
 
     ViewPager viewPager;
     PagerAdapter adapter;
@@ -43,8 +45,6 @@ public class PlayMenuActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("access", MODE_PRIVATE);
         int firstAccess = sharedPref.getInt("access", 0);
 
-        //ActionBar actionBar = get();
-
         if (firstAccess == 1) {
 
             sharedPref.edit().putInt("access", 2).apply();
@@ -58,12 +58,12 @@ public class PlayMenuActivity extends AppCompatActivity {
             };
 
             titles = new String[]{"Tutorial",
-                    "Single play",
+                    "Single playey",
                     "Multiplayer",
             };
 
-            descriptions = new String[]{"Tutorial di gioco",
-                    "Modalità giocatore singolo",
+            descriptions = new String[]{"Tutorial di gioco\nImpara a giocare senza limiti di tempo.",
+                    "Modalità giocatore singolo\nSfida il gioco in modalità single player",
                     "Modalità multigiocatore",
             };
 
@@ -74,7 +74,6 @@ public class PlayMenuActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
 
             selector = (Button) findViewById(R.id.mode_selector);
-
             selector.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
