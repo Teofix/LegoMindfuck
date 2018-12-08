@@ -15,13 +15,14 @@ import android.widget.TextView;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.Thread.SocketManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
+
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -47,8 +48,6 @@ public class MotorActivity extends AppCompatActivity {
     private TextView mColorCheck;
 
     private int mSpeed = 5;
-
-    private SocketManager ev3;
 
     Timer timer = new Timer();
     private Double time = 0.0;
@@ -90,7 +89,7 @@ public class MotorActivity extends AppCompatActivity {
             }
         }, 100, 100);
 
-        if (ev3 == null) ev3 = new SocketManager();
+        //if (ev3 == null) ev3 = new SocketManager();
         //ev3.openSocket();
 
         if (mMotorBase == null) {
@@ -422,12 +421,6 @@ public class MotorActivity extends AppCompatActivity {
         }
         mColorCheck.setVisibility(View.VISIBLE);
         mCheckColorButton.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ev3.closeSocket();
     }
 
 }

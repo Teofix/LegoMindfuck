@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
 import com.adev.android.legomindfuck.ShowDialogMessage;
+import com.adev.android.legomindfuck.Thread.SocketManager;
 
 import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
@@ -27,6 +28,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private TextView tHelp;
     private ConstraintLayout mLayout;
+
+    public static SocketManager ev3;
 
     @SuppressLint("ResourceAsColor")
     @Override

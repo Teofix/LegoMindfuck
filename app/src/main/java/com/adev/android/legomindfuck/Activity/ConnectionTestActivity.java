@@ -20,6 +20,8 @@ import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowDialogMessage;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+
 import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
 public class ConnectionTestActivity extends AppCompatActivity {
@@ -28,8 +30,6 @@ public class ConnectionTestActivity extends AppCompatActivity {
     private EditText ip2;
     private TextView guide;
     private Button test;
-
-    private SocketManager ev3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
                 }
 
                  else {
-                    if (ev3 == null) ev3 = new SocketManager();
+                    ev3 = new SocketManager();
                     ev3.setIp(firstIp);
                     ev3.openSocket();
                     double reach = 0.0;
