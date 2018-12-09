@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import com.adev.android.legomindfuck.R;
 
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+
+import static com.adev.android.legomindfuck.Statistics.player;
+
 public class MultiplayerSelectionActivity extends AppCompatActivity {
 
     private Button p1;
@@ -31,6 +35,8 @@ public class MultiplayerSelectionActivity extends AppCompatActivity {
         p1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ev3.sendMessage("#ap21#");
+                player[0] = 1;
                 Intent i = new Intent(getApplicationContext(), MultiMotorActivityP1.class);
                 startActivity(i);
             }
@@ -39,6 +45,8 @@ public class MultiplayerSelectionActivity extends AppCompatActivity {
         p2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ev3.sendMessage("#ap22#");
+                player[1] = 2;
                 Intent i = new Intent(getApplicationContext(), MultiMotorActivityP2.class);
                 startActivity(i);
             }
@@ -47,9 +55,7 @@ public class MultiplayerSelectionActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu); //your file name
         return super.onCreateOptionsMenu(menu);
     }
 }

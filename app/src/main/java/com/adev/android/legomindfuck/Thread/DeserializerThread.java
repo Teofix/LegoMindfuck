@@ -4,6 +4,7 @@ import android.util.Log;
 
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
+import static com.adev.android.legomindfuck.Activity.TowerActivity.colorTower;
 
 public class DeserializerThread extends Thread {
 
@@ -19,44 +20,12 @@ public class DeserializerThread extends Thread {
     }
 
     private void deserialize() {
+        // #r&t&Black&Black&Black&Black&Black&#
         String[] split = message.split("&");
 
-        if (split[0].equals("#r") && split[4].equals("#")) {
-            switch (split[1]) {
-                case "m":
-                    String newPos = split[3];
-                    switch (split[2]) {
-                        case "1":
-                            //aggiornare motore base con newPos
-                            break;
-                        case "2":
-                            //aggiornare motore braccio con newPos
-                            break;
-                        case "3":
-                            //aggiornare motore sollevatore con newPos
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                case "s":
-                    String info = split[3]; //in base al tipo di sensore devo gestire una info diversa
-                    switch (split[2]) {
-                        case "1":
-                            //sensore tocco -> false non toccato / true toccato
-                            break;
-                        case "2":
-                            //sensore colore -> codifica vedi sotto
-                            break;
-                        case "3":
-                            //sensore ultrasuoni -> distanza in cm
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                default:
-                    break;
+        if (split[0].equals("#r") && split[1].equals("t") && split[6].equals("#")) {
+            for (int i = 2; i < 6; i++) {
+                colorTower[i-2] = split[i];
             }
         } else if(split[0].equals("c")) {
             String light = split[1];
