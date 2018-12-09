@@ -2,6 +2,7 @@ package com.adev.android.legomindfuck.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,14 +13,19 @@ import android.widget.ImageView;
 
 import com.adev.android.legomindfuck.R;
 
+import static com.adev.android.legomindfuck.Statistics.player;
+import static com.adev.android.legomindfuck.Statistics.players;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class TowerActivity extends AppCompatActivity {
 
     Timer timer = new Timer();
-    private Double time = 10.0;
+    private Double time = 5.0;
     private TextView timeText;
+
+    private Button playButton;
 
     public static String[] colorTower = new String[4];
 
@@ -27,6 +33,7 @@ public class TowerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tower);
+
         timeText = findViewById(R.id.countDown);
 
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -50,62 +57,61 @@ public class TowerActivity extends AppCompatActivity {
                             timeText.setText(String.format("Tempo scaduto!"));
                         }
                         time -= 0.1;
+                        if (time <= 0) {
+                            timeText.setText(String.format("Tempo scaduto!"));
+                            finish();
+                        }
                     }
                 });
             }
         }, 100, 100);
 
-        ImageView block_1 = findViewById(R.id.block_1);
-        ImageView block_2 = findViewById(R.id.block_2);
-        ImageView block_3 = findViewById(R.id.block_3);
-        ImageView block_4 = findViewById(R.id.block_4);
+        ImageView[] block = new ImageView[4];
+        int[] blockNumber = new int[4];
+        blockNumber[0] = R.id.block_1;
+        blockNumber[1] = R.id.block_2;
+        blockNumber[2] = R.id.block_3;
+        blockNumber[3] = R.id.block_4;
 
-        if (colorTower.length == 4) {
-            Log.i("Tower:", colorTower[0] + '-' + colorTower[1] + '-' + colorTower[2] + '-' + colorTower[3]);
-            switch (colorTower[0]) {
-                case "Black":
-                    block_1.setImageResource(R.color.mColorBlack);
-                case "Blue":
-                    block_1.setImageResource(R.color.mColorBlue);
-                case "Red":
-                    block_1.setImageResource(R.color.mColorRed);
-                case "Yellow":
-                    block_1.setImageResource(R.color.mColorYellow);
-            }
-
-            switch (colorTower[1]) {
-                case "Black":
-                    block_2.setImageResource(R.color.mColorBlack);
-                case "Blue":
-                    block_2.setImageResource(R.color.mColorBlue);
-                case "Red":
-                    block_2.setImageResource(R.color.mColorRed);
-                case "Yellow":
-                    block_2.setImageResource(R.color.mColorYellow);
-            }
-
-            switch (colorTower[2]) {
-                case "Black":
-                    block_3.setImageResource(R.color.mColorBlack);
-                case "Blue":
-                    block_3.setImageResource(R.color.mColorBlue);
-                case "Red":
-                    block_3.setImageResource(R.color.mColorRed);
-                case "Yellow":
-                    block_3.setImageResource(R.color.mColorYellow);
-            }
-
-            switch (colorTower[3]) {
-                case "Black":
-                    block_4.setImageResource(R.color.mColorBlack);
-                case "Blue":
-                    block_4.setImageResource(R.color.mColorBlue);
-                case "Red":
-                    block_4.setImageResource(R.color.mColorRed);
-                case "Yellow":
-                    block_4.setImageResource(R.color.mColorYellow);
-            }
+        for (int i = 0; i < 4; i++) {
+            block[i] = findViewById(blockNumber[i]);
         }
+
+        for (int i = 0; i < 4; i++) {
+            int color = R.color.mColorTrasparent;
+            switch (colorTower[i]) {
+                case "Black":
+                    color = R.color.mColorBlack;
+                    break;
+                case "Blue":
+                    color = R.color.mColorBlue;
+                    break;
+                case "Red":
+                    color = R.color.mColorRed;
+                    break;
+                case "Yellow":
+                    color = R.color.mColorYellow;
+                    break;
+                default:
+                    break;
+            }
+            block[i].setImageResource(color);
+        }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i;
+                if (players == 2) {
+                    i = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
+                }
+                else {
+                    i = new Intent(getApplicationContext(), MotorActivity.class);
+                }
+                startActivity(i);
+                finish();
+            }
+        }, 6000);
 
     }
 }

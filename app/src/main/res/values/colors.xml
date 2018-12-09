@@ -14,4 +14,6 @@
     <color name="mColorYellow">#c9bb00</color>
     <color name="mColorRed">#c90a0a</color>
     <color name="mColorBlack">#101010</color>
+    <color name="mColorWhite">#ffffff</color>
+    <color name="mColorTrasparent">#00000000</color>
 </resources>

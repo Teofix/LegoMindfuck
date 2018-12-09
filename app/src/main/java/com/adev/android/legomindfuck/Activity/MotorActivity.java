@@ -1,7 +1,9 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -23,6 +25,7 @@ import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSens
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+import static com.adev.android.legomindfuck.Statistics.players;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -44,6 +47,7 @@ public class MotorActivity extends AppCompatActivity {
     private Button mPickUpButton;
     private Button mPutDownButton;
     private Button mCheckColorButton;
+    private Button mStopButton;
 
     private TextView mColorCheck;
 
@@ -60,6 +64,22 @@ public class MotorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_motor);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        mStopButton = findViewById(R.id.stopButton);
+        mStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ev3.sendMessage("#apstop#");
+                new Handler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+            }
+        });
 
         timeText = findViewById(R.id.seconds_textBox);
 

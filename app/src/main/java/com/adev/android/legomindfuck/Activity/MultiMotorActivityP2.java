@@ -194,13 +194,6 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        //ev3.sendMessage("#zero#");
-        ev3.closeSocket();
-    }
-
     private int degreeToPercentage(int degree) {
         return degree * 100 / 360;
     }

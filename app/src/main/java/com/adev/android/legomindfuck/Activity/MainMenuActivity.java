@@ -117,7 +117,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
         else {
 
-
             tHelp.setVisibility(View.INVISIBLE);
             play = findViewById(R.id.play_mode);
             instr = findViewById(R.id.mount_instructions);
@@ -127,6 +126,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (isReady) {
+                        //ev3.sendMessage("#aplayer#");
                         Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
                         startActivity(i);
                     } else {

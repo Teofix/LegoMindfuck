@@ -17,6 +17,9 @@
             android:name=".Activity.TowerActivity"
             android:theme="@style/AppTheme"/>
         <activity
+            android:name=".Activity.EndGameActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
             android:name=".Activity.MainMenuActivity"
             android:theme="@style/AppTheme">
             <intent-filter>

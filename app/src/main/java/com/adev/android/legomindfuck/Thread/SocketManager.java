@@ -5,7 +5,7 @@ import java.net.Socket;
 public class SocketManager {
 
     static Socket ev3Socket;
-    public static boolean isReady = false;
+    public static Boolean isReady = false;
     static String ip = "192.168.1.6";
     static final Object accessSender = new Object();
 
@@ -14,7 +14,6 @@ public class SocketManager {
         open.start();
         String connectionOkMessage = "#atconnected#";
         sendMessage(connectionOkMessage);
-        sendMessage("#ap10#");
         ReceiverThread rec = new ReceiverThread();
         rec.start();
     }
