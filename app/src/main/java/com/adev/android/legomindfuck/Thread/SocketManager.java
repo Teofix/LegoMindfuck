@@ -14,6 +14,7 @@ public class SocketManager {
         open.start();
         String connectionOkMessage = "#atconnected#";
         sendMessage(connectionOkMessage);
+        sendMessage("#ap10#");
         ReceiverThread rec = new ReceiverThread();
         rec.start();
     }
