@@ -21,11 +21,14 @@ public class DeserializerThread extends Thread {
 
     private void deserialize() {
         // #r&t&Black&Black&Black&Black&Black&#
+        Log.i("Receive:", message);
         String[] split = message.split("&");
 
         if (split[0].equals("#r") && split[1].equals("t") && split[6].equals("#")) {
+
             for (int i = 2; i < 6; i++) {
                 colorTower[i-2] = split[i];
+                Log.i("Color:", split[i]);
             }
         } else if(split[0].equals("c")) {
             String light = split[1];

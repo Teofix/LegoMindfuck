@@ -31,6 +31,8 @@ public class ConnectionTestActivity extends AppCompatActivity {
     private TextView guide;
     private Button test;
 
+    private static String lastIP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,9 @@ public class ConnectionTestActivity extends AppCompatActivity {
         ip2 = (EditText) findViewById(R.id.ip_num2);
         guide = (TextView) findViewById(R.id.conn_guide);
         test = (Button) findViewById(R.id.button_test);
+
+        ip.setText(lastIP);
+        ip2.setText(lastIP);
 
         guide.setText("Indicazioni per procedura guidata per effettuare connessione tra dispositivo e robot, con successivo test della connessione tramite pulsante.");
 
@@ -60,6 +65,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
                 }
 
                  else {
+                    lastIP = firstIp;
                     ev3 = new SocketManager();
                     ev3.setIp(firstIp);
                     ev3.openSocket();
@@ -77,6 +83,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
                         int duration = Toast.LENGTH_LONG;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+                        ev3.sendMessage("#ap10#");
                     }
                 }
             }

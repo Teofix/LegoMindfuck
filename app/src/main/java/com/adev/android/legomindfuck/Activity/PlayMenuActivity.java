@@ -138,15 +138,17 @@ public class PlayMenuActivity extends AppCompatActivity {
                             break;
 
                         case 1:
-                            ev3.sendMessage("#ap10#");
+                            //ev3.sendMessage("#ap10#");
                             players = 1;
-                            Intent i2 = new Intent(getApplicationContext(), MotorActivity.class);
+                            //Intent i2 = new Intent(getApplicationContext(), MotorActivity.class);
+                            Intent i2 = new Intent(getApplicationContext(), TowerActivity.class);
                             startActivity(i2);
                             break;
 
                         case 2:
                             players = 2;
-                            Intent i3 = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
+                            //Intent i3 = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
+                            Intent i3 = new Intent(getApplicationContext(), TowerActivity.class);
                             startActivity(i3);
                             break;
                     }

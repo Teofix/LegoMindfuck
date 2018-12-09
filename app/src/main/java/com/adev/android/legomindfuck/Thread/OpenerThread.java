@@ -13,6 +13,7 @@ import static com.adev.android.legomindfuck.Thread.SocketManager.accessSender;
 import static com.adev.android.legomindfuck.Thread.SocketManager.ev3Socket;
 import static com.adev.android.legomindfuck.Thread.SocketManager.ip;
 import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
 public class OpenerThread extends Thread {
 

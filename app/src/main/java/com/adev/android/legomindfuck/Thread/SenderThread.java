@@ -36,11 +36,11 @@ public class SenderThread extends Thread {
             PrintWriter outToServer = null;
             try {
                 outToServer = new PrintWriter(new OutputStreamWriter(ev3Socket.getOutputStream()));
+                outToServer.print(message);
+                outToServer.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            outToServer.print(message);
-            outToServer.flush();
             Log.i("Sender", "messaggio inviato: " + message);
         }
     }
