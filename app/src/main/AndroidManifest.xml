@@ -35,8 +35,12 @@
         <activity
             android:name=".Activity.MultiplayerSelectionActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activity.MultiMotorActivityP1" />
-        <activity android:name=".Activity.MultiMotorActivityP2" />
+        <activity
+            android:name=".Activity.MultiMotorActivityP1"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".Activity.MultiMotorActivityP2"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".Activity.ConnectionTestActivity"
             android:parentActivityName=".Activity.MainMenuActivity"
