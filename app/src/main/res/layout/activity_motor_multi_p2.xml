@@ -52,9 +52,8 @@
         android:id="@+id/motor3_left"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:background="@drawable/round_button"
-        android:rotation="-90"
-        android:src="@drawable/arrow_left"
+        android:background="@drawable/arrow"
+        android:rotation="90"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -80,9 +79,8 @@
         android:id="@+id/motor3_right"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/arrow"
         android:rotation="-90"
-        android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
