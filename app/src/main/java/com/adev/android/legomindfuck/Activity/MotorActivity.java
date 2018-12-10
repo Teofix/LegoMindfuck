@@ -3,6 +3,7 @@ package com.adev.android.legomindfuck.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -57,6 +59,14 @@ public class MotorActivity extends AppCompatActivity {
     private Double time = 0.0;
     private TextView timeText;
 
+    //Minuti e secondi del timer sono stati spostati come variabili di classe in quanto vengono passate a endgame.class
+    private Double mins = 0.0;
+    private Double secs = 0.0;
+
+    //variabili per la colorazione dei blocchi
+    private Integer numberofblock = 0;
+    private Integer blockcolor;
+    private ImageView[] blockplaced = new ImageView[4];
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +74,13 @@ public class MotorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_motor);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        //Blocchi checked
+        blockplaced[0]=findViewById(R.id.blockPlaced_1);
+        blockplaced[1]=findViewById(R.id.blockPlaced_2);
+        blockplaced[2]=findViewById(R.id.blockPlaced_3);
+        blockplaced[3]=findViewById(R.id.blockPlaced_4);
+
 
         mStopButton = findViewById(R.id.stopButton);
         mStopButton.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +91,8 @@ public class MotorActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
+                        i.putExtra("min", mins);
+                        i.putExtra("sec", secs);
                         startActivity(i);
                         finish();
                     }
@@ -87,8 +106,7 @@ public class MotorActivity extends AppCompatActivity {
 
             private String min = "min: ";
             private String sec = "  sec: ";
-            private Double mins = 0.0;
-            private Double secs = 0.0;
+
 
             @Override
             public void run() {
@@ -317,7 +335,7 @@ public class MotorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ev3.sendMessage("#arub#");
-
+                numberofblock += 1;
                 Thread u = new Thread() {
 
                     @Override
@@ -423,24 +441,46 @@ public class MotorActivity extends AppCompatActivity {
             case 1:
                 mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorBlack));
                 mColorCheck.setText("Nero");
+                blockcolor = R.color.mColorBlack;
                 break;
             case 2:
                 mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorBlue));
                 mColorCheck.setText("Blu");
+                blockcolor = R.color.mColorBlue;
                 break;
             case 4:
                 mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorYellow));
                 mColorCheck.setText("Giallo");
+                blockcolor = R.color.mColorYellow;
                 break;
             case 5:
                 mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorRed));
                 mColorCheck.setText("Rosso");
+                blockcolor = R.color.mColorRed;
                 break;
             default:
                 break;
         }
         mColorCheck.setVisibility(View.VISIBLE);
         mCheckColorButton.setVisibility(View.INVISIBLE);
+        //Aggiunta per vedere i blocchi presi (potrebbe essere migliorata in futuro)
+
+        switch (numberofblock%4){
+            case 1:
+                blockplaced[0].setImageResource(blockcolor);
+                break;
+            case 2:
+                blockplaced[1].setImageResource(blockcolor);
+                break;
+            case 3:
+                blockplaced[2].setImageResource(blockcolor);
+                break;
+            case 0:
+                blockplaced[3].setImageResource(blockcolor);
+                break;
+            default:
+                break;
+        }
     }
 
 }
