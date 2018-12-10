@@ -469,7 +469,9 @@ public class MotorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ev3.sendMessage("#arub#");
-                numberofblock += 1;
+                if(numberofblock<4){
+                    numberofblock += 1;
+                }
                 Thread u = new Thread() {
 
                     @Override
