@@ -13,11 +13,12 @@
         android:id="@+id/motor2_left2"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/arrow"
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="@+id/clickmanosx"
-        app:layout_constraintTop_toTopOf="@+id/clickmanosx"
-        tools:layout_editor_absoluteX="20dp" />
+        app:layout_constraintEnd_toStartOf="@+id/clickmanosx"
+        app:layout_constraintTop_toTopOf="@+id/clickmanosx" />
 
     <TextView
         android:id="@+id/textView4"
