@@ -67,6 +67,30 @@ public class MotorActivity extends AppCompatActivity {
     private Integer numberofblock = 0;
     private Integer blockcolor;
     private ImageView[] blockplaced = new ImageView[4];
+
+    private int numclickManoLeft=0;
+    private Double gtimeLapManoLeft=0.0;
+    private Double totaltimeManoLeft=0.0;
+
+    private int numclickManoRight=0;
+    private Double gtimeLapManoRight=0.0;
+    private Double totaltimeManoRight=0.0;
+
+    private int numclickBraccioLeft=0;
+    private Double gtimeLapBraccioLeft=0.0;
+    private Double totaltimeBraccioLeft=0.0;
+
+    private int numclickBraccioRight=0;
+    private Double gtimeLapBraccioRight=0.0;
+    private Double totaltimeBraccioRight=0.0;
+
+    private int numclickBaseLeft=0;
+    private Double gtimeLapBaseLeft=0.0;
+    private Double totaltimeBaseLeft=0.0;
+
+    private int numclickBaseRight=0;
+    private Double gtimeLapBaseRight=0.0;
+    private Double totaltimeBaseRight=0.0;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +119,12 @@ public class MotorActivity extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
                         i.putExtra("min", mins);
                         i.putExtra("sec", secs);
+                        i.putExtra("numclickManoLeft",numclickManoLeft);
+                        i.putExtra("numclickManoRight",numclickManoRight);
+                        i.putExtra("numclickBraccioLeft",numclickBraccioLeft);
+                        i.putExtra("numclickBraccioRight",numclickBraccioRight);
+                        i.putExtra("numclickBaseLeft",numclickBaseLeft);
+                        i.putExtra("numclickBaseRight",numclickBaseRight);
                         startActivity(i);
                         finish();
                     }
@@ -152,6 +182,7 @@ public class MotorActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_DOWN:
                         ev3.sendMessage(mMotorBase.motorOn(mSpeed, "-"));
                         // PRESSED
+                        numclickBaseLeft += 1;
                         return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
                         ev3.sendMessage(mMotorBase.motorOff());
@@ -169,6 +200,7 @@ public class MotorActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         ev3.sendMessage(mMotorBase.motorOn(mSpeed, "+"));
+                        numclickBaseRight += 1;
                         // PRESSED
                         return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
@@ -187,6 +219,7 @@ public class MotorActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "+"));
+                        numclickBraccioLeft += 1;
                         // PRESSED
                         return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
@@ -205,6 +238,7 @@ public class MotorActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "-"));
+                        numclickBraccioRight += 1;
                         // PRESSED
                         return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
@@ -223,6 +257,7 @@ public class MotorActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         ev3.sendMessage(mMotorMano.motorOn(mSpeed, "+"));
+                        numclickManoLeft += 1;
                         // PRESSED
                         return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
@@ -241,6 +276,7 @@ public class MotorActivity extends AppCompatActivity {
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         ev3.sendMessage(mMotorMano.motorOn(mSpeed, "-"));
+                        numclickManoRight += 1;
                         // PRESSED
                         return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
