@@ -1,7 +1,5 @@
 package com.adev.android.legomindfuck;
 
-import android.util.Log;
-
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 
 public class UltrasonicSensor {
