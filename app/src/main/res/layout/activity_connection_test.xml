@@ -5,12 +5,13 @@
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mColorWhite"
     tools:context=".Activity.ConnectionTestActivity">
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:background="@color/mGreen"
         android:fontFamily="@font/fjalla_one"
         android:gravity="center_vertical"
@@ -32,6 +33,7 @@
         android:background="@drawable/round_cornered_button"
         android:fontFamily="@font/fjalla_one"
         android:text="TEST"
+        android:textColor="@color/mColorBlack"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,10 +45,16 @@
         android:id="@+id/conn_guide"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="4dp"
-        android:text="Cossa che ho da fare"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/fjalla_one"
+        android:text="TEXT"
+        android:textAlignment="center"
+        android:textColor="@color/mColorBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,27 +62,33 @@
 
     <EditText
         android:id="@+id/ip_num"
-        android:digits="0123456789."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="48dp"
+        android:digits="0123456789."
         android:ems="10"
         android:hint="Robot IP"
         android:inputType="textPersonName"
+        android:shadowColor="@color/mColorBlack"
+        android:textColor="@color/mColorBlack"
+        android:textColorHint="@color/mGrey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
         android:id="@+id/ip_num2"
-        android:digits="0123456789."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:digits="0123456789."
         android:ems="10"
         android:hint="Confirm robot IP"
         android:inputType="textPersonName"
+        android:textColor="@color/mColorBlack"
+        android:textColorHighlight="@color/mColorBlack"
+        android:textColorHint="@color/mGrey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ip_num" />
 
@@ -82,11 +96,10 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/connection_settings" />
-
 
 </android.support.constraint.ConstraintLayout>

@@ -91,6 +91,7 @@ public class MotorActivity extends AppCompatActivity {
     private int numclickBaseRight=0;
     private Double gtimeLapBaseRight=0.0;
     private Double totaltimeBaseRight=0.0;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

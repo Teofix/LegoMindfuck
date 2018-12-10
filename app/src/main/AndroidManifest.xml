@@ -12,13 +12,13 @@
         android:supportsRtl="true">
         <activity
             android:name=".Activity.MotorActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.TowerActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.EndGameActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.MainMenuActivity"
             android:theme="@style/AppTheme">
@@ -28,27 +28,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity.PlayMenuActivity"
-            android:theme="@style/AppThemeNavBar"
-            android:parentActivityName=".Activity.MainMenuActivity">
-        </activity>
-
+            android:parentActivityName=".Activity.MainMenuActivity"
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".Activity.MultiplayerSelectionActivity"
-            android:theme="@style/AppThemeNavBar" />
+            android:theme="@style/AppTheme" />
         <activity android:name=".Activity.MultiMotorActivityP1" />
         <activity android:name=".Activity.MultiMotorActivityP2" />
         <activity
             android:name=".Activity.ConnectionTestActivity"
-            android:theme="@style/AppThemeNavBar"
-            android:parentActivityName=".Activity.MainMenuActivity" />
+            android:parentActivityName=".Activity.MainMenuActivity"
+            android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <activity
+            android:name=".Activity.SegnalazioniActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
 package com.adev.android.legomindfuck.Activity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.adev.android.legomindfuck.R;
@@ -12,7 +14,6 @@ public class EndGameActivity extends AppCompatActivity {
 
     private Double mins;
     private Double secs;
-
 
     private Integer numclickManoLeft=0;
     private Double gtimeLapManoLeft=0.0;
@@ -42,6 +43,8 @@ public class EndGameActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Recupero i dati da stampare nelle statistiche
         Bundle datipassati = getIntent().getExtras();

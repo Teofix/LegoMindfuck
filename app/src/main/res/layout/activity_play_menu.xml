@@ -5,39 +5,9 @@
     android:id="@+id/play_pager_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mColorWhite"
     tools:context=".Activity.PlayMenuActivity">
 
-
-
-    <TextView
-        android:id="@+id/t_playMode_txt3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="40dp"
-        android:text=">>>Swipe per selezionare la modalità di gioco"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/t_playMode_txt4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/t_playMode_txt4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
-        android:text="Premi select per selezionare"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/mode_selector"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/mode_selector"
@@ -49,6 +19,7 @@
         android:background="@drawable/round_cornered_button"
         android:fontFamily="@font/fjalla_one"
         android:text="Select"
+        android:textColor="@color/mColorBlack"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

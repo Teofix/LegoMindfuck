@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.adev.android.legomindfuck.ColorSensor;
@@ -45,123 +47,57 @@ public class PlayMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_menu);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        SharedPreferences sharedPref = getSharedPreferences("access", MODE_PRIVATE);
-        int firstAccess = sharedPref.getInt("access", 0);
 
-        if (firstAccess == 1) {
+        images = new int[]{R.drawable.tutorial,
+                R.drawable.single_player,
+                R.drawable.multiplayer
+        };
 
-            sharedPref.edit().putInt("access", 2).apply();
+        titles = new String[]{"Tutorial",
+                "Single play",
+                "Multiplayer",
+        };
 
-            ConstraintLayout mLayout = (ConstraintLayout) findViewById(R.id.play_pager_layout);
-            mLayout.setBackgroundColor(R.color.mGrey);
+        descriptions = new String[]{"Tutorial di gioco",
+                "Modalità giocatore singolo",
+                "Modalità multigiocatore",
+        };
 
-            images = new int[]{R.drawable.tutorial,
-                    R.drawable.single_player,
-                    R.drawable.multiplayer
-            };
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        adapter = new ImagePageAdapter(PlayMenuActivity.this, images, titles, descriptions);
+        viewPager.setAdapter(adapter);
 
-            titles = new String[]{"Tutorial",
-                    "Single playey",
-                    "Multiplayer",
-            };
-
-            descriptions = new String[]{"Tutorial di gioco\nImpara a giocare senza limiti di tempo.",
-                    "Modalità giocatore singolo\nSfida il gioco in modalità single player",
-                    "Modalità multigiocatore",
-            };
-
-            viewPager = (ViewPager) findViewById(R.id.pager);
-
-            adapter = new ImagePageAdapter(PlayMenuActivity.this, images, titles, descriptions);
-
-            viewPager.setAdapter(adapter);
-
-            selector = (Button) findViewById(R.id.mode_selector);
-            selector.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    switch (viewPager.getCurrentItem()) {
-                        case 0:
-
-                            break;
-
-                        case 1:
-                            //Intent i2 = new Intent(getApplicationContext(), MotorActivity.class);
-                            //startActivity(i2);
-                            break;
-
-                        case 2:
-                            //Intent i3 = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
-                            //startActivity(i3);
-                            break;
-                    }
-
+        selector = (Button) findViewById(R.id.mode_selector);
+        selector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (viewPager.getCurrentItem()) {
+                    case 0:
+                        break;
+                    case 1:
+                        //ev3.sendMessage("#ap10#");
+                        players = 1;
+                        //Intent i2 = new Intent(getApplicationContext(), MotorActivity.class);
+                        Intent i2 = new Intent(getApplicationContext(), TowerActivity.class);
+                        startActivity(i2);
+                        break;
+                    case 2:
+                        players = 2;
+                        //Intent i3 = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
+                        Intent i3 = new Intent(getApplicationContext(), TowerActivity.class);
+                        startActivity(i3);
+                        break;
                 }
-            });
+            }
+        });
 
-        }
-
-        else {
-
-            images = new int[]{R.drawable.tutorial,
-                    R.drawable.single_player,
-                    R.drawable.multiplayer
-            };
-
-            titles = new String[]{"Tutorial",
-                    "Single play",
-                    "Multiplayer",
-            };
-
-            descriptions = new String[]{"Tutorial di gioco",
-                    "Modalità giocatore singolo",
-                    "Modalità multigiocatore",
-            };
-
-            viewPager = (ViewPager) findViewById(R.id.pager);
-
-            adapter = new ImagePageAdapter(PlayMenuActivity.this, images, titles, descriptions);
-
-            viewPager.setAdapter(adapter);
-
-            selector = (Button) findViewById(R.id.mode_selector);
-
-            selector.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    switch (viewPager.getCurrentItem()) {
-                        case 0:
-
-                            break;
-
-                        case 1:
-                            //ev3.sendMessage("#ap10#");
-                            players = 1;
-                            //Intent i2 = new Intent(getApplicationContext(), MotorActivity.class);
-                            Intent i2 = new Intent(getApplicationContext(), TowerActivity.class);
-                            startActivity(i2);
-                            break;
-
-                        case 2:
-                            players = 2;
-                            //Intent i3 = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
-                            Intent i3 = new Intent(getApplicationContext(), TowerActivity.class);
-                            startActivity(i3);
-                            break;
-                    }
-
-                }
-            });
-
-        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu); //your file name
         return super.onCreateOptionsMenu(menu);
@@ -169,7 +105,6 @@ public class PlayMenuActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
 
         switch (id) {

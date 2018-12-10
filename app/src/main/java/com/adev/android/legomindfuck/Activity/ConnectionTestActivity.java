@@ -2,12 +2,14 @@ package com.adev.android.legomindfuck.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,6 +39,8 @@ public class ConnectionTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection_test);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ip = (EditText) findViewById(R.id.ip_num);
         ip2 = (EditText) findViewById(R.id.ip_num2);
@@ -46,7 +50,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
         ip.setText(lastIP);
         ip2.setText(lastIP);
 
-        guide.setText("Indicazioni per procedura guidata per effettuare connessione tra dispositivo e robot, con successivo test della connessione tramite pulsante.");
+        guide.setText("Assicurati che il robot ev3 sia connesso alla stessa rete wifi di questo dispositivo Android. Controlla l'indirizzo ip del robot ev3 e inseriscilo nel campo \"Robot IP\". Conferma poi l'inserimento riscrivendo l'indirizzo ip nel secondo campo \"Confirm robot IP\". Premi poi \"TEST\" per verificare la connessione.");
 
         test.setOnClickListener(new View.OnClickListener() {
             @Override

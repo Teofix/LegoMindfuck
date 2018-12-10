@@ -58,9 +58,7 @@ public class ImagePageAdapter extends PagerAdapter {
         title.setText(titles[position]);
         description.setText(descriptions[position]);
 
-
-
-        ( (ViewPager) container).addView(itemView);
+        ((ViewPager) container).addView(itemView);
 
         return itemView;
     }
