@@ -51,7 +51,7 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (true) {
-                    //ev3.sendMessage("#aplayer#");
+                    ev3.sendMessage("#aplayer#");
                     Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
                     startActivity(i);
                 } else {

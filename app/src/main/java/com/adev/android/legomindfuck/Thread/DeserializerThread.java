@@ -20,7 +20,7 @@ public class DeserializerThread extends Thread {
     }
 
     private void deserialize() {
-        // #r&t&Black&Black&Black&Black&Black&#
+        // #r&t&Black&Black&Black&Black&#
         Log.i("Receive:", message);
         String[] split = message.split("&");
 
