@@ -30,9 +30,6 @@ public class MultiplayerSelectionActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        instructions = (TextView) findViewById(R.id.multi_instructions);
-        instructions.setText("Varie \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n fine");
-
         p1 = (Button) findViewById(R.id.p1_button);
         p2 = (Button) findViewById(R.id.p2_button);
 
