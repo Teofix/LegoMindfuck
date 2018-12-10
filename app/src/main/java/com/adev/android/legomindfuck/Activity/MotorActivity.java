@@ -80,7 +80,9 @@ public class MotorActivity extends AppCompatActivity {
         blockplaced[1]=findViewById(R.id.blockPlaced_2);
         blockplaced[2]=findViewById(R.id.blockPlaced_3);
         blockplaced[3]=findViewById(R.id.blockPlaced_4);
-
+        for(int i=0; i<4; i++){
+            blockplaced[i].setImageResource(R.color.mColorTrasparent);
+        }
 
         mStopButton = findViewById(R.id.stopButton);
         mStopButton.setOnClickListener(new View.OnClickListener() {

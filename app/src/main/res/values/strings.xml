@@ -4,4 +4,5 @@
     <string name="motor_a">Base</string>
     <string name="motor_c">Braccio</string>
     <string name="motor_d">Mano</string>
+    <string name="end_game">Statistiche</string>
 </resources>
