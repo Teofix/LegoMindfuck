@@ -88,13 +88,13 @@ public class TowerActivity extends AppCompatActivity {
                     color = R.color.mColorBlack;
                     break;
                 case "Blue":
-                    color = R.color.mColorBlue;
+                    color = R.color.mPressedButtonBlue;
                     break;
                 case "Red":
                     color = R.color.mColorRed;
                     break;
                 case "Yellow":
-                    color = R.color.mColorYellow;
+                    color = R.color.mPressedButtonYellow;
                     break;
                 default:
                     break;

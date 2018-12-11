@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@color/mColorBlue" />
+        app:srcCompat="@color/mPressedButtonBlue" />
 
     <ImageView
         android:id="@+id/block_2"
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toTopOf="@+id/block_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@color/mColorYellow" />
+        app:srcCompat="@color/mPressedButtonYellow" />
 
     <ImageView
         android:id="@+id/block_4"
