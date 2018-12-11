@@ -9,7 +9,7 @@
     android:background="@color/sliderBack"
     android:gravity="center">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/blockPlaced_4"
         android:layout_width="54dp"
         android:layout_height="33dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@color/mColorRed" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/blockPlaced_3"
         android:layout_width="54dp"
         android:layout_height="33dp"
@@ -276,7 +276,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/put_down_button" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/blockPlaced_1"
         android:layout_width="54dp"
         android:layout_height="33dp"
@@ -287,7 +287,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@color/mColorRed" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/blockPlaced_2"
         android:layout_width="54dp"
         android:layout_height="33dp"

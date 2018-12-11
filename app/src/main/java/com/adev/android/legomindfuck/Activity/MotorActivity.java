@@ -1,10 +1,12 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -66,31 +68,19 @@ public class MotorActivity extends AppCompatActivity {
     //variabili per la colorazione dei blocchi
     private Integer numberofblock = 0;
     private Integer blockcolor;
-    private ImageView[] blockplaced = new ImageView[4];
+    private ImageButton[] blockplaced = new ImageButton[4];
 
     private int numclickManoLeft=0;
-    private Double gtimeLapManoLeft=0.0;
-    private Double totaltimeManoLeft=0.0;
 
     private int numclickManoRight=0;
-    private Double gtimeLapManoRight=0.0;
-    private Double totaltimeManoRight=0.0;
 
     private int numclickBraccioLeft=0;
-    private Double gtimeLapBraccioLeft=0.0;
-    private Double totaltimeBraccioLeft=0.0;
 
     private int numclickBraccioRight=0;
-    private Double gtimeLapBraccioRight=0.0;
-    private Double totaltimeBraccioRight=0.0;
 
     private int numclickBaseLeft=0;
-    private Double gtimeLapBaseLeft=0.0;
-    private Double totaltimeBaseLeft=0.0;
 
     private int numclickBaseRight=0;
-    private Double gtimeLapBaseRight=0.0;
-    private Double totaltimeBaseRight=0.0;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -108,6 +98,111 @@ public class MotorActivity extends AppCompatActivity {
         for(int i=0; i<4; i++){
             blockplaced[i].setImageResource(R.color.mColorTrasparent);
         }
+
+        blockplaced[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Elimina blocco");
+                builder.setMessage("Hai davvero tolto questo blocco?");
+                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        if(numberofblock%4 == 1){
+                            blockplaced[0].setImageResource(R.color.mColorTrasparent);
+                            numberofblock -= 1;
+                        }else{
+                            dialog.cancel();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        blockplaced[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Elimina blocco");
+                builder.setMessage("Hai davvero tolto questo blocco?");
+                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        if(numberofblock%4 == 2){
+                            blockplaced[1].setImageResource(R.color.mColorTrasparent);
+                            numberofblock -= 1;
+                        }else{
+                            dialog.cancel();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        blockplaced[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Elimina blocco");
+                builder.setMessage("Hai davvero tolto questo blocco?");
+                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        if(numberofblock%4 == 3){
+                            blockplaced[2].setImageResource(R.color.mColorTrasparent);
+                            numberofblock -= 1;
+                        }else{
+                            dialog.cancel();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        blockplaced[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Elimina blocco");
+                builder.setMessage("Hai davvero tolto questo blocco?");
+                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        if(numberofblock%4 == 0){
+                            blockplaced[3].setImageResource(R.color.mColorTrasparent);
+                            numberofblock -= 1;
+                        }else{
+                            dialog.cancel();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         mStopButton = findViewById(R.id.stopButton);
         mStopButton.setOnClickListener(new View.OnClickListener() {
@@ -374,7 +469,9 @@ public class MotorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ev3.sendMessage("#arub#");
-                numberofblock += 1;
+                if(numberofblock<4){
+                    numberofblock += 1;
+                }
                 Thread u = new Thread() {
 
                     @Override
