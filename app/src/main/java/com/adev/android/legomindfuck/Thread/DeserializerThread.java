@@ -31,7 +31,14 @@ public class DeserializerThread extends Thread {
                 colorTower[i-2] = split[i];
                 Log.i("Color:", split[i]);
             }
-        } else if(split[0].equals("c")) {
+        }
+
+        else if (split[0].equals("#r") && split[1].equals("c") && split[6].equals("#")) {
+            String color = split[2];
+            // mettere il colore nell'imageview del blocco preso e nell'array dei colori presi per fare poi il controllo in motor oppure dove??
+        }
+
+        else if(split[0].equals("c")) {
             String light = split[1];
             int lightValue = Integer.parseInt(light);
 
