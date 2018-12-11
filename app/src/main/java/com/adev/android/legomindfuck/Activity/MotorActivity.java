@@ -559,7 +559,6 @@ public class MotorActivity extends AppCompatActivity {
                 t.start();
             }
         });
-        mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_red);
 
     }
 
@@ -580,7 +579,7 @@ public class MotorActivity extends AppCompatActivity {
             default:
                 break;
         }
-        
+
         //Aggiunta per vedere i blocchi presi (potrebbe essere migliorata in futuro)
 
         switch (numberofblock%4){
