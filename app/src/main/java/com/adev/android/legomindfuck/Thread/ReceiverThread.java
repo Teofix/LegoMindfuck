@@ -1,5 +1,7 @@
 package com.adev.android.legomindfuck.Thread;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,6 +40,7 @@ public class ReceiverThread extends Thread {
 
                 while ((read = in.read(buffer)) != -1) {
                     message = new String(buffer, 0, read);
+                    Log.i("ReceiverThread", "read:" + message);
                     DeserializerThread deserializerThread = new DeserializerThread(message);
                     deserializerThread.start();
                 }

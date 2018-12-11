@@ -20,8 +20,9 @@ public class DeserializerThread extends Thread {
     }
 
     private void deserialize() {
-        // #r&t&Black&Black&Black&Black&#
-        Log.i("Receive:", message);
+
+        Log.i("DeserializerThread:", message);
+
         String[] split = message.split("&");
 
         if (split[0].equals("#r") && split[1].equals("t") && split[6].equals("#")) {
@@ -37,8 +38,6 @@ public class DeserializerThread extends Thread {
             sColorSensor.setLight(lightValue);
 
             String color = split[2];
-
-            Log.i("Color", color + " Light: " + lightValue);
 
             switch (color) {
                 case "Black":
@@ -67,7 +66,7 @@ public class DeserializerThread extends Thread {
                     break;
             }
         } else if (split[0].equals("g")) {
-            //Log.i("Ultrasonic", "" + split[1]);
+            Log.i("Ultrasonic", "" + split[1]);
             sUltrasonicSensor.setDistance(Integer.parseInt(split[1]));
         }
     }

@@ -475,8 +475,8 @@ public class MotorActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        if (sUltrasonicSensor.getDistance() < 19) ev3.sendMessage(mMotorBraccio.motorOn(5, "-"));
-                        else if (sUltrasonicSensor.getDistance() > 19) ev3.sendMessage(mMotorBraccio.motorOn(5, "+"));
+                        if (sUltrasonicSensor.getDistance() < 19) ev3.sendMessage(mMotorBraccio.motorOn(4, "-"));
+                        else if (sUltrasonicSensor.getDistance() > 19) ev3.sendMessage(mMotorBraccio.motorOn(4, "+"));
 
                         try {
                             synchronized (sUltrasonicSensor.mutex) {
