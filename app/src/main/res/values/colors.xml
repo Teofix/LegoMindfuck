@@ -11,11 +11,19 @@
     <color name="mGrey">#545759</color>
     <color name="mLightGrey">#c4e5e5e5</color>
 
-    <color name="mColorBlue">#004081</color>
-    <color name="mColorYellow">#c9bb00</color>
-    <color name="mColorRed">#c90a0a</color>
+    <color name="mButtonBlue">#396796</color>
+    <color name="mPressedButtonBlue">#004081</color>
+
+    <color name="mButtonYellow">#b7b04b</color>
+    <color name="mPressedButtonYellow">#c9bb00</color>
+
     <color name="mButtonRed">#ff3838</color>
     <color name="mPressedButtonRed">#801616</color>
+
+    <color name="mButtonBlack">#434343</color>
+    <color name="mPressedButtonBlack">#101010</color>
+
+    <color name="mColorRed">#c90a0a</color>
     <color name="mColorBlack">#101010</color>
     <color name="mColorWhite">#ffffff</color>
     <color name="mColorTrasparent">#24ffffff</color>
