@@ -53,8 +53,6 @@ public class MotorActivity extends AppCompatActivity {
     private Button mCheckColorButton;
     private Button mStopButton;
 
-    private TextView mColorCheck;
-
     private int mSpeed = 5;
 
     Timer timer = new Timer();
@@ -215,12 +213,12 @@ public class MotorActivity extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
                         i.putExtra("min", mins);
                         i.putExtra("sec", secs);
-                        i.putExtra("numclickManoLeft",numclickManoLeft);
-                        i.putExtra("numclickManoRight",numclickManoRight);
-                        i.putExtra("numclickBraccioLeft",numclickBraccioLeft);
-                        i.putExtra("numclickBraccioRight",numclickBraccioRight);
-                        i.putExtra("numclickBaseLeft",numclickBaseLeft);
-                        i.putExtra("numclickBaseRight",numclickBaseRight);
+                        i.putExtra("numclickManoLeft", numclickManoLeft);
+                        i.putExtra("numclickManoRight", numclickManoRight);
+                        i.putExtra("numclickBraccioLeft", numclickBraccioLeft);
+                        i.putExtra("numclickBraccioRight", numclickBraccioRight);
+                        i.putExtra("numclickBaseLeft", numclickBaseLeft);
+                        i.putExtra("numclickBaseRight", numclickBaseRight);
                         startActivity(i);
                         finish();
                     }
@@ -229,12 +227,9 @@ public class MotorActivity extends AppCompatActivity {
         });
 
         timeText = findViewById(R.id.seconds_textBox);
-
         timer.scheduleAtFixedRate(new TimerTask() {
-
             private String min = "min: ";
             private String sec = "  sec: ";
-
 
             @Override
             public void run() {
@@ -254,9 +249,6 @@ public class MotorActivity extends AppCompatActivity {
                 });
             }
         }, 100, 100);
-
-        //if (ev3 == null) ev3 = new SocketManager();
-        //ev3.openSocket();
 
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 180);
@@ -457,9 +449,6 @@ public class MotorActivity extends AppCompatActivity {
                     }
                 };
                 t.start();
-
-                mColorCheck.setVisibility(View.INVISIBLE);
-                mCheckColorButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -469,9 +458,11 @@ public class MotorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ev3.sendMessage("#arub#");
-                if(numberofblock<4){
+
+                if(numberofblock < 4){
                     numberofblock += 1;
                 }
+
                 Thread u = new Thread() {
 
                     @Override
@@ -568,37 +559,28 @@ public class MotorActivity extends AppCompatActivity {
                 t.start();
             }
         });
+        mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_red);
 
-        mColorCheck = (TextView) findViewById(R.id.color_check);
     }
 
     private void changeColorCheck(int c) {
         switch (c) {
             case 1:
-                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorBlack));
-                mColorCheck.setText("Nero");
-                blockcolor = R.color.mColorBlack;
+                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_black);
                 break;
             case 2:
-                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorBlue));
-                mColorCheck.setText("Blu");
-                blockcolor = R.color.mColorBlue;
+                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_blue);
                 break;
             case 4:
-                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorYellow));
-                mColorCheck.setText("Giallo");
-                blockcolor = R.color.mColorYellow;
+                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_yellow);
                 break;
             case 5:
-                mColorCheck.setBackgroundColor(getResources().getColor(R.color.mColorRed));
-                mColorCheck.setText("Rosso");
-                blockcolor = R.color.mColorRed;
+                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_red);
                 break;
             default:
                 break;
         }
-        mColorCheck.setVisibility(View.VISIBLE);
-        mCheckColorButton.setVisibility(View.INVISIBLE);
+        
         //Aggiunta per vedere i blocchi presi (potrebbe essere migliorata in futuro)
 
         switch (numberofblock%4){
