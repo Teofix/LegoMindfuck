@@ -15,7 +15,7 @@ public class UltrasonicSensor {
         mDistance = distance;
         //Log.i("Distance Set", "" + mDistance);
         sUltrasonicSensor.notify();
-        if (mDistance == 19) {
+        if (mDistance == 99) {
             synchronized (mutex) {
                 mutex.notify();
             }

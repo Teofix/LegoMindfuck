@@ -457,106 +457,11 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ev3.sendMessage("#arub#");
+                ev3.sendMessage("#arc#");
 
                 if(numberofblock < 4){
                     numberofblock += 1;
                 }
-
-                Thread u = new Thread() {
-
-                    @Override
-                    public void run() {
-                        try {
-                            synchronized (sUltrasonicSensor) {
-                                sUltrasonicSensor.wait();
-                            }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        if (sUltrasonicSensor.getDistance() < 19) ev3.sendMessage(mMotorBraccio.motorOn(4, "-"));
-                        else if (sUltrasonicSensor.getDistance() > 19) ev3.sendMessage(mMotorBraccio.motorOn(4, "+"));
-
-                        try {
-                            synchronized (sUltrasonicSensor.mutex) {
-                                sUltrasonicSensor.mutex.wait();
-                            }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        ev3.sendMessage(mMotorBraccio.motorOff());
-
-                        try {
-                            sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                u.start();
-
-                try {
-                    u.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                ev3.sendMessage("#arcb#");
-
-                ev3.sendMessage(mMotorMano.motorOn(5, "+"));
-
-                Thread t = new Thread() {
-                    private int prevColor = 9;
-                    private int cycles = 0;
-
-                    @Override
-                    public void run() {
-
-                        try {
-                            synchronized (sColorSensor) {
-                                sColorSensor.wait();
-                            }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        ev3.sendMessage(mMotorMano.motorOff());
-
-                        while (prevColor != sColorSensor.getColor() || prevColor == 0) {
-
-                            prevColor = sColorSensor.getColor();
-
-                            ev3.sendMessage(mMotorMano.move(3, 4, "+"));
-
-                            try {
-                                sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-
-                            cycles++;
-                        }
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                changeColorCheck(prevColor);
-                            }
-                        });
-
-                        try {
-                            sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        ev3.sendMessage(mMotorMano.move(10 + cycles * 3, 20, "-"));
-
-                    }
-                };
-                t.start();
             }
         });
 
