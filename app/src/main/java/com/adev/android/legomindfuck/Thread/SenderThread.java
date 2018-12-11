@@ -41,7 +41,7 @@ public class SenderThread extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.i("Sender", "messaggio inviato: " + message);
+            Log.i("SenderThread", "sent: " + message);
         }
     }
 
