@@ -2,14 +2,11 @@ package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
+
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,10 +14,7 @@ import android.widget.TextView;
 
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
-import com.adev.android.legomindfuck.ShowDialogMessage;
 import com.adev.android.legomindfuck.Thread.SocketManager;
-
-import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -50,7 +44,7 @@ public class MainMenuActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (true) {
+                if (ev3 != null && ev3.isSocketReady()) {
                     ev3.sendMessage("#aplayer#");
                     Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
                     startActivity(i);
@@ -70,6 +64,7 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
+
         segnalazioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,5 +73,7 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
 }

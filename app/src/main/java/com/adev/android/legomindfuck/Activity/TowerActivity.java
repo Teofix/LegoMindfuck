@@ -102,19 +102,16 @@ public class TowerActivity extends AppCompatActivity {
             block[i].setImageResource(color);
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i;
-                if (players == 2) {
-                    i = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
-                }
-                else {
-                    i = new Intent(getApplicationContext(), MotorActivity.class);
-                }
-                startActivity(i);
-                finish();
+        new Handler().postDelayed(() -> {
+            Intent i;
+            if (players == 2) {
+                i = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
             }
+            else {
+                i = new Intent(getApplicationContext(), MotorActivity.class);
+            }
+            startActivity(i);
+            finish();
         }, 6000);
 
     }

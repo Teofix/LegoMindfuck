@@ -29,7 +29,6 @@ import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSens
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
-import static com.adev.android.legomindfuck.Statistics.players;
 
 public class MotorActivity extends AppCompatActivity {
 

@@ -33,6 +33,10 @@
             android:parentActivityName=".Activity.MainMenuActivity"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:name=".Activity.SegnalazioniActivity"
+            android:parentActivityName=".Activity.MainMenuActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".Activity.MultiplayerSelectionActivity"
             android:theme="@style/AppTheme" />
         <activity
@@ -50,9 +54,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".Activity.SegnalazioniActivity"
-            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

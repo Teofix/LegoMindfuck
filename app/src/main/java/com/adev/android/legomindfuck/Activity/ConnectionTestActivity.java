@@ -3,6 +3,7 @@ package com.adev.android.legomindfuck.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +16,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.regex.Pattern;
 
 import com.adev.android.legomindfuck.R;
@@ -24,12 +24,9 @@ import com.adev.android.legomindfuck.Thread.SocketManager;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
-import static com.adev.android.legomindfuck.Thread.SocketManager.isReady;
-
 public class ConnectionTestActivity extends AppCompatActivity {
 
     private EditText ip;
-    private EditText ip2;
     private TextView guide;
     private Button test;
 
@@ -43,12 +40,10 @@ public class ConnectionTestActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ip = (EditText) findViewById(R.id.ip_num);
-        ip2 = (EditText) findViewById(R.id.ip_num2);
         guide = (TextView) findViewById(R.id.conn_guide);
         test = (Button) findViewById(R.id.button_test);
 
         ip.setText(lastIP);
-        ip2.setText(lastIP);
 
         guide.setText("Assicurati che il robot ev3 sia connesso alla stessa rete wifi di questo dispositivo Android. Controlla l'indirizzo ip del robot ev3 e inseriscilo nel campo \"Robot IP\". Conferma poi l'inserimento riscrivendo l'indirizzo ip nel secondo campo \"Confirm robot IP\". Premi poi \"TEST\" per verificare la connessione.");
 
@@ -57,9 +52,8 @@ public class ConnectionTestActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String firstIp = ip.getText().toString();
-                String secondIp = ip2.getText().toString();
 
-                boolean validIP = IpRegex.isValid(firstIp) && IpRegex.isValid(secondIp) && firstIp.equals(secondIp);
+                boolean validIP = IpRegex.isValid(firstIp);
 
                 if(!validIP) {
 
@@ -70,53 +64,27 @@ public class ConnectionTestActivity extends AppCompatActivity {
 
                  else {
                     lastIP = firstIp;
-                    ev3 = new SocketManager();
-                    ev3.setIp(firstIp);
-                    ev3.openSocket();
-                    double reach = 0.0;
-                    int maxLimit = 1000000;
-                    while (!isReady && (reach < maxLimit)){
-                        reach += 0.01;
-                    }
-                    if (!isReady) {
-                        Toast.makeText(getApplicationContext(), "Connection FAILED!", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Context context = getApplicationContext();
-                        CharSequence text = "Connection with EV3: succefull!";
-                        int duration = Toast.LENGTH_LONG;
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
-                    }
+                    ev3 = new SocketManager(firstIp);
+                    ev3.connect();
+                    ev3.sendMessage("#atconnect#");
+                    Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
+                    /*
+                    new Handler().postDelayed(() -> {
+                        if (ev3.isSocketReady()) {
+                            Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Connection FAILED!", Toast.LENGTH_SHORT).show();
+                        }
+                        finish();
+                    }, 1500);
+                    */
                 }
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu); //your file name
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.menItem_connection  :
-                break;
-
-            case R.id.menItem_play   :
-                Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
-                startActivity(i);
-        }
-
-        return false;
-    }
 
 
     public static class IpRegex {

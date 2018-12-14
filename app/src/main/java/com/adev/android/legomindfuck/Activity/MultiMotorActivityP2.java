@@ -16,9 +16,10 @@ import android.widget.Switch;
 import com.adev.android.legomindfuck.ColorSensor;
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.Thread.SocketManager;
 
 import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
+
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
 public class MultiMotorActivityP2 extends AppCompatActivity {
 
@@ -36,8 +37,6 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
 
     private int mSpeed = 5;
 
-    private SocketManager ev3;
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +44,6 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
         setContentView(R.layout.activity_motor_multi_p2);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        if (ev3 == null) ev3 = new SocketManager();
-        ev3.openSocket();
 
         if (mMotorBraccio == null) {
             mMotorBraccio = new Motor(4, 180);

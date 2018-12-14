@@ -25,7 +25,6 @@ import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.UltrasonicSensor;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
-import static com.adev.android.legomindfuck.Statistics.player;
 import static com.adev.android.legomindfuck.Statistics.players;
 
 public class PlayMenuActivity extends AppCompatActivity {
@@ -74,19 +73,21 @@ public class PlayMenuActivity extends AppCompatActivity {
         selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (viewPager.getCurrentItem()) {
-                    case 0:
-                        break;
-                    case 1:
-                        players = 1;
-                        Intent i2 = new Intent(getApplicationContext(), TowerActivity.class);
-                        startActivity(i2);
-                        break;
-                    case 2:
-                        players = 2;
-                        Intent i3 = new Intent(getApplicationContext(), TowerActivity.class);
-                        startActivity(i3);
-                        break;
+                if (ev3.isSocketReady()) {
+                    switch (viewPager.getCurrentItem()) {
+                        case 0:
+                            break;
+                        case 1:
+                            players = 1;
+                            Intent i2 = new Intent(getApplicationContext(), TowerActivity.class);
+                            startActivity(i2);
+                            break;
+                        case 2:
+                            players = 2;
+                            Intent i3 = new Intent(getApplicationContext(), TowerActivity.class);
+                            startActivity(i3);
+                            break;
+                    }
                 }
             }
         });

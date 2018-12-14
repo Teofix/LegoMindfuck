@@ -8,7 +8,7 @@ import static com.adev.android.legomindfuck.Activity.TowerActivity.colorTower;
 
 public class DeserializerThread extends Thread {
 
-    String message;
+    private String message;
 
     public DeserializerThread(String message) {
         this.message = message;
