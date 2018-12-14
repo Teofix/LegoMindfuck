@@ -63,14 +63,13 @@ public class ConnectionTestActivity extends AppCompatActivity {
                 }
 
                  else {
-                    lastIP = firstIp;
                     ev3 = new SocketManager(firstIp);
                     ev3.connect();
-                    ev3.sendMessage("#atconnect#");
-                    Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
-                    /*
+
                     new Handler().postDelayed(() -> {
                         if (ev3.isSocketReady()) {
+                            ev3.sendMessage("#atconnect#");
+                            lastIP = firstIp;
                             Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
                             startActivity(i);
@@ -78,8 +77,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Connection FAILED!", Toast.LENGTH_SHORT).show();
                         }
                         finish();
-                    }, 1500);
-                    */
+                    }, 1000);
                 }
             }
         });

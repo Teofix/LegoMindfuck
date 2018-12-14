@@ -16,16 +16,16 @@ import android.util.Log;
 public class SocketManager {
 
     private Socket socket = null;
-    private boolean socketReady = false;
+    private Boolean socketReady = false;
     private String ip;
     private SocketManager istance = this;
+    private Object access = new Object();
 
     public SocketManager(String ip){
         setIp(ip);
     }
 
-    public synchronized void connect(){
-        Log.i("Socket", "dio cane");
+    public void connect() {
         Thread opener = new Thread(){
 
             @Override
@@ -49,22 +49,17 @@ public class SocketManager {
 
         };
         opener.start();
-        notifyAll();
         receive();
     }
 
-    private synchronized void receive() {
+    private void receive() {
+
         Thread receiver = new Thread() {
+
             @Override
             public void run() {
                 Log.i("Socket", "trying to receive()");
-                while(!socketReady) {
-                    try {
-                        istance.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+                while(!socketReady) {}
                 while (socketReady) {
                     try {
                         int read;
@@ -81,10 +76,10 @@ public class SocketManager {
                         e.printStackTrace();
                     }
                 }
-                socketReady = false;
                 connect();
             }
         };
+
         receiver.start();
     }
 
@@ -92,25 +87,20 @@ public class SocketManager {
         Thread sender = new Thread() {
             @Override
             public void run() {
-                Log.i("Socket", "trying to send()");
-                while(!socketReady) {
+                    Log.i("Socket", "trying to send()");
+                    while (!socketReady) {}
                     try {
-                        istance.wait();
-                    } catch (InterruptedException e) {
+                        PrintWriter outToServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                        outToServer.print(message);
+                        outToServer.flush();
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    Log.i("Sender", "thread has sent: " + message);
                 }
-                try {
-                    PrintWriter outToServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-                    outToServer.print(message);
-                    outToServer.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Log.i("Sender", "thread has sent: " + message);
-            }
         };
         sender.start();
+        notifyAll();
     }
 
     public void setIp(String ip){
