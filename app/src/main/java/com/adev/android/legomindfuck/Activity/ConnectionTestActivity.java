@@ -68,7 +68,7 @@ public class ConnectionTestActivity extends AppCompatActivity {
 
                     new Handler().postDelayed(() -> {
                         if (ev3.isSocketReady()) {
-                            ev3.sendMessage("#atconnect#");
+                            ev3.sendMessage("#atconnected#");
                             lastIP = firstIp;
                             Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
