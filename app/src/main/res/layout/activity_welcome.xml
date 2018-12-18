@@ -38,6 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/round_background_white"
                 android:fontFamily="@font/fjalla_one"
                 android:paddingStart="32dp"
@@ -66,6 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/round_background_white"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -94,6 +98,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/round_background_white"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -122,6 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/round_background_white"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -131,6 +139,20 @@
                 android:textAlignment="center"
                 android:text="@string/welcome_connection"
                 android:textColor="@android:color/black"/>
+
+            <Button
+                android:id="@+id/closeButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:background="@drawable/round_cornered_button_red"
+                android:text="Close"
+                android:textAlignment="center"
+                android:fontFamily="@font/fjalla_one"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
