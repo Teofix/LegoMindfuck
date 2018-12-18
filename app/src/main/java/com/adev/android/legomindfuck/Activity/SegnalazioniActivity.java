@@ -11,7 +11,6 @@ import com.adev.android.legomindfuck.R;
 
 public class SegnalazioniActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

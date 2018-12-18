@@ -1,13 +1,10 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,14 +12,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.adev.android.legomindfuck.ColorSensor;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.UltrasonicSensor;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 import static com.adev.android.legomindfuck.Statistics.players;

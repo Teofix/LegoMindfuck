@@ -13,7 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
-import com.adev.android.legomindfuck.ColorSensor;
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
 

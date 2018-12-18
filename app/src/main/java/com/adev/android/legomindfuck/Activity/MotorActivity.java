@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +23,6 @@ import com.adev.android.legomindfuck.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
-import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
@@ -64,7 +60,6 @@ public class MotorActivity extends AppCompatActivity {
 
     //variabili per la colorazione dei blocchi
     private Integer numberofblock = 0;
-    private Integer blockcolor;
     private ImageButton[] blockplaced = new ImageButton[4];
 
     private int numclickManoLeft=0;
@@ -96,133 +91,91 @@ public class MotorActivity extends AppCompatActivity {
             blockplaced[i].setImageResource(R.color.mColorTrasparent);
         }
 
-        blockplaced[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Elimina blocco");
-                builder.setMessage("Hai davvero tolto questo blocco?");
-                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        if(numberofblock%4 == 1){
-                            blockplaced[0].setImageResource(R.color.mColorTrasparent);
-                            numberofblock -= 1;
-                        }else{
-                            dialog.cancel();
-                        }
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+        blockplaced[0].setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setTitle("Elimina blocco");
+            builder.setMessage("Hai davvero tolto questo blocco?");
+            builder.setPositiveButton("Sì", (dialog, id) -> {
+                if(numberofblock%4 == 1){
+                    blockplaced[0].setImageResource(R.color.mColorTrasparent);
+                    numberofblock -= 1;
+                }else{
+                    dialog.cancel();
+                }
+            });
+            builder.setNegativeButton("No", (dialog, id) -> dialog.cancel());
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
-        blockplaced[1].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Elimina blocco");
-                builder.setMessage("Hai davvero tolto questo blocco?");
-                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        if(numberofblock%4 == 2){
-                            blockplaced[1].setImageResource(R.color.mColorTrasparent);
-                            numberofblock -= 1;
-                        }else{
-                            dialog.cancel();
-                        }
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+        blockplaced[1].setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setTitle("Elimina blocco");
+            builder.setMessage("Hai davvero tolto questo blocco?");
+            builder.setPositiveButton("Sì", (dialog, id) -> {
+                if(numberofblock%4 == 2){
+                    blockplaced[1].setImageResource(R.color.mColorTrasparent);
+                    numberofblock -= 1;
+                }else{
+                    dialog.cancel();
+                }
+            });
+            builder.setNegativeButton("No", (dialog, id) -> dialog.cancel());
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
-        blockplaced[2].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Elimina blocco");
-                builder.setMessage("Hai davvero tolto questo blocco?");
-                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        if(numberofblock%4 == 3){
-                            blockplaced[2].setImageResource(R.color.mColorTrasparent);
-                            numberofblock -= 1;
-                        }else{
-                            dialog.cancel();
-                        }
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+        blockplaced[2].setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setTitle("Elimina blocco");
+            builder.setMessage("Hai davvero tolto questo blocco?");
+            builder.setPositiveButton("Sì", (dialog, id) -> {
+                if(numberofblock%4 == 3){
+                    blockplaced[2].setImageResource(R.color.mColorTrasparent);
+                    numberofblock -= 1;
+                }else{
+                    dialog.cancel();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
-        blockplaced[3].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Elimina blocco");
-                builder.setMessage("Hai davvero tolto questo blocco?");
-                builder.setPositiveButton("Sì", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        if(numberofblock%4 == 0){
-                            blockplaced[3].setImageResource(R.color.mColorTrasparent);
-                            numberofblock -= 1;
-                        }else{
-                            dialog.cancel();
-                        }
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+        blockplaced[3].setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setTitle("Elimina blocco");
+            builder.setMessage("Hai davvero tolto questo blocco?");
+            builder.setPositiveButton("Sì", (dialog, id) -> {
+                if(numberofblock%4 == 0){
+                    blockplaced[3].setImageResource(R.color.mColorTrasparent);
+                    numberofblock -= 1;
+                }else{
+                    dialog.cancel();
+                }
+            });
+            builder.setNegativeButton("No", (dialog, id) -> dialog.cancel());
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
 
         mStopButton = findViewById(R.id.stopButton);
-        mStopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ev3.sendMessage("#apstop#");
-                new Handler().post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
-                        i.putExtra("min", mins);
-                        i.putExtra("sec", secs);
-                        i.putExtra("numclickManoLeft", numclickManoLeft);
-                        i.putExtra("numclickManoRight", numclickManoRight);
-                        i.putExtra("numclickBraccioLeft", numclickBraccioLeft);
-                        i.putExtra("numclickBraccioRight", numclickBraccioRight);
-                        i.putExtra("numclickBaseLeft", numclickBaseLeft);
-                        i.putExtra("numclickBaseRight", numclickBaseRight);
-                        startActivity(i);
-                        finish();
-                    }
-                });
-            }
+        mStopButton.setOnClickListener(view -> {
+            ev3.sendMessage("#apstop#");
+            new Handler().post(() -> {
+                Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
+                i.putExtra("min", mins);
+                i.putExtra("sec", secs);
+                i.putExtra("numclickManoLeft", numclickManoLeft);
+                i.putExtra("numclickManoRight", numclickManoRight);
+                i.putExtra("numclickBraccioLeft", numclickBraccioLeft);
+                i.putExtra("numclickBraccioRight", numclickBraccioRight);
+                i.putExtra("numclickBaseLeft", numclickBaseLeft);
+                i.putExtra("numclickBaseRight", numclickBaseRight);
+                startActivity(i);
+                finish();
+            });
         });
 
         timeText = findViewById(R.id.seconds_textBox);
@@ -233,18 +186,13 @@ public class MotorActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        mins = time / 60;
-                        String[] formatM = mins.toString().split("\\.");
-                        secs = time % 60;
-                        String[] formatS = secs.toString().split("\\.");
-                        timeText.setText(min + formatM[0] + sec + formatS[0] + "," + formatS[1].charAt(0));
-                        time += 0.1;
-                    }
-
+                runOnUiThread(() -> {
+                    mins = time / 60;
+                    String[] formatM = mins.toString().split("\\.");
+                    secs = time % 60;
+                    String[] formatS = secs.toString().split("\\.");
+                    timeText.setText(min + formatM[0] + sec + formatS[0] + "," + formatS[1].charAt(0));
+                    time += 0.1;
                 });
             }
         }, 100, 100);
@@ -262,128 +210,107 @@ public class MotorActivity extends AppCompatActivity {
         }
 
         mButtonBaseLeft = findViewById(R.id.motor1_left);
-        mButtonBaseLeft.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        ev3.sendMessage(mMotorBase.motorOn(mSpeed, "-"));
-                        // PRESSED
-                        numclickBaseLeft += 1;
-                        return false; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        ev3.sendMessage(mMotorBase.motorOff());
-                        // RELEASED
-                        return false; // if you want to handle the touch event
-                }
-                return false;
+        mButtonBaseLeft.setOnTouchListener((v, event) -> {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    ev3.sendMessage(mMotorBase.motorOn(mSpeed, "-"));
+                    // PRESSED
+                    numclickBaseLeft += 1;
+                    return false; // if you want to handle the touch event
+                case MotionEvent.ACTION_UP:
+                    ev3.sendMessage(mMotorBase.motorOff());
+                    // RELEASED
+                    return false; // if you want to handle the touch event
             }
+            return false;
         });
 
         mButtonBaseRight = findViewById(R.id.motor1_right);
-        mButtonBaseRight.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        ev3.sendMessage(mMotorBase.motorOn(mSpeed, "+"));
-                        numclickBaseRight += 1;
-                        // PRESSED
-                        return false; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        ev3.sendMessage(mMotorBase.motorOff());
-                        // RELEASED
-                        return false; // if you want to handle the touch event
-                }
-                return false;
+        mButtonBaseRight.setOnTouchListener((v, event) -> {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    ev3.sendMessage(mMotorBase.motorOn(mSpeed, "+"));
+                    numclickBaseRight += 1;
+                    // PRESSED
+                    return false; // if you want to handle the touch event
+                case MotionEvent.ACTION_UP:
+                    ev3.sendMessage(mMotorBase.motorOff());
+                    // RELEASED
+                    return false; // if you want to handle the touch event
             }
+            return false;
         });
 
         mButtonBraccioLeft = findViewById(R.id.motor2_left);
-        mButtonBraccioLeft.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "+"));
-                        numclickBraccioLeft += 1;
-                        // PRESSED
-                        return false; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        ev3.sendMessage(mMotorBraccio.motorOff());
-                        // RELEASED
-                        return false; // if you want to handle the touch event
-                }
-                return false;
+        mButtonBraccioLeft.setOnTouchListener((v, event) -> {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "+"));
+                    numclickBraccioLeft += 1;
+                    // PRESSED
+                    return false; // if you want to handle the touch event
+                case MotionEvent.ACTION_UP:
+                    ev3.sendMessage(mMotorBraccio.motorOff());
+                    // RELEASED
+                    return false; // if you want to handle the touch event
             }
+            return false;
         });
 
         mButtonBraccioRight = findViewById(R.id.motor2_right);
-        mButtonBraccioRight.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "-"));
-                        numclickBraccioRight += 1;
-                        // PRESSED
-                        return false; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        ev3.sendMessage(mMotorBraccio.motorOff());
-                        // RELEASED
-                        return false; // if you want to handle the touch event
-                }
-                return false;
+        mButtonBraccioRight.setOnTouchListener((v, event) -> {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "-"));
+                    numclickBraccioRight += 1;
+                    // PRESSED
+                    return false; // if you want to handle the touch event
+                case MotionEvent.ACTION_UP:
+                    ev3.sendMessage(mMotorBraccio.motorOff());
+                    // RELEASED
+                    return false; // if you want to handle the touch event
             }
+            return false;
         });
 
         mButtonManoLeft = findViewById(R.id.motor3_left);
-        mButtonManoLeft.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        ev3.sendMessage(mMotorMano.motorOn(mSpeed, "+"));
-                        numclickManoLeft += 1;
-                        // PRESSED
-                        return false; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        ev3.sendMessage(mMotorMano.motorOff());
-                        // RELEASED
-                        return false; // if you want to handle the touch event
-                }
-                return false;
+        mButtonManoLeft.setOnTouchListener((v, event) -> {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    ev3.sendMessage(mMotorMano.motorOn(mSpeed, "+"));
+                    numclickManoLeft += 1;
+                    // PRESSED
+                    return false; // if you want to handle the touch event
+                case MotionEvent.ACTION_UP:
+                    ev3.sendMessage(mMotorMano.motorOff());
+                    // RELEASED
+                    return false; // if you want to handle the touch event
             }
+            return false;
         });
 
         mButtonManoRight = findViewById(R.id.motor3_right);
-        mButtonManoRight.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        ev3.sendMessage(mMotorMano.motorOn(mSpeed, "-"));
-                        numclickManoRight += 1;
-                        // PRESSED
-                        return false; // if you want to handle the touch event
-                    case MotionEvent.ACTION_UP:
-                        ev3.sendMessage(mMotorMano.motorOff());
-                        // RELEASED
-                        return false; // if you want to handle the touch event
-                }
-                return false;
+        mButtonManoRight.setOnTouchListener((v, event) -> {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    ev3.sendMessage(mMotorMano.motorOn(mSpeed, "-"));
+                    numclickManoRight += 1;
+                    // PRESSED
+                    return false; // if you want to handle the touch event
+                case MotionEvent.ACTION_UP:
+                    ev3.sendMessage(mMotorMano.motorOff());
+                    // RELEASED
+                    return false; // if you want to handle the touch event
             }
+            return false;
         });
 
         mSpeedSwitch = findViewById(R.id.speed_switch);
-        mSpeedSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mSpeed == 5) {
-                    mSpeed = 15;
-                } else {
-                    mSpeed = 5;
-                }
+        mSpeedSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (mSpeed == 5) {
+                mSpeed = 15;
+            } else {
+                mSpeed = 5;
             }
         });
 
@@ -452,56 +379,8 @@ public class MotorActivity extends AppCompatActivity {
         });
 
         mCheckColorButton = findViewById(R.id.check_color_button);
-        mCheckColorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mCheckColorButton.setOnClickListener(v -> ev3.sendMessage("#arc#"));
 
-                ev3.sendMessage("#arc#");
-
-                if(numberofblock < 4){
-                    numberofblock += 1;
-                }
-            }
-        });
-
-    }
-
-    private void changeColorCheck(int c) {
-        switch (c) {
-            case 1:
-                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_black);
-                break;
-            case 2:
-                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_blue);
-                break;
-            case 4:
-                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_yellow);
-                break;
-            case 5:
-                mCheckColorButton.setBackgroundResource(R.drawable.round_cornered_button_red);
-                break;
-            default:
-                break;
-        }
-
-        //Aggiunta per vedere i blocchi presi (potrebbe essere migliorata in futuro)
-
-        switch (numberofblock%4){
-            case 1:
-                blockplaced[0].setImageResource(blockcolor);
-                break;
-            case 2:
-                blockplaced[1].setImageResource(blockcolor);
-                break;
-            case 3:
-                blockplaced[2].setImageResource(blockcolor);
-                break;
-            case 0:
-                blockplaced[3].setImageResource(blockcolor);
-                break;
-            default:
-                break;
-        }
     }
 
 }

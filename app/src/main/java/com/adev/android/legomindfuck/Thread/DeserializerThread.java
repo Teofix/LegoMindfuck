@@ -37,45 +37,6 @@ public class DeserializerThread extends Thread {
             String color = split[2];
             // mettere il colore nell'imageview del blocco preso e nell'array dei colori presi per fare poi il controllo in motor oppure dove??
         }
-
-        else if(split[0].equals("c")) {
-            String light = split[1];
-            int lightValue = Integer.parseInt(light);
-
-            sColorSensor.setLight(lightValue);
-
-            String color = split[2];
-
-            switch (color) {
-                case "Black":
-                    sColorSensor.setColor(1);
-                    break;
-                case "Blue":
-                    sColorSensor.setColor(2);
-                    break;
-                case "Green":
-                    sColorSensor.setColor(3);
-                    break;
-                case "Yellow":
-                    sColorSensor.setColor(4);
-                    break;
-                case "Red":
-                    sColorSensor.setColor(5);
-                    break;
-                case "White":
-                    sColorSensor.setColor(6);
-                    break;
-                case "Brown":
-                    sColorSensor.setColor(7);
-                    break;
-                default:
-                    sColorSensor.setColor(0);
-                    break;
-            }
-        } else if (split[0].equals("g")) {
-            Log.i("Ultrasonic", "" + split[1]);
-            sUltrasonicSensor.setDistance(Integer.parseInt(split[1]));
-        }
     }
 
 }
