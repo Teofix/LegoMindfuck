@@ -1,5 +1,7 @@
 package com.adev.android.legomindfuck.DataColors;
 
+import android.util.Log;
+
 public class Colors {
 
     private String[] colorTower = new String[4];
@@ -17,14 +19,17 @@ public class Colors {
     }
 
     public void setColorChecked(String color) {
+        if (checked >= 4) return;
         colorChecked[checked++] = color;
     }
 
     public boolean colorMatch() {
-        if (colorChecked.length != 3 || colorTower.length != 3) return false;
         boolean win = true;
         for (int i = 0; i < 4 && win; i++) {
+            if (colorChecked[i] == null || colorTower[i] == null) return false;
+            //Log.i("Match", "tower: " + colorTower[i] + "  check: " + colorChecked[i]);
             win = colorChecked[i].equals(colorTower[i]);
+            //Log.i("Match", "" + win);
         }
         return win;
     }
