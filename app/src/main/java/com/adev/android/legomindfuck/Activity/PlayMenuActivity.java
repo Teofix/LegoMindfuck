@@ -23,9 +23,6 @@ import static com.adev.android.legomindfuck.Statistics.players;
 
 public class PlayMenuActivity extends AppCompatActivity {
 
-    public static final ColorSensor sColorSensor = new ColorSensor();
-    public static final UltrasonicSensor sUltrasonicSensor = new UltrasonicSensor();
-
     ViewPager viewPager;
     PagerAdapter adapter;
     int[] images;

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -62,17 +64,19 @@ public class MotorActivity extends AppCompatActivity {
     private Integer numberofblock = 0;
     private ImageButton[] blockplaced = new ImageButton[4];
 
-    private int numclickManoLeft=0;
+    private int numclickManoLeft = 0;
 
-    private int numclickManoRight=0;
+    private int numclickManoRight = 0;
 
-    private int numclickBraccioLeft=0;
+    private int numclickBraccioLeft = 0;
 
-    private int numclickBraccioRight=0;
+    private int numclickBraccioRight = 0;
 
-    private int numclickBaseLeft=0;
+    private int numclickBaseLeft = 0;
 
-    private int numclickBaseRight=0;
+    private int numclickBaseRight = 0;
+
+    private boolean victory = false;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -85,6 +89,9 @@ public class MotorActivity extends AppCompatActivity {
         mStopButton = findViewById(R.id.stopButton);
         mStopButton.setOnClickListener(view -> {
             ev3.sendMessage("#apstop#");
+            victory = colors.colorMatch();
+            colors.wipeColors();
+            Log.i("Result", "res: " + victory);
             new Handler().post(() -> {
                 Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
                 i.putExtra("min", mins);
@@ -95,6 +102,7 @@ public class MotorActivity extends AppCompatActivity {
                 i.putExtra("numclickBraccioRight", numclickBraccioRight);
                 i.putExtra("numclickBaseLeft", numclickBaseLeft);
                 i.putExtra("numclickBaseRight", numclickBaseRight);
+                i.putExtra("result", victory);
                 startActivity(i);
                 finish();
             });
