@@ -2,7 +2,6 @@ package com.adev.android.legomindfuck.Thread;
 
 import android.util.Log;
 
-import static com.adev.android.legomindfuck.Activity.TowerActivity.colorTower;
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 
 public class DeserializerThread extends Thread {

@@ -1,12 +1,14 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuck.SysMessage;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -311,7 +314,58 @@ public class MotorActivity extends AppCompatActivity {
         });
 
         mCheckColorButton = findViewById(R.id.check_color_button);
-        mCheckColorButton.setOnClickListener(v -> ev3.sendMessage("#arc#"));
+        mCheckColorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ev3.sendMessage("#arc#");
+                DialogColorCheck check = new DialogColorCheck();
+                check.setContent("Controllo colore", "Seo giusto?");
+                check.show(getSupportFragmentManager(), "");
+
+            }
+        });
+
+    }
+
+    public static class DialogColorCheck extends DialogFragment {
+
+        private SysMessage mex;
+
+        public void setContent(String title, String description)   {
+            mex = new SysMessage();
+            mex.setText(title);
+            mex.setDescription(description);
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+            builder.setMessage(mex.getDescription());
+            builder.setTitle(mex.getText());
+            builder.setIcon(R.drawable.baseline_warning_black);
+            builder.setCancelable(true);
+
+            builder.setNegativeButton("Check again", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    colors.wipeLastColor();
+                    dialog.cancel();
+                }
+            });
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            android.app.AlertDialog alert = builder.create();
+            alert.show();
+            return alert;
+
+        }
 
     }
 

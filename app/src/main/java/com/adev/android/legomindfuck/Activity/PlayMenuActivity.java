@@ -23,6 +23,7 @@ import static com.adev.android.legomindfuck.Statistics.players;
 
 public class PlayMenuActivity extends AppCompatActivity {
 
+
     ViewPager viewPager;
     PagerAdapter adapter;
     int[] images;
