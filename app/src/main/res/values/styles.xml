@@ -6,10 +6,8 @@
         <item name="colorPrimary">@color/mGreen</item>
         <item name="colorPrimaryDark">@color/mLightGreen</item>
         <item name="colorAccent">@color/mVeryGreen</item>
+        <item name="android:background">@drawable/theme_background</item>
+        <item name="android:drawablePadding">5dp</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
