@@ -20,6 +20,7 @@ public class SocketManager {
     private String ip;
     private SocketManager istance = this;
     private Object access = new Object();
+    private int i = 0;
 
     public SocketManager(String ip){
         setIp(ip);
@@ -40,16 +41,15 @@ public class SocketManager {
                 socket = new Socket();
                 try {
                     socket.connect(address);
+                    Log.i("Connect", "thread has bind the socket");
+                    socketReady = true;
+                    receive();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Log.i("Connect", "thread has bind the socket");
-                socketReady = true;
             }
-
         };
         opener.start();
-        receive();
     }
 
     private void receive() {
