@@ -16,8 +16,6 @@ import android.widget.Switch;
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
 
-import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
-
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
 public class MultiMotorActivityP2 extends AppCompatActivity {
@@ -170,21 +168,7 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
             public void onClick(View v) {
                 ev3.sendMessage(mMotorMano.motorOn(10, "+"));
 
-                Thread t = new Thread() {
-                    private Boolean finished = false;
-
-                    @Override
-                    public void run() {
-                        while(!finished) {
-                            if(sColorSensor.getColor() > 0) {
-                                ev3.sendMessage(mMotorMano.motorOff());
-                                finished = true;
-                            }
-                        }
-                        Log.i("thread", "found" + sColorSensor.getColor());
-                    }
-                };
-                t.start();
+                // DA FARE
             }
         });
     }

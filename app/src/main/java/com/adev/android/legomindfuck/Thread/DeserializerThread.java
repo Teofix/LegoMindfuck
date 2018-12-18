@@ -2,8 +2,6 @@ package com.adev.android.legomindfuck.Thread;
 
 import android.util.Log;
 
-import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sColorSensor;
-import static com.adev.android.legomindfuck.Activity.PlayMenuActivity.sUltrasonicSensor;
 import static com.adev.android.legomindfuck.Activity.TowerActivity.colorTower;
 
 public class DeserializerThread extends Thread {
