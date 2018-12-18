@@ -44,10 +44,9 @@
         android:id="@+id/conn_guide"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
         android:fontFamily="@font/fjalla_one"
         android:text="TEXT"
         android:textAlignment="center"
@@ -56,8 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ip_num2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/ip_num"
@@ -74,22 +72,6 @@
         android:textColorHint="@color/mGrey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <EditText
-        android:id="@+id/ip_num2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:digits="0123456789."
-        android:ems="10"
-        android:hint="Confirm robot IP"
-        android:inputType="textPersonName"
-        android:textColor="@color/mColorBlack"
-        android:textColorHighlight="@color/mColorBlack"
-        android:textColorHint="@color/mGrey"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ip_num" />
 
     <ImageView
         android:id="@+id/imageView2"

@@ -5,7 +5,9 @@
     <color name="colorAccent">#004aca</color>
     <color name="sliderBack">#d7d7d7</color>
 
+    <color name="mRedTrasparent">#e1c4140e</color>
     <color name="mGreen">#13782E</color>
+    <color name="mGreenTrasparent">#e213782e</color>
     <color name="mLightGreen">#48B084</color>
     <color name="mVeryGreen">#02681d</color>
     <color name="mGrey">#545759</color>
