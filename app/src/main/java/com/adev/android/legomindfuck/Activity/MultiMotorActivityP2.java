@@ -166,9 +166,6 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
         mCheckColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ev3.sendMessage(mMotorMano.motorOn(10, "+"));
-
-                // DA FARE
             }
         });
     }

@@ -3,6 +3,7 @@ package com.adev.android.legomindfuck.Thread;
 import android.util.Log;
 
 import static com.adev.android.legomindfuck.Activity.TowerActivity.colorTower;
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 
 public class DeserializerThread extends Thread {
 
@@ -26,14 +27,14 @@ public class DeserializerThread extends Thread {
         if (split[0].equals("#r") && split[1].equals("t") && split[6].equals("#")) {
 
             for (int i = 2; i < 6; i++) {
-                colorTower[i-2] = split[i];
+                colors.setColorTower(split[i], i-2);
                 Log.i("Color:", split[i]);
             }
         }
 
         else if (split[0].equals("#r") && split[1].equals("c") && split[3].equals("#")) {
-            String color = split[2];
-            // mettere il colore nell'imageview del blocco preso e nell'array dei colori presi per fare poi il controllo in motor oppure dove??
+
+            colors.setColorChecked(split[2]);
         }
     }
 

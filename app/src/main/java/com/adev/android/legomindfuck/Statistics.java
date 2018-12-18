@@ -6,6 +6,4 @@ public class Statistics {
 
     public static int[] player = new int[2];
 
-
-
 }

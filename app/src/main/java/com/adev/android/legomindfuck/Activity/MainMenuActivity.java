@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.adev.android.legomindfuck.DataColors.Colors;
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
 import com.adev.android.legomindfuck.Thread.SocketManager;
@@ -26,6 +27,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button segnalazioni;
 
     public static SocketManager ev3;
+    public static Colors colors = new Colors();
 
     @SuppressLint("ResourceAsColor")
     @Override
