@@ -20,6 +20,9 @@
             android:name=".Activity.EndGameActivity"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".Activity.WelcomeActivity"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".Activity.MainMenuActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -31,20 +34,20 @@
         <activity
             android:name=".Activity.PlayMenuActivity"
             android:parentActivityName=".Activity.MainMenuActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.SegnalazioniActivity"
             android:parentActivityName=".Activity.MainMenuActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.MultiplayerSelectionActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.MultiMotorActivityP1"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.MultiMotorActivityP2"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.ConnectionTestActivity"
             android:parentActivityName=".Activity.MainMenuActivity"
@@ -53,7 +56,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

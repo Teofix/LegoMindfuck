@@ -5,4 +5,15 @@
     <string name="motor_c">Braccio</string>
     <string name="motor_d">Mano</string>
     <string name="end_game">Statistiche</string>
+
+    <!-- Stringhe welcome primo accesso -->
+    <string name="welcome_play">Accedi al menù di gioco. Scegli fra le varie modalità presenti scorrendo fra le pagine. Premi PLAY quando hai deciso.</string>
+    <string name="welcome_instructions">Accedi alla pagina contenente le istruzioni complete su come costruire il robot ev3 e come usare l\'app nel dettaglio.</string>
+    <string name="welcome_segnalazioni">Accedi alla pagina per l\'invio delle segnalazioni. Se hai dei dubbi o dei problemi tecnici con la nostra applicazione sentito libero di inviarci un messaggio.</string>
+    <string name="welcome_connection">Accedi alla pagina per stabilire una connessione con il robot ev3. Inserisci l\'indirizzo IP, che puoi trovare navigando fra i menù del robot, e premi TEST.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_onboarding">OnboardingActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

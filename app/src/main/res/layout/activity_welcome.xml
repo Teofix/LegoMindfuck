@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.WelcomeActivity"
+    android:background="@color/sliderBack">
+
+    <ScrollView
+        android:layout_width="395dp"
+        android:layout_height="643dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/play_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:background="@drawable/round_cornered_button"
+                android:fontFamily="@font/fjalla_one"
+                android:text="PLAY"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/round_background_white"
+                android:fontFamily="@font/fjalla_one"
+                android:paddingStart="32dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="32dp"
+                android:paddingBottom="8dp"
+                android:text="@string/welcome_play"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/mount_instructions"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/round_cornered_button"
+                android:fontFamily="@font/fjalla_one"
+                android:text="Istruzioni"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/round_background_white"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:fontFamily="@font/fjalla_one"
+                android:textAlignment="center"
+                android:text="@string/welcome_instructions"
+                android:textColor="@android:color/black"/>
+
+            <Button
+                android:id="@+id/segnalazioni"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/round_cornered_button"
+                android:fontFamily="@font/fjalla_one"
+                android:text="Segnalazioni"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/round_background_white"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:fontFamily="@font/fjalla_one"
+                android:textAlignment="center"
+                android:text="@string/welcome_segnalazioni"
+                android:textColor="@android:color/black"/>
+
+            <Button
+                android:id="@+id/connection"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/round_cornered_button"
+                android:fontFamily="@font/fjalla_one"
+                android:text="CONNECT"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/round_background_white"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:fontFamily="@font/fjalla_one"
+                android:textAlignment="center"
+                android:text="@string/welcome_connection"
+                android:textColor="@android:color/black"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

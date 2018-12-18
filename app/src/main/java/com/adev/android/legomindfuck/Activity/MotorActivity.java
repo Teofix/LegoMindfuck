@@ -1,15 +1,16 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
-import android.support.v4.app.DialogFragment;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,13 +23,12 @@ import android.widget.TextView;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
-import com.adev.android.legomindfuck.SysMessage;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -66,17 +66,19 @@ public class MotorActivity extends AppCompatActivity {
     private Integer numberofblock = 0;
     private ImageButton[] blockplaced = new ImageButton[4];
 
-    private int numclickManoLeft=0;
+    private int numclickManoLeft = 0;
 
-    private int numclickManoRight=0;
+    private int numclickManoRight = 0;
 
-    private int numclickBraccioLeft=0;
+    private int numclickBraccioLeft = 0;
 
-    private int numclickBraccioRight=0;
+    private int numclickBraccioRight = 0;
 
-    private int numclickBaseLeft=0;
+    private int numclickBaseLeft = 0;
 
-    private int numclickBaseRight=0;
+    private int numclickBaseRight = 0;
+
+    private boolean victory = false;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -89,6 +91,9 @@ public class MotorActivity extends AppCompatActivity {
         mStopButton = findViewById(R.id.stopButton);
         mStopButton.setOnClickListener(view -> {
             ev3.sendMessage("#apstop#");
+            victory = colors.colorMatch();
+            colors.wipeColors();
+            Log.i("Result", "res: " + victory);
             new Handler().post(() -> {
                 Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
                 i.putExtra("min", mins);
@@ -99,6 +104,7 @@ public class MotorActivity extends AppCompatActivity {
                 i.putExtra("numclickBraccioRight", numclickBraccioRight);
                 i.putExtra("numclickBaseLeft", numclickBaseLeft);
                 i.putExtra("numclickBaseRight", numclickBaseRight);
+                i.putExtra("result", victory);
                 startActivity(i);
                 finish();
             });
@@ -305,58 +311,8 @@ public class MotorActivity extends AppCompatActivity {
         });
 
         mCheckColorButton = findViewById(R.id.check_color_button);
-        mCheckColorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mCheckColorButton.setOnClickListener(v -> ev3.sendMessage("#arc#"));
 
-                ev3.sendMessage("#arc#");
-                DialogColorCheck check = new DialogColorCheck();
-                check.setContent("Controllo colore", "Seo giusto?");
-                check.show(getSupportFragmentManager(), "");
-
-            }
-        });
-
-    }
-
-    public static class DialogColorCheck extends DialogFragment {
-
-        private SysMessage mex;
-
-        public void setContent(String title, String description)   {
-            mex = new SysMessage();
-            mex.setText(title);
-            mex.setDescription(description);
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
-            builder.setMessage(mex.getDescription());
-            builder.setTitle(mex.getText());
-            builder.setIcon(R.drawable.baseline_warning_black);
-            builder.setCancelable(true);
-
-            builder.setNegativeButton("Check again", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //colors.wipeLastColor();
-                    dialog.cancel();
-                }
-            });
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            android.app.AlertDialog alert = builder.create();
-            alert.show();
-            return alert;
-
-        }
     }
 
 }
