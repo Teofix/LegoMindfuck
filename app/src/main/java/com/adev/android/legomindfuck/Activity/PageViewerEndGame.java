@@ -16,12 +16,12 @@ public class PageViewerEndGame extends PagerAdapter {
 
     private Context context;
     private String[] title;
-    private Integer[] manoDX;
-    private Integer[] manoSX;
-    private Integer[] braccioDX;
-    private Integer[] braccioSX;
-    private Integer[] baseDX;
-    private Integer[] baseSX;
+    private int[] manoDX;
+    private int[] manoSX;
+    private int[] braccioDX;
+    private int[] braccioSX;
+    private int[] baseDX;
+    private int[] baseSX;
     private LayoutInflater inflater;
 
     private TextView t;
@@ -32,7 +32,7 @@ public class PageViewerEndGame extends PagerAdapter {
     private TextView tbaseDX;
     private TextView tbaseSX;
 
-    public PageViewerEndGame (Context context, String[] title, Integer[] manoDX, Integer[] manoSX, Integer[] braccioDX, Integer[] braccioSX, Integer[] baseDX, Integer[] baseSX){
+    public PageViewerEndGame (Context context, String[] title, int[] manoDX, int[] manoSX, int[] braccioDX, int[] braccioSX, int[] baseDX, int[] baseSX){
         this.context = context;
         this.title = title;
         this.manoDX = manoDX;
@@ -54,7 +54,7 @@ public class PageViewerEndGame extends PagerAdapter {
         return view == o;
     }
 
-    @NonNull
+
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
@@ -71,7 +71,7 @@ public class PageViewerEndGame extends PagerAdapter {
         tmanoSX.setText(manoSX[position]);
 
         tbraccioDX = (TextView) itemView.findViewById(R.id.clickbracciodx);
-        tbaseDX.setText(baseDX[position]);
+        tbaseDX.setText(braccioDX[position]);
         tbraccioSX = (TextView) itemView.findViewById(R.id.clickbracciosx);
         tbaseSX.setText(braccioSX[position]);
 

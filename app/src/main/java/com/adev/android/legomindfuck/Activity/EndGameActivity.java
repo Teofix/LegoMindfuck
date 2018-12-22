@@ -74,32 +74,32 @@ public class EndGameActivity extends AppCompatActivity {
                 "TEMPO DI CLICK",
         };
 
-        Integer[] manoDX = new Integer[]{
+        int[] manoDX = new int[]{
                 numclickManoRight,
                 totaltimeManoRight,
         };
 
-        Integer[] manoSX = new Integer[]{
+        int[] manoSX = new int[]{
                 numclickManoLeft,
                 totaltimeManoLeft,
         };
 
-        Integer[] braccioDX = new Integer[]{
+        int[] braccioDX = new int[]{
                 numclickBraccioRight,
                 totaltimeBraccioRight,
         };
 
-        Integer[] braccioSX = new Integer[]{
+        int[] braccioSX = new int[]{
                 numclickBraccioLeft,
                 totaltimeBraccioLeft,
         };
 
-        Integer[] baseDX = new Integer[]{
+        int[] baseDX = new int[]{
                 numclickBaseRight,
                 totaletimeBaseRight,
         };
 
-        Integer[] baseSX = new Integer[]{
+        int[] baseSX = new int[]{
                 numclickBaseLeft,
                 totaltimeBaseLeft,
         };
