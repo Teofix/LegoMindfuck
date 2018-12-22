@@ -1,7 +1,6 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -41,7 +40,6 @@ public class PageViewerEndGame extends PagerAdapter {
         this.braccioSX = braccioSX;
         this.baseDX = baseDX;
         this.baseSX = baseSX;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -50,17 +48,14 @@ public class PageViewerEndGame extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+    public boolean isViewFromObject(View view, Object o) {
         return view == o;
     }
 
-    @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
-        container.removeAllViews();
-
-        View itemView = inflater.inflate(R.layout.page_endgame, container, false);
+    public Object instantiateItem(ViewGroup container, int position) {
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View itemView = inflater.inflate(R.layout.page_endgame, container, false);
 
         t = (TextView) itemView.findViewById(R.id.textView7);
         t.setText(title[position]);
@@ -80,7 +75,8 @@ public class PageViewerEndGame extends PagerAdapter {
         tbaseSX = (TextView) itemView.findViewById(R.id.clickbasesx);
         tbaseSX.setText(baseSX[position]);
 
-        container.addView(itemView);
+
+        ((ViewPager) container).addView(itemView);
 
         return itemView;
     }

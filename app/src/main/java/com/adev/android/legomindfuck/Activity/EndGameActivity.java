@@ -104,16 +104,16 @@ public class EndGameActivity extends AppCompatActivity {
                 totaltimeBaseLeft,
         };
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager_end);
         adapter = new PageViewerEndGame(EndGameActivity.this, title, manoDX, manoSX, braccioDX, braccioSX, baseDX, baseSX);
         viewPager.setAdapter(adapter);
 
         TextView result = findViewById(R.id.result);
 
-        if(victory){
+        if (victory) {
             result.setText("HAI VINTO!");
             result.setBackgroundResource(R.drawable.round_background_green);
-        }else{
+        } else {
             result.setText("HAI PERSO!");
             result.setBackgroundResource(R.drawable.round_background_red);
         }
@@ -125,8 +125,6 @@ public class EndGameActivity extends AppCompatActivity {
         String[] formatS = secs.toString().split("\\.");
         String tempototale = formatM[0] + ":" + formatS[0] + "," + formatS[1].charAt(0);
         timeText.setText(tempototale);
-
-        ViewPager page = findViewById(R.id.pager_end);
 
         Log.i("TAG",numclickBaseLeft.toString());
         Log.i("TAG",numclickBaseRight.toString());
