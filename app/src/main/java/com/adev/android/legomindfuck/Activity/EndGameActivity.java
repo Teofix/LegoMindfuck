@@ -104,7 +104,7 @@ public class EndGameActivity extends AppCompatActivity {
                 totaltimeBaseLeft,
         };
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager_end);
         adapter = new PageViewerEndGame(EndGameActivity.this, title, manoDX, manoSX, braccioDX, braccioSX, baseDX, baseSX);
         viewPager.setAdapter(adapter);
 
@@ -126,7 +126,6 @@ public class EndGameActivity extends AppCompatActivity {
         String tempototale = formatM[0] + ":" + formatS[0] + "," + formatS[1].charAt(0);
         timeText.setText(tempototale);
 
-        ViewPager page = findViewById(R.id.pager_end);
 
         Log.i("TAG",numclickBaseLeft.toString());
         Log.i("TAG",numclickBaseRight.toString());
