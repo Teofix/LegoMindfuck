@@ -1,7 +1,6 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -106,7 +105,7 @@ public class EndGameActivity extends AppCompatActivity {
         };
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        adapter = new PageViewerEndGame(EndGameActivity.this, title, manoDX, manoSX,braccioDX, braccioSX, baseDX, baseSX);
+        adapter = new PageViewerEndGame(EndGameActivity.this, title, manoDX, manoSX, braccioDX, braccioSX, baseDX, baseSX);
         viewPager.setAdapter(adapter);
 
         TextView result = findViewById(R.id.result);

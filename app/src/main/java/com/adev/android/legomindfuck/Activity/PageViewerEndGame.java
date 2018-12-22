@@ -33,14 +33,15 @@ public class PageViewerEndGame extends PagerAdapter {
     private TextView tbaseSX;
 
     public PageViewerEndGame (Context context, String[] title, Integer[] manoDX, Integer[] manoSX, Integer[] braccioDX, Integer[] braccioSX, Integer[] baseDX, Integer[] baseSX){
-        this.context=context;
-        this.title=title;
-        this.manoDX=manoDX;
-        this.manoSX=manoSX;
-        this.braccioDX=braccioDX;
-        this.braccioSX=braccioSX;
-        this.baseDX=baseDX;
-        this.baseSX=baseSX;
+        this.context = context;
+        this.title = title;
+        this.manoDX = manoDX;
+        this.manoSX = manoSX;
+        this.braccioDX = braccioDX;
+        this.braccioSX = braccioSX;
+        this.baseDX = baseDX;
+        this.baseSX = baseSX;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -49,27 +50,37 @@ public class PageViewerEndGame extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object o) {
-        return view==o;
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+        return view == o;
     }
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View itemView = inflater.inflate(R.layout.page_endgame, container, false);
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        t= (TextView) itemView.findViewById(R.id.textView7);
-        tmanoDX= (TextView) itemView.findViewById(R.id.clickmanodx);
-        tmanoSX= (TextView) itemView.findViewById(R.id.clickmanosx);
+        container.removeAllViews();
 
-        tbraccioDX= (TextView) itemView.findViewById(R.id.clickbracciodx);
-        tbraccioSX= (TextView) itemView.findViewById(R.id.clickbracciosx);
+        View itemView = inflater.inflate(R.layout.page_endgame, container, false);
 
-        tbaseDX= (TextView) itemView.findViewById(R.id.clickbasedx);
-        tbaseSX= (TextView) itemView.findViewById(R.id.clickbasesx);
+        t = (TextView) itemView.findViewById(R.id.textView7);
+        t.setText(title[position]);
 
+        tmanoDX = (TextView) itemView.findViewById(R.id.clickmanodx);
+        tmanoDX.setText(manoDX[position]);
+        tmanoSX = (TextView) itemView.findViewById(R.id.clickmanosx);
+        tmanoSX.setText(manoSX[position]);
 
-        ((ViewPager) container).addView(itemView);
+        tbraccioDX = (TextView) itemView.findViewById(R.id.clickbracciodx);
+        tbaseDX.setText(baseDX[position]);
+        tbraccioSX = (TextView) itemView.findViewById(R.id.clickbracciosx);
+        tbaseSX.setText(braccioSX[position]);
+
+        tbaseDX = (TextView) itemView.findViewById(R.id.clickbasedx);
+        tbaseDX.setText(baseDX[position]);
+        tbaseSX = (TextView) itemView.findViewById(R.id.clickbasesx);
+        tbaseSX.setText(baseSX[position]);
+
+        container.addView(itemView);
 
         return itemView;
     }

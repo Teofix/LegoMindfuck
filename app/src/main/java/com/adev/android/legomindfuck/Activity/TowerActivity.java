@@ -7,21 +7,21 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 import com.adev.android.legomindfuck.R;
-
-import static com.adev.android.legomindfuck.Statistics.players;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
+import static com.adev.android.legomindfuck.Statistics.players;
+
 public class TowerActivity extends AppCompatActivity {
 
     Timer timer = new Timer();
-    private Double time = 5.0;
+    private Double time = 4.0;
     private TextView timeText;
 
     @Override
@@ -101,7 +101,7 @@ public class TowerActivity extends AppCompatActivity {
             }
             startActivity(i);
             finish();
-        }, 6000);
+        }, 5000);
 
     }
 }
