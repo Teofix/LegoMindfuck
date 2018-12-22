@@ -42,7 +42,7 @@
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/arrow"
-        android:rotation="90"
+        android:rotation="270"
         app:layout_constraintBottom_toBottomOf="@+id/clickmanodx"
         app:layout_constraintStart_toEndOf="@+id/clickmanodx"
         app:layout_constraintTop_toTopOf="@+id/clickmanodx" />
@@ -53,7 +53,7 @@
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/arrow"
-        android:rotation="90"
+        android:rotation="270"
         app:layout_constraintBottom_toBottomOf="@+id/clickbracciodx"
         app:layout_constraintStart_toEndOf="@+id/clickbracciodx"
         app:layout_constraintTop_toTopOf="@+id/clickbracciodx" />
