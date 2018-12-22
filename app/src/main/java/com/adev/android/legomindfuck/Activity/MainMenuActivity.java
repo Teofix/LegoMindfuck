@@ -22,7 +22,7 @@ import com.adev.android.legomindfuck.Thread.SocketManager;
 public class MainMenuActivity extends AppCompatActivity {
 
     private Button play;
-    private Button instr;
+    private Button instruction;
     private Button connection;
     private Button segnalazioni;
 
@@ -47,7 +47,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
         play = findViewById(R.id.play_mode);
-        instr = findViewById(R.id.mount_instructions);
+        instruction = findViewById(R.id.mount_instructions);
         connection = findViewById(R.id.connection);
         segnalazioni = findViewById(R.id.segnalazioni);
 
@@ -68,6 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        instruction.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), InstructionActivity.class)));
 
         segnalazioni.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), SegnalazioniActivity.class);

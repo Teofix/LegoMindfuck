@@ -14,6 +14,9 @@
             android:name=".Activity.MotorActivity"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".Activity.InstructionActivity"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".Activity.TowerActivity"
             android:theme="@style/AppTheme" />
         <activity
