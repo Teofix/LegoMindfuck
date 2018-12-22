@@ -45,7 +45,7 @@ public class PageViewerEndGame extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return title.length;
     }
 
     @Override
