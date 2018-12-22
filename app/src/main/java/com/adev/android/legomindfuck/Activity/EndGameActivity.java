@@ -69,37 +69,37 @@ public class EndGameActivity extends AppCompatActivity {
         }
 
         //set adapter:
-        String[] title = new String[]{
+        String[] title = new String[] {
                 "NUMERO DI CLICK:",
                 "TEMPO DI CLICK",
         };
 
-        int[] manoDX = new int[]{
+        int[] manoDX = {
                 numclickManoRight,
                 totaltimeManoRight,
         };
 
-        int[] manoSX = new int[]{
+        int[] manoSX = {
                 numclickManoLeft,
                 totaltimeManoLeft,
         };
 
-        int[] braccioDX = new int[]{
+        int[] braccioDX = {
                 numclickBraccioRight,
                 totaltimeBraccioRight,
         };
 
-        int[] braccioSX = new int[]{
+        int[] braccioSX = {
                 numclickBraccioLeft,
                 totaltimeBraccioLeft,
         };
 
-        int[] baseDX = new int[]{
+        int[] baseDX = {
                 numclickBaseRight,
                 totaletimeBaseRight,
         };
 
-        int[] baseSX = new int[]{
+        int[] baseSX = {
                 numclickBaseLeft,
                 totaltimeBaseLeft,
         };
