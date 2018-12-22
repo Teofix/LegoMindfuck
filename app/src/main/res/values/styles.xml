@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/mGreen</item>
-        <item name="colorPrimaryDark">@color/mLightGreen</item>
+        <item name="colorPrimaryDark">@color/mColorWhite</item>
         <item name="colorAccent">@color/mVeryGreen</item>
         <item name="android:background">@drawable/theme_background</item>
         <item name="android:drawablePadding">5dp</item>

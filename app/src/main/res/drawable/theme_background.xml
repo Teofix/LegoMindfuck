@@ -4,7 +4,7 @@
     <!-- Inset -->
     <item android:top="1dp" android:left="1dp" android:right="1dp" android:bottom="1dp">
         <shape android:shape="rectangle">
-            <solid android:color="#c4dcbe" />
+            <solid android:color="#ffffff" />
         </shape>
     </item>
 
