@@ -4,22 +4,21 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
 import com.adev.android.legomindfuck.R;
 
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
-import static com.adev.android.legomindfuck.Statistics.players;
 
 public class PlayMenuActivity extends AppCompatActivity {
 
@@ -41,6 +40,8 @@ public class PlayMenuActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //TODO: sistemare colore backgroud
+        //TODO: cosa ci mettiamo in tutorial?? togliamo o mettiamo una semplice immagine di come si gioca e cosa fanno i tasti?
 
         images = new int[]{R.drawable.tutorial,
                 R.drawable.single_player,
@@ -62,24 +63,19 @@ public class PlayMenuActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         selector = (Button) findViewById(R.id.mode_selector);
-        selector.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ev3.isSocketReady()) {
-                    switch (viewPager.getCurrentItem()) {
-                        case 0:
-                            break;
-                        case 1:
-                            players = 1;
-                            Intent i2 = new Intent(getApplicationContext(), TowerActivity.class);
-                            startActivity(i2);
-                            break;
-                        case 2:
-                            players = 2;
-                            Intent i3 = new Intent(getApplicationContext(), TowerActivity.class);
-                            startActivity(i3);
-                            break;
-                    }
+        selector.setOnClickListener(v -> {
+            if (ev3.isSocketReady()) {
+                switch (viewPager.getCurrentItem()) {
+                    case 0:
+                        break;
+                    case 1:
+                        colors.setPlayers(1);
+                        startActivity(new Intent(getApplicationContext(), TowerActivity.class));
+                        break;
+                    case 2:
+                        colors.setPlayers(2);
+                        startActivity(new Intent(getApplicationContext(), MultiplayerSelectionActivity.class));
+                        break;
                 }
             }
         });

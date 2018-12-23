@@ -34,17 +34,17 @@ public class InstructionActivity extends AppCompatActivity {
             webSettings.setJavaScriptEnabled(true);
             view.loadUrl("file:///android_asset/HowTo.html");
             view.setVisibility(View.VISIBLE);
-        } );
+        });
 
         hardware.setOnClickListener(view2 -> {
             software.setVisibility(View.INVISIBLE);
             hardware.setVisibility(View.INVISIBLE);
             WebSettings webSettings = view.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            //TODO: sostituire con istruzioni di montaggio
-            view.loadUrl("file:///android_asset/HowTo.html");
+            //TODO: sostituire con istruzioni di montaggio più snelle
+            view.loadUrl("file:///android_asset/Build.html");
             view.setVisibility(View.VISIBLE);
-        } );
+        });
 
     }
 

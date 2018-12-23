@@ -28,6 +28,8 @@ public class MultiMotorActivityP1 extends AppCompatActivity {
 
     private int mSpeed = 5;
 
+    //TODO: mettere a posto P1 e P2 con i rispettivi bottoni di check stop e controllo motori
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

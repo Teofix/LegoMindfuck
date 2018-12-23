@@ -16,11 +16,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
-import static com.adev.android.legomindfuck.Statistics.players;
 
 public class TowerActivity extends AppCompatActivity {
 
     Timer timer = new Timer();
+    //TODO: decidere i secondi per la configurazione della torre
     private Double time = 4.0;
     private TextView timeText;
 
@@ -93,8 +93,8 @@ public class TowerActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             Intent i;
-            if (players == 2) {
-                i = new Intent(getApplicationContext(), MultiplayerSelectionActivity.class);
+            if (colors.getPlayers() == 2) {
+                i = new Intent(getApplicationContext(), MultiMotorActivityP1.class);
             }
             else {
                 i = new Intent(getApplicationContext(), MotorActivity.class);

@@ -16,6 +16,8 @@ public class SegnalazioniActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segnalazioni);
 
+        //TODO: togliere la textview della email e lasciare solop il testo
+
         ImageButton sender = (ImageButton) findViewById(R.id.sendbutton);
         EditText body = (EditText) findViewById(R.id.body);
         EditText email = (EditText) findViewById(R.id.email);

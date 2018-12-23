@@ -11,16 +11,11 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
-import android.util.Log;
-
 public class SocketManager {
 
     private Socket socket = null;
     private Boolean socketReady = false;
     private String ip;
-    private SocketManager istance = this;
-    private Object access = new Object();
-    private int i = 0;
 
     public SocketManager(String ip){
         setIp(ip);
@@ -31,7 +26,7 @@ public class SocketManager {
 
             @Override
             public void run() {
-                Log.i("Socket", "trying to connect()");
+                //Log.i("Socket", "trying to connect()");
                 SocketAddress address = null;
                 try {
                     address = new InetSocketAddress(InetAddress.getByName(ip), 8888);
@@ -41,7 +36,7 @@ public class SocketManager {
                 socket = new Socket();
                 try {
                     socket.connect(address);
-                    Log.i("Connect", "thread has bind the socket");
+                    //Log.i("Connect", "thread has bind the socket");
                     socketReady = true;
                     receive();
                 } catch (IOException e) {
@@ -58,7 +53,7 @@ public class SocketManager {
 
             @Override
             public void run() {
-                Log.i("Socket", "trying to receive()");
+                //Log.i("Socket", "trying to receive()");
                 while(!socketReady) {}
                 while (socketReady) {
                     try {
@@ -68,7 +63,7 @@ public class SocketManager {
                         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         while ((read = in.read(buffer)) != -1) {
                             message = new String(buffer, 0, read);
-                            Log.i("Receiver", "thread has read:" + message);
+                            //Log.i("Receiver", "thread has read:" + message);
                             DeserializerThread deserializerThread = new DeserializerThread(message);
                             deserializerThread.start();
                         }
@@ -87,7 +82,7 @@ public class SocketManager {
         Thread sender = new Thread() {
             @Override
             public void run() {
-                    Log.i("Socket", "trying to send()");
+                    //Log.i("Socket", "trying to send()");
                     while (!socketReady) {}
                     try {
                         PrintWriter outToServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -96,7 +91,7 @@ public class SocketManager {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Log.i("Sender", "thread has sent: " + message);
+                    //Log.i("Sender", "thread has sent: " + message);
                 }
         };
         sender.start();

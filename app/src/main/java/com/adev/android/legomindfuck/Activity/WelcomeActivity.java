@@ -1,15 +1,12 @@
 package com.adev.android.legomindfuck.Activity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Button;
 
 import com.adev.android.legomindfuck.R;
-
-import static java.security.AccessController.getContext;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -23,9 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         mCloseButton = findViewById(R.id.closeButton);
-        mCloseButton.setOnClickListener(v -> {
-            super.finish();
-        });
+        mCloseButton.setOnClickListener(v -> super.finish());
     }
 
     @Override
