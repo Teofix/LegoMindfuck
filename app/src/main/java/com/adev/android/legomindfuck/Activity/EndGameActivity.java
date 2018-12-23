@@ -33,7 +33,7 @@ public class EndGameActivity extends AppCompatActivity {
     private Integer totaltimeBaseLeft = 0;
 
     private Integer numclickBaseRight = 0;
-    private Integer totaletimeBaseRight = 0;
+    private Integer totaltimeBaseRight = 0;
 
     private Boolean victory = false;
 
@@ -55,7 +55,7 @@ public class EndGameActivity extends AppCompatActivity {
             numclickBaseLeft = datipassati.getInt("numclickBaseLeft");
             totaltimeBaseLeft = datipassati.getInt("totaltimeBaseLeft");
             numclickBaseRight = datipassati.getInt("numclickBaseRight");
-            totaletimeBaseRight = datipassati.getInt("totaltimeBaseRight");
+            totaltimeBaseRight = datipassati.getInt("totaltimeBaseRight");
             numclickBraccioLeft = datipassati.getInt("numclickBraccioLeft");
             totaltimeBraccioLeft = datipassati.getInt("totaltimeBraccioLeft");
             numclickBraccioRight = datipassati.getInt("numclickBraccioRight");
@@ -67,46 +67,6 @@ public class EndGameActivity extends AppCompatActivity {
             victory = datipassati.getBoolean("result");
 
         }
-
-        //set adapter:
-        String[] title = new String[] {
-                "NUMERO DI CLICK:",
-                "TEMPO DI CLICK",
-        };
-
-        int[] manoDX = {
-                numclickManoRight,
-                totaltimeManoRight,
-        };
-
-        int[] manoSX = {
-                numclickManoLeft,
-                totaltimeManoLeft,
-        };
-
-        int[] braccioDX = {
-                numclickBraccioRight,
-                totaltimeBraccioRight,
-        };
-
-        int[] braccioSX = {
-                numclickBraccioLeft,
-                totaltimeBraccioLeft,
-        };
-
-        int[] baseDX = {
-                numclickBaseRight,
-                totaletimeBaseRight,
-        };
-
-        int[] baseSX = {
-                numclickBaseLeft,
-                totaltimeBaseLeft,
-        };
-
-        viewPager = (ViewPager) findViewById(R.id.pager_end);
-        adapter = new PageViewerEndGame(EndGameActivity.this, title, manoDX, manoSX, braccioDX, braccioSX, baseDX, baseSX);
-        viewPager.setAdapter(adapter);
 
         TextView result = findViewById(R.id.result);
 
@@ -126,13 +86,36 @@ public class EndGameActivity extends AppCompatActivity {
         String tempototale = formatM[0] + ":" + formatS[0] + "," + formatS[1].charAt(0);
         timeText.setText(tempototale);
 
+        //Riempio i campi degli score
 
-        Log.i("TAG",numclickBaseLeft.toString());
-        Log.i("TAG",numclickBaseRight.toString());
-        Log.i("TAG",numclickBraccioLeft.toString());
-        Log.i("TAG",numclickBraccioRight.toString());
-        Log.i("TAG",numclickManoLeft.toString());
-        Log.i("TAG",numclickManoRight.toString());
-        Log.i("TAG",result.toString());
+        TextView tbaseDx = findViewById(R.id.tempoclickbasedx);
+        TextView nbaseDx = findViewById(R.id.numeroclickbasedx);
+        TextView tbaseSx = findViewById(R.id.tempoclickbasesx);
+        TextView nbaseSx = findViewById(R.id.numeroclickbasesx);
+        tbaseDx.setText(totaltimeBaseRight.toString());
+        nbaseDx.setText(numclickBaseRight.toString());
+        tbaseSx.setText(totaltimeBaseLeft.toString());
+        nbaseSx.setText(numclickBaseLeft.toString());
+
+        //setText per braccio
+        TextView tbraccioDx = findViewById(R.id.tempoclickbracciodx);
+        TextView nbraccioDx = findViewById(R.id.numeroclickbracciodx);
+        TextView tbraccioSx = findViewById(R.id.tempoclickbracciosx);
+        TextView nbraccioSx = findViewById(R.id.numeroclickbracciosx);
+        tbraccioDx.setText(totaltimeBraccioRight.toString());
+        nbraccioDx.setText(numclickBraccioRight.toString());
+        tbraccioSx.setText(totaltimeBraccioLeft.toString());
+        nbraccioSx.setText(numclickBraccioLeft.toString());
+
+        //setText per mano
+        TextView tmanoDx = findViewById(R.id.tempoclickmanodx);
+        TextView nmanoDx = findViewById(R.id.numeroclickmanodx);
+        TextView tmanoSx = findViewById(R.id.tempoclickmanosx);
+        TextView nmanoSx = findViewById(R.id.numeroclickmanosx);
+        tmanoDx.setText(totaltimeManoRight.toString());
+        nmanoDx.setText(numclickManoRight.toString());
+        tmanoSx.setText(totaltimeManoLeft.toString());
+        nmanoSx.setText(numclickManoLeft.toString());
+
     }
 }

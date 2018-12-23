@@ -62,27 +62,27 @@ public class MotorActivity extends AppCompatActivity {
     private ImageButton[] blockplaced = new ImageButton[4];
 
     private int numclickManoLeft = 0;
-    private int istanttimeManoLeft = 0;
+    private double istanttimeManoLeft = 0;
     private int totaltimeManoLeft = 0;
 
     private int numclickManoRight = 0;
-    private int istanttimeManoRight = 0;
+    private double istanttimeManoRight = 0;
     private int totaltimeManoRight = 0;
 
     private int numclickBraccioLeft = 0;
-    private int istanttimeBraccioLeft = 0;
+    private double istanttimeBraccioLeft = 0;
     private int totaltimeBraccioLeft = 0;
 
     private int numclickBraccioRight = 0;
-    private int istanttimeBraccioRight = 0;
+    private double istanttimeBraccioRight = 0;
     private int totaltimeBraccioRight = 0;
 
     private int numclickBaseLeft = 0;
-    private int istanttimeBaseLeft = 0;
+    private double istanttimeBaseLeft = 0;
     private int totaltimeBaseLeft = 0;
 
     private int numclickBaseRight = 0;
-    private int istanttimeBaseRight = 0;
+    private double istanttimeBaseRight = 0;
     private int totaltimeBaseRight = 0;
 
 
@@ -165,11 +165,12 @@ public class MotorActivity extends AppCompatActivity {
                     ev3.sendMessage(mMotorBase.motorOn(mSpeed, "-"));
                     // PRESSED
                     numclickBaseLeft += 1;
-                    istanttimeBaseLeft = time.intValue()*100;
+                    istanttimeBaseLeft = time*100;
                     return false; // if you want to handle the touch event
                 case MotionEvent.ACTION_UP:
                     ev3.sendMessage(mMotorBase.motorOff());
-                    totaltimeBaseLeft = totaltimeBaseLeft + (time.intValue()*100)-istanttimeBaseLeft;
+
+                    totaltimeBaseLeft += (int)(time*100)-istanttimeBaseLeft;
                     // RELEASED
                     return false; // if you want to handle the touch event
             }
@@ -183,12 +184,12 @@ public class MotorActivity extends AppCompatActivity {
                     ev3.sendMessage(mMotorBase.motorOn(mSpeed, "+"));
                     numclickBaseRight += 1;
                     // PRESSED
-                    istanttimeBaseRight = time.intValue()*100;
+                    istanttimeBaseRight = time*100;
                     return false; // if you want to handle the touch event
                 case MotionEvent.ACTION_UP:
                     ev3.sendMessage(mMotorBase.motorOff());
                     // RELEASED
-                    totaltimeBaseRight = totaltimeBaseRight + (time.intValue()*100) -istanttimeBaseRight;
+                    totaltimeBaseRight += (int)(time*100) -istanttimeBaseRight;
                     return false; // if you want to handle the touch event
             }
             return false;
@@ -201,12 +202,12 @@ public class MotorActivity extends AppCompatActivity {
                     ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "+"));
                     numclickBraccioLeft += 1;
                     // PRESSED
-                    istanttimeBraccioLeft = time.intValue()*100;
+                    istanttimeBraccioLeft = time*100;
                     return false; // if you want to handle the touch event
                 case MotionEvent.ACTION_UP:
                     ev3.sendMessage(mMotorBraccio.motorOff());
                     // RELEASED
-                    totaltimeBraccioLeft = totaltimeBraccioLeft + (time.intValue()*100) - istanttimeBraccioLeft;
+                    totaltimeBraccioLeft += (int)(time*100)- istanttimeBraccioLeft;
                     return false; // if you want to handle the touch event
             }
             return false;
@@ -219,12 +220,12 @@ public class MotorActivity extends AppCompatActivity {
                     ev3.sendMessage(mMotorBraccio.motorOn(mSpeed, "-"));
                     numclickBraccioRight += 1;
                     // PRESSED
-                    istanttimeBraccioRight = time.intValue()*100;
+                    istanttimeBraccioRight = time*100;
                     return false; // if you want to handle the touch event
                 case MotionEvent.ACTION_UP:
                     ev3.sendMessage(mMotorBraccio.motorOff());
                     // RELEASED
-                    totaltimeBraccioRight = totaltimeBraccioRight + (time.intValue()*100) - istanttimeBraccioRight;
+                    totaltimeBraccioRight += (int)(time*100) - istanttimeBraccioRight;
                     return false; // if you want to handle the touch event
             }
             return false;
@@ -237,12 +238,12 @@ public class MotorActivity extends AppCompatActivity {
                     ev3.sendMessage(mMotorMano.motorOn(mSpeed, "+"));
                     numclickManoLeft += 1;
                     // PRESSED
-                    istanttimeManoLeft = time.intValue()*100;
+                    istanttimeManoLeft = time*100;
                     return false; // if you want to handle the touch event
                 case MotionEvent.ACTION_UP:
                     ev3.sendMessage(mMotorMano.motorOff());
                     // RELEASED
-                    totaltimeManoLeft = totaltimeManoLeft + (time.intValue()*100) - istanttimeManoLeft;
+                    totaltimeManoLeft += (int)(time*100) - istanttimeManoLeft;
                     return false; // if you want to handle the touch event
             }
             return false;
@@ -255,12 +256,12 @@ public class MotorActivity extends AppCompatActivity {
                     ev3.sendMessage(mMotorMano.motorOn(mSpeed, "-"));
                     numclickManoRight += 1;
                     // PRESSED
-                    istanttimeManoRight = time.intValue()*100;
+                    istanttimeManoRight = time*100;
                     return false; // if you want to handle the touch event
                 case MotionEvent.ACTION_UP:
                     ev3.sendMessage(mMotorMano.motorOff());
                     // RELEASED
-                    totaltimeManoRight = totaltimeManoRight + (time.intValue()*100) - istanttimeManoRight;
+                    totaltimeManoRight += (int)(time*100) - istanttimeManoRight;
                     return false; // if you want to handle the touch event
             }
             return false;
