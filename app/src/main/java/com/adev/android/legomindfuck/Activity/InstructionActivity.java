@@ -41,7 +41,6 @@ public class InstructionActivity extends AppCompatActivity {
             hardware.setVisibility(View.INVISIBLE);
             WebSettings webSettings = view.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            //TODO: sostituire con istruzioni di montaggio più snelle
             view.loadUrl("file:///android_asset/Build.html");
             view.setVisibility(View.VISIBLE);
         });

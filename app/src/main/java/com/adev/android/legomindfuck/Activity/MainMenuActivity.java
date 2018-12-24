@@ -15,6 +15,8 @@ import com.adev.android.legomindfuck.DataColors.Colors;
 import com.adev.android.legomindfuck.R;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
+//TODO: padding down su tutti i button??? per i vari telefoni..
+
 public class MainMenuActivity extends AppCompatActivity {
 
     private Button play;
