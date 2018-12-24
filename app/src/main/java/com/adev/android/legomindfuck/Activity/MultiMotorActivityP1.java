@@ -1,12 +1,14 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.adev.android.legomindfuck.Motor;
@@ -26,6 +28,8 @@ public class MultiMotorActivityP1 extends AppCompatActivity {
     private ImageButton mButtonBraccioLeft;
     private ImageButton mButtonBraccioRight;
 
+    private Button mButtonStop;
+
     private int mSpeed = 5;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -35,6 +39,9 @@ public class MultiMotorActivityP1 extends AppCompatActivity {
         setContentView(R.layout.activity_motor_multi_p1);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        mButtonStop = findViewById(R.id.stopButtonP2);
+        mButtonStop.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainMenuActivity.class)));
 
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 180);
