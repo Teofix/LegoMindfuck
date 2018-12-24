@@ -1,26 +1,21 @@
 package com.adev.android.legomindfuck.Activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.regex.Pattern;
-
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.ShowDialogMessage;
 import com.adev.android.legomindfuck.Thread.SocketManager;
+
+import java.util.regex.Pattern;
 
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
@@ -47,38 +42,35 @@ public class ConnectionTestActivity extends AppCompatActivity {
 
         guide.setText("Assicurati che il robot ev3 sia connesso alla stessa rete wifi di questo dispositivo Android. Controlla l'indirizzo ip del robot ev3 e inseriscilo nel campo \"Robot IP\". Conferma poi l'inserimento riscrivendo l'indirizzo ip nel secondo campo \"Confirm robot IP\". Premi poi \"TEST\" per verificare la connessione.");
 
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        test.setOnClickListener(v -> {
 
-                String firstIp = ip.getText().toString();
+            String firstIp = ip.getText().toString();
 
-                boolean validIP = IpRegex.isValid(firstIp);
+            boolean validIP = IpRegex.isValid(firstIp);
 
-                if(!validIP) {
+            if(!validIP) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ConnectionTestActivity.this);
+                builder.setMessage("L'indirizzo IP non è valido!\nInseriscilo di nuovo").setTitle("Errore indirizzo IP");
+                builder.setPositiveButton("Capito!", (dialogInterface, i) -> {});
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
 
-                    ShowDialogMessage err = new ShowDialogMessage();
-                    err.setContent("Errore di inserimento!", "Invalid IP or mismatching IP");
-                    err.show(getSupportFragmentManager(), "");
-                }
+             else {
+                ev3 = new SocketManager(firstIp);
+                ev3.connect();
 
-                 else {
-                    ev3 = new SocketManager(firstIp);
-                    ev3.connect();
-
-                    new Handler().postDelayed(() -> {
-                        if (ev3.isSocketReady()) {
-                            ev3.sendMessage("#atconnected#");
-                            lastIP = firstIp;
-                            Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
-                            startActivity(i);
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Connection FAILED!", Toast.LENGTH_SHORT).show();
-                        }
-                        finish();
-                    }, 1000);
-                }
+                new Handler().postDelayed(() -> {
+                    if (ev3.isSocketReady()) {
+                        ev3.sendMessage("#atconnected#");
+                        lastIP = firstIp;
+                        Toast.makeText(getApplicationContext(), "Connection with EV3: succefull!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Connection FAILED!", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                }, 1000);
             }
         });
     }

@@ -6,13 +6,13 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Button;
 
 import com.adev.android.legomindfuck.DataColors.Colors;
 import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.ShowConnectionErrorMessage;
 import com.adev.android.legomindfuck.Thread.SocketManager;
 
 public class MainMenuActivity extends AppCompatActivity {
@@ -55,9 +55,12 @@ public class MainMenuActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), PlayMenuActivity.class);
                 startActivity(i);
             } else {
-                ShowConnectionErrorMessage err = new ShowConnectionErrorMessage();
-                err.setContent("Errore di connessione!", "Robot non connesso all'app");
-                err.show(getSupportFragmentManager(), "");
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainMenuActivity.this);
+                builder.setMessage("Attenzione!\nNon è stata stabilita alcuna connessione con il robot.\nConnetti il robot e riprova.").setTitle("Errore di connessione");
+                builder.setPositiveButton("Capito!", (dialogInterface, i) -> {});
+                builder.setNegativeButton("Portami lì..", (dialogInterface, i) -> { startActivity(new Intent(getApplicationContext(), ConnectionTestActivity.class)); });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
