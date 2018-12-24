@@ -3,11 +3,10 @@ package com.adev.android.legomindfuck.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,8 +21,8 @@ import com.adev.android.legomindfuck.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
 public class MotorActivity extends AppCompatActivity {
 
@@ -89,7 +88,7 @@ public class MotorActivity extends AppCompatActivity {
 
     private boolean victory = false;
 
-    int checked = 0;
+    private int checked = 0;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -104,7 +103,7 @@ public class MotorActivity extends AppCompatActivity {
             ev3.sendMessage("#apstop#");
             victory = colors.colorMatch();
             colors.wipeColors();
-            Log.i("Result", "res: " + victory);
+            //Log.i("Result", "res: " + victory);
             new Handler().post(() -> {
                 Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
                 i.putExtra("min", mins);

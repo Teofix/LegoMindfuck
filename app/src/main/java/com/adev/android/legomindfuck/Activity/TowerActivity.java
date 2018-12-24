@@ -20,8 +20,7 @@ import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 public class TowerActivity extends AppCompatActivity {
 
     Timer timer = new Timer();
-    //TODO: decidere i secondi per la configurazione della torre
-    private Double time = 4.0;
+    private Double time = 3.5;
     private TextView timeText;
 
     @Override
@@ -101,7 +100,7 @@ public class TowerActivity extends AppCompatActivity {
             }
             startActivity(i);
             finish();
-        }, 5000);
+        }, 4500);
 
     }
 }

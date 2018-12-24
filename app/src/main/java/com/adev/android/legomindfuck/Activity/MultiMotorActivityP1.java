@@ -28,15 +28,13 @@ public class MultiMotorActivityP1 extends AppCompatActivity {
 
     private int mSpeed = 5;
 
-    //TODO: mettere a posto P1 e P2 con i rispettivi bottoni di check stop e controllo motori
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_motor_multi_p1);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (mMotorBase == null) {
             mMotorBase = new Motor(1, 180);

@@ -16,16 +16,10 @@ public class SegnalazioniActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segnalazioni);
 
-        //TODO: togliere la textview della email e lasciare solop il testo
-
         ImageButton sender = (ImageButton) findViewById(R.id.sendbutton);
         EditText body = (EditText) findViewById(R.id.body);
-        EditText email = (EditText) findViewById(R.id.email);
 
-        email.setFocusable(true);
         body.setFocusable(true);
-
-        email.setOnClickListener(v -> {if(email.getText().toString().equals("email@email.com"))  email.setText("");});
 
         body.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus && body.getText().toString().equals("Scrivi qui le tue segnalazioni")) {body.setText("");}});
 

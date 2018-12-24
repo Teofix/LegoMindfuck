@@ -1,8 +1,11 @@
 package com.adev.android.legomindfuck.Activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,10 +14,15 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.adev.android.legomindfuck.Motor;
 import com.adev.android.legomindfuck.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
 
 public class MultiMotorActivityP2 extends AppCompatActivity {
@@ -30,8 +38,20 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
     private Button mPickUpButton;
     private Button mPutDownButton;
     private Button mCheckColorButton;
+    private Button mStopButton;
+
+    private boolean victory = false;
 
     private int mSpeed = 5;
+
+    private int checked = 0;
+
+    private Double mins = 0.0;
+    private Double secs = 0.0;
+
+    private Timer timer = new Timer();
+    private Double time = 0.0;
+    private TextView timeText;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -39,7 +59,42 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_motor_multi_p2);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        mStopButton = findViewById(R.id.stopButtonP2);
+
+        timeText = findViewById(R.id.seconds_textBox);
+        timer.scheduleAtFixedRate(new TimerTask() {
+            private String min = "min: ";
+            private String sec = "  sec: ";
+
+            @Override
+            public void run() {
+
+                runOnUiThread(() -> {
+                    mins = time / 60;
+                    String[] formatM = mins.toString().split("\\.");
+                    secs = time % 60;
+                    String[] formatS = secs.toString().split("\\.");
+                    timeText.setText(min + formatM[0] + sec + formatS[0] + "," + formatS[1].charAt(0));
+                    time += 0.1;
+                });
+            }
+        }, 100, 100);
+
+        mStopButton.setOnClickListener(view -> {
+            ev3.sendMessage("#apstop#");
+            victory = colors.colorMatch();
+            colors.wipeColors();
+            new Handler().post(() -> {
+                Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
+                i.putExtra("min", mins);
+                i.putExtra("sec", secs);
+                i.putExtra("result", victory);
+                startActivity(i);
+                finish();
+            });
+        });
 
         if (mMotorBraccio == null) {
             mMotorBraccio = new Motor(4, 180);
@@ -163,14 +218,18 @@ public class MultiMotorActivityP2 extends AppCompatActivity {
 
         mCheckColorButton = findViewById(R.id.check_color_button);
         mCheckColorButton.setOnClickListener(v -> {
+            ev3.sendMessage("#arc#");
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MultiMotorActivityP2.this);
+            builder.setMessage("Colore corretto?").setTitle("Conferma colore");
+            builder.setPositiveButton("SI!", (dialogInterface, i) -> checked++);
+            builder.setNegativeButton("NO!", (dialogInterface, i) -> {
+                colors.wipeLastColor();
+                checked--;
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         });
     }
 
-    private int degreeToPercentage(int degree) {
-        return degree * 100 / 360;
-    }
-
-    private int percentageToDegree(int percentage) {
-        return percentage * 360 / 100;
-    }
 }

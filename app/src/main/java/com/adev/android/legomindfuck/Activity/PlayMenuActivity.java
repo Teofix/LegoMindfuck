@@ -36,6 +36,7 @@ public class PlayMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_play_menu);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -61,7 +62,6 @@ public class PlayMenuActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         adapter = new ImagePageAdapter(PlayMenuActivity.this, images, titles, descriptions);
         viewPager.setAdapter(adapter);
-
         selector = (Button) findViewById(R.id.mode_selector);
         selector.setOnClickListener(v -> {
             if (ev3.isSocketReady()) {

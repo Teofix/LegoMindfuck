@@ -20,16 +20,14 @@
         android:id="@+id/check_color_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/round_cornered_button"
         android:fontFamily="@font/fjalla_one"
         android:text="Check"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -92,7 +90,7 @@
         android:id="@+id/speed_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="252dp"
         android:checked="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -102,29 +100,67 @@
         android:id="@+id/pick_up_button"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/round_cornered_button"
         android:fontFamily="@font/fjalla_one"
         android:text="Pick up"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/check_color_button" />
+        app:layout_constraintBottom_toTopOf="@+id/stopButtonP2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speed_switch"
+        app:layout_constraintVertical_bias="0.923" />
 
     <Button
         android:id="@+id/put_down_button"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/round_cornered_button"
         android:fontFamily="@font/fjalla_one"
         android:text="Put Down"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/check_color_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speed_switch"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <Button
+        android:id="@+id/stopButtonP2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/round_cornered_button_red"
+        android:fontFamily="@font/fjalla_one"
+        android:text="STOP"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/check_color_button" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/seconds_textBox"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/fjalla_one"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/mVeryGreen"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </android.support.constraint.ConstraintLayout>

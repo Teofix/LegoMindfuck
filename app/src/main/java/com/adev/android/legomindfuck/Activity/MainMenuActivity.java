@@ -4,15 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-
-import android.preference.PreferenceManager;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.adev.android.legomindfuck.DataColors.Colors;
 import com.adev.android.legomindfuck.R;
@@ -36,6 +32,8 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        colors.setPlayers(1);
 
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
