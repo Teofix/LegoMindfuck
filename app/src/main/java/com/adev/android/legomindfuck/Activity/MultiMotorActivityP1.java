@@ -40,7 +40,7 @@ public class MultiMotorActivityP1 extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        mButtonStop = findViewById(R.id.stopButtonP2);
+        mButtonStop = findViewById(R.id.stopButtonP1);
         mButtonStop.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), MainMenuActivity.class)));
 
         if (mMotorBase == null) {
