@@ -25,7 +25,7 @@
 
     <TextView
         android:id="@+id/da"
-        android:layout_width="336dp"
+        android:layout_width="303dp"
         android:layout_height="37dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
@@ -42,14 +42,13 @@
 
     <EditText
         android:id="@+id/body"
-        android:layout_width="359dp"
+        android:layout_width="367dp"
         android:layout_height="160dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
         android:text="Scrivi qui le tue segnalazioni"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/da" />
 
@@ -57,8 +56,8 @@
         android:id="@+id/sendbutton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:srcCompat="@drawable/ic_action_send" />
