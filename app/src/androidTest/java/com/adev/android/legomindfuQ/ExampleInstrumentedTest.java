@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.adev.android.legomindfuck", appContext.getPackageName());
+        assertEquals("com.adev.android.legomindfuQ", appContext.getPackageName());
     }
 }
