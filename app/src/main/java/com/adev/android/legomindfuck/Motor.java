@@ -1,7 +1,5 @@
 package com.adev.android.legomindfuck;
 
-import android.util.Log;
-
 public class Motor {
 
     private int mCategory;
@@ -22,7 +20,6 @@ public class Motor {
         } else {
             mDegrees = (mDegrees - degrees + 360) % 360;
         }
-        //Log.i("Message", sPrefix + mCategory + direction + (sEncoding + degrees) + (sEncoding + speed) + "#");
         return sPrefix + mCategory + direction + (sEncoding + degrees) +  (sEncoding + speed) + "#";
     }
 

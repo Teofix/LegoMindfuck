@@ -1,7 +1,5 @@
 package com.adev.android.legomindfuck.Thread;
 
-import android.util.Log;
-
 import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
 
 public class DeserializerThread extends Thread {
@@ -19,21 +17,17 @@ public class DeserializerThread extends Thread {
 
     private void deserialize() {
 
-        //Log.i("DeserializerThread:", message);
-
         String[] split = message.split("&");
 
         if (split[0].equals("#r") && split[1].equals("t") && split[6].equals("#")) {
 
             for (int i = 2; i < 6; i++) {
                 colors.setColorTower(split[i], i-2);
-                //Log.i("ColorTower:", split[i]);
             }
         }
 
         else if (split[0].equals("#r") && split[1].equals("c") && split[3].equals("#")) {
             colors.setColorChecked(split[2]);
-            //Log.i("ColorChecked:", split[2]);
         }
     }
 

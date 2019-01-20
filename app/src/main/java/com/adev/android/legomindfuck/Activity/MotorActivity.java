@@ -103,7 +103,6 @@ public class MotorActivity extends AppCompatActivity {
             ev3.sendMessage("#apstop#");
             victory = colors.colorMatch();
             colors.wipeColors();
-            //Log.i("Result", "res: " + victory);
             new Handler().post(() -> {
                 Intent i = new Intent(getApplicationContext(), EndGameActivity.class);
                 i.putExtra("min", mins);
