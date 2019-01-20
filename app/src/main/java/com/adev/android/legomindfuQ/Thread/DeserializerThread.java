@@ -1,6 +1,6 @@
-package com.adev.android.legomindfuck.Thread;
+package com.adev.android.legomindfuQ.Thread;
 
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
+import static com.adev.android.legomindfuQ.Activity.MainMenuActivity.colors;
 
 public class DeserializerThread extends Thread {
 

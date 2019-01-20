@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.adev.android.legomindfuck">
+    package="com.adev.android.legomindfuQ">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="LegoMindfuQ"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity
-            android:name=".Activity.MotorActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.MotorActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.InstructionActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.InstructionActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.TowerActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.TowerActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.EndGameActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.EndGameActivity"
             android:theme="@style/AppTheme"></activity>
         <activity
-            android:name=".Activity.WelcomeActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.WelcomeActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.MainMenuActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.MainMenuActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,25 +34,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.PlayMenuActivity"
-            android:parentActivityName=".Activity.MainMenuActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.PlayMenuActivity"
+            android:parentActivityName="com.adev.android.legomindfuQ.Activity.MainMenuActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.SegnalazioniActivity"
-            android:parentActivityName=".Activity.MainMenuActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.SegnalazioniActivity"
+            android:parentActivityName="com.adev.android.legomindfuQ.Activity.MainMenuActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.MultiplayerSelectionActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.MultiplayerSelectionActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.MultiMotorActivityP1"
+            android:name="com.adev.android.legomindfuQ.Activity.MultiMotorActivityP1"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.MultiMotorActivityP2"
+            android:name="com.adev.android.legomindfuQ.Activity.MultiMotorActivityP2"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.ConnectionTestActivity"
-            android:parentActivityName=".Activity.MainMenuActivity"
+            android:name="com.adev.android.legomindfuQ.Activity.ConnectionTestActivity"
+            android:parentActivityName="com.adev.android.legomindfuQ.Activity.MainMenuActivity"
             android:theme="@style/AppTheme" />
 
         <meta-data

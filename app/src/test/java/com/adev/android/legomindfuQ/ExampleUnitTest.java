@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuQ;
 
 import org.junit.Test;
 

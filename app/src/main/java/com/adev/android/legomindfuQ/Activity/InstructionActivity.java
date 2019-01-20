@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 
-import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuQ.R;
 
 public class InstructionActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Thread;
+package com.adev.android.legomindfuQ.Thread;
 
 import java.io.BufferedReader;
 import java.io.IOException;

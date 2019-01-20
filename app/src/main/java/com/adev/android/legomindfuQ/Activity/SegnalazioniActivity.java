@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuQ.R;
 
 public class SegnalazioniActivity extends AppCompatActivity {
 

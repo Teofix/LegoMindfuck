@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.DataColors;
+package com.adev.android.legomindfuQ.DataColors;
 
 public class Colors {
 

@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
-import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuQ.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

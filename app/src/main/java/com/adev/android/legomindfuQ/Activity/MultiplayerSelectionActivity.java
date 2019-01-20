@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuQ.R;
 
 public class MultiplayerSelectionActivity extends AppCompatActivity {
 

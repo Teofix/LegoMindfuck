@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,10 +15,10 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuQ.R;
 
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+import static com.adev.android.legomindfuQ.Activity.MainMenuActivity.colors;
+import static com.adev.android.legomindfuQ.Activity.MainMenuActivity.ev3;
 
 public class PlayMenuActivity extends AppCompatActivity {
 

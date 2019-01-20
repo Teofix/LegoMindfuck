@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.adev.android.legomindfuck.R;
+import com.adev.android.legomindfuQ.R;
 
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.colors;
+import static com.adev.android.legomindfuQ.Activity.MainMenuActivity.colors;
 
 public class EndGameActivity extends AppCompatActivity {
 

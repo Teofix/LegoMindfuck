@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.adev.android.legomindfuck.DataColors.Colors;
-import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.Thread.SocketManager;
+import com.adev.android.legomindfuQ.DataColors.Colors;
+import com.adev.android.legomindfuQ.R;
+import com.adev.android.legomindfuQ.Thread.SocketManager;
 
 public class MainMenuActivity extends AppCompatActivity {
 

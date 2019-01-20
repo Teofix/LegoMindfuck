@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck;
+package com.adev.android.legomindfuQ;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

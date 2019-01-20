@@ -1,4 +1,4 @@
-package com.adev.android.legomindfuck.Activity;
+package com.adev.android.legomindfuQ.Activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -12,12 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.adev.android.legomindfuck.R;
-import com.adev.android.legomindfuck.Thread.SocketManager;
+import com.adev.android.legomindfuQ.R;
+import com.adev.android.legomindfuQ.Thread.SocketManager;
 
 import java.util.regex.Pattern;
 
-import static com.adev.android.legomindfuck.Activity.MainMenuActivity.ev3;
+import static com.adev.android.legomindfuQ.Activity.MainMenuActivity.ev3;
 
 public class ConnectionTestActivity extends AppCompatActivity {
 
