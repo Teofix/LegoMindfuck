@@ -54,6 +54,9 @@
             android:name="com.adev.android.legomindfuQ.Activity.ConnectionTestActivity"
             android:parentActivityName="com.adev.android.legomindfuQ.Activity.MainMenuActivity"
             android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.TutorialActivity"
+            android:parentActivityName="com.adev.android.legomindfuQ.Activity.MainMenuActivity"
+            android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -41,9 +41,6 @@ public class PlayMenuActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //TODO: sistemare colore backgroud
-        //TODO: cosa ci mettiamo in tutorial?? togliamo o mettiamo una semplice immagine di come si gioca e cosa fanno i tasti?
-
         images = new int[]{R.drawable.tutorial,
                 R.drawable.single_player,
                 R.drawable.multiplayer
@@ -67,6 +64,7 @@ public class PlayMenuActivity extends AppCompatActivity {
             if (ev3.isSocketReady()) {
                 switch (viewPager.getCurrentItem()) {
                     case 0:
+                        startActivity(new Intent(getApplicationContext(), TutorialActivity.class));
                         break;
                     case 1:
                         colors.setPlayers(1);
