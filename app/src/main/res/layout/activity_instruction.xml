@@ -8,7 +8,7 @@
     tools:context=".Activity.InstructionActivity">
 
     <WebView
-        android:id="@+id/webview"
+        android:id="@+id/instructionView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
@@ -16,6 +16,7 @@
         tools:layout_editor_absoluteX="168dp"
         tools:layout_editor_absoluteY="0dp" />
 
+    <!--
     <Button
         android:id="@+id/bSoftware"
         android:layout_width="wrap_content"
@@ -51,5 +52,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bSoftware" />
+        -->
 
 </android.support.constraint.ConstraintLayout>

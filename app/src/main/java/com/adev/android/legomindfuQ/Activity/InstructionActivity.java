@@ -12,15 +12,26 @@ import com.adev.android.legomindfuQ.R;
 
 public class InstructionActivity extends AppCompatActivity {
 
+    /*
     Button software;
     Button hardware;
+    */
 
-    WebView view;
+    WebView instruction;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_instruction);
+        instruction = (WebView) findViewById(R.id.instructionView);
+        instruction.setVisibility(View.INVISIBLE);
+        WebSettings webSettings = instruction.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        instruction.loadUrl("file:///android_asset/HowTo.html");
+        instruction.setVisibility(View.VISIBLE);
+
+        /*
         setContentView(R.layout.activity_instruction);
         view = (WebView) findViewById(R.id.webview);
         view.setVisibility(View.INVISIBLE);
@@ -44,6 +55,7 @@ public class InstructionActivity extends AppCompatActivity {
             view.loadUrl("file:///android_asset/Build.html");
             view.setVisibility(View.VISIBLE);
         });
+        */
 
     }
 
